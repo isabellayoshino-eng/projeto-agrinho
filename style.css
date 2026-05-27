@@ -1,0 +1,178 @@
+/* Configurações Gerais do Site */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: "Arial Narrow", Arial, sans-serif;
+}
+
+/* Seção de Abertura (Hero) */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    /* Substitua a URL abaixo pela imagem real do campo com máquinas */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('https://unsplash.com') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 0 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* Seta de Rolagem animada */
+.scroll-arrow {
+    display: inline-block;
+    margin-top: 40px;
+    font-size: 3rem;
+    color: #ffffff;
+    text-decoration: none;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-15px); }
+    60% { transform: translateY(-7px); }
+}
+
+/* Seção do Quiz */
+.quiz-container {
+    padding: 60px 20px;
+    background-color: #1a1a1a;
+    text-align: center;
+}
+
+.quiz-container h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #4caf50;
+}
+
+.quiz-card {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #242424;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.question-block {
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.question-text {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #e0e0e0;
+}
+
+.options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Botões do Quiz com Diferentes Tons de Verde */
+.btn-opt {
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-size: 1.1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.btn-opt:hover {
+    transform: translateX(5px);
+    filter: brightness(1.2);
+}
+
+.opt-1 { background-color: #1b4332; } /* Verde Escuro */
+.opt-2 { background-color: #2d6a4f; } /* Verde Médio Escuro */
+.opt-3 { background-color: #40916c; } /* Verde Médio */
+.opt-4 { background-color: #52b788; } /* Verde Claro */
+
+/* Seção de Conteúdo (Informações, Balões e Gifs) */
+.content-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.info-block {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.info-block.reverse {
+    flex-direction: row-reverse;
+}
+
+/* Balões de Texto Verdes */
+.speech-bubble {
+    position: relative;
+    background: #2d6a4f;
+    border-radius: 15px;
+    padding: 25px;
+    flex: 1;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.speech-bubble p {
+    font-size: 1.2rem;
+    font-weight: normal; /* Sem negrito */
+    line-height: 1.6;
+    color: #ffffff; /* Texto branco */
+}
+
+/* Formatação dos GIFs */
+.agro-gif {
+    width: 320px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* Rodapé */
+.site-footer {
+    text-align: center;
+    padding: 30px;
+    background-color: #0f0f0f;
+    font-size: 0.9rem;
+    color: #777;
+    border-top: 1px solid #222;
+}
+
+/* Responsividade para Celulares */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.2rem; }
+    .info-block, .info-block.reverse { flex-direction: column; }
+    .agro-gif { width: 100%; height: auto; }
+}
