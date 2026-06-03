@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agrinho 2026 - Agro Forte e Sustentável</title>
-    <!-- Link para o arquivo CSS externo -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -49,23 +48,29 @@
         </div>
     </section>
 
-    <!-- SEÇÃO PILARES -->
+    <!-- SEÇÃO PILARES (Com Animação de Scroll via CSS) -->
     <div class="bg-pilares">
         <section id="pilares" class="container-secao">
             <h2 class="section-title">Pilares do Agro Sustentável</h2>
             <div class="pilares-grid">
                 <div class="pilar-card">
-                    <span class="pilar-icon">🛸</span>
+                    <div class="pilar-icon-wrapper">
+                        <span class="pilar-icon">🛸</span>
+                    </div>
                     <h3>Tecnologia no Campo</h3>
                     <p>O monitoramento por drones e o uso de sensores inteligentes reduzem o desperdício de água e defensivos agrícolas na lavoura.</p>
                 </div>
                 <div class="pilar-card">
-                    <span class="pilar-icon">🌳</span>
+                    <div class="pilar-icon-wrapper">
+                        <span class="pilar-icon">🌳</span>
+                    </div>
                     <h3>Conservação Ambiental</h3>
                     <p>O sistema de plantio direto, a rotação planejada de culturas e o reflorestamento ativo protegem os solos e as bacias de rios.</p>
                 </div>
                 <div class="pilar-card">
-                    <span class="pilar-icon">🧑‍🌾</span>
+                    <div class="pilar-icon-wrapper">
+                        <span class="pilar-icon">🧑‍🌾</span>
+                    </div>
                     <h3>Valor Social</h3>
                     <p>A valorização do produtor rural e o incentivo à sucessão familiar asseguram que o amor pela terra continue vivo de geração em geração.</p>
                 </div>
@@ -73,16 +78,23 @@
         </section>
     </div>
 
-    <!-- SEÇÃO INTERATIVA (QUIZ) -->
+    <!-- SEÇÃO INTERATIVA (QUIZ COM TIMER) -->
     <section id="quiz" class="container-secao">
         <h2 class="section-title">Desafio do Conhecimento</h2>
         <div class="quiz-container">
+            <div id="quiz-header">
+                <span id="placar-passo">Pergunta 1 de 5</span>
+                <!-- Barra e contador de tempo adicionados -->
+                <div id="cronometro-box">⏱️ <span id="tempo-restante">15</span>s</div>
+            </div>
+            <div id="barra-progresso-tempo"><div id="progresso-tempo"></div></div>
+            
             <div id="quiz-tela-jogo">
                 <div class="quiz-pergunta" id="pergunta-texto">Carregando pergunta...</div>
                 <div class="quiz-opcoes" id="opcoes-container"></div>
                 <div class="quiz-feedback" id="feedback-texto"></div>
                 <div class="quiz-controles">
-                    <span id="placar-passo">Pergunta 1 de 3</span>
+                    <div></div> <!-- Espaçador -->
                     <button id="btn-proximo" class="btn-proximo escondido">Próxima</button>
                 </div>
             </div>
@@ -105,7 +117,6 @@
         </div>
     </footer>
 
-    <!-- Link para o arquivo JavaScript externo -->
     <script src="script.js"></script>
 </body>
 </html>
