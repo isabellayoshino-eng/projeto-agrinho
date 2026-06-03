@@ -37,7 +37,7 @@ const dadosQuiz = [
     {
         pergunta: "O que significa o termo 'Sucessão Familiar' no contexto do agronegócio?",
         opcoes: [
-            "A) A continuidade do trabalho na propriedade rural pelas novas gerações da família.",
+            "A) A continuidade do trabalho na propriedade rural pelas novas gerais da família.",
             "B) A venda obrigatória da fazenda quando os donos originais ficam idosos.",
             "C) O abandono total das terras para morar exclusivamente nas grandes cidades."
         ],
@@ -92,10 +92,9 @@ function carregarTelaInicial() {
     elementoPergunta.innerText = "Pronto para testar seus conhecimentos sobre o Agro Forte e Sustentável?";
     
     containerOpcoes.innerHTML = "";
-    elementoFeedback.innerHTML = "Você terá 15 segundos para responder cada pergunta.";
+    elementoFeedback.innerHTML = "Você terá 15 segundos para responder cada pergunta após iniciar.";
     
     btnProximo.innerText = "Iniciar Desafio";
-    btnProximo.classList.remove('escondido');
 }
 
 // --- CRONÔMETRO ---
@@ -103,7 +102,7 @@ function iniciarCronometro() {
     tempoRestante = TEMPO_LIMITE;
     elementoTempo.innerText = tempoRestante;
     barraTempo.style.width = "100%";
-    barraTempo.style.backgroundColor = "var(--verde-neon-agro)";
+    barraTempo.style.backgroundColor = "var(--verde-destaque)";
     
     clearInterval(cronometroIntervalo);
 
@@ -134,7 +133,7 @@ function tempoEsgotado() {
     
     elementoFeedback.innerHTML = `<span style="color: var(--vermelho-alerta);">⏰ O tempo acabou! A resposta correta foi destacada em verde.</span>`;
     btnProximo.innerText = "Próxima";
-    btnProximo.classList.remove('escondido');
+    btnProximo.style.display = "block";
 }
 
 // --- CONTROLE DO QUIZ ---
@@ -165,7 +164,7 @@ function mostrarPergunta() {
 
 function resetarEstado() {
     elementoFeedback.innerText = "";
-    btnProximo.classList.add('escondido');
+    btnProximo.style.display = "none";
     while (containerOpcoes.firstChild) {
         containerOpcoes.removeChild(containerOpcoes.firstChild);
     }
@@ -189,7 +188,7 @@ function selecionarOpcao(botaoSelecionado, indiceSelecionado) {
         elementoFeedback.innerHTML = `<span style="color: var(--vermelho-alerta);">❌ Ah, quase lá! Veja a explicação correta destacada.</span>`;
     }
 
-    btnProximo.classList.remove('escondido');
+    btnProximo.style.display = "block";
 }
 
 function avancarQuiz() {
@@ -223,10 +222,10 @@ function mostrarResultadoFinal() {
     elementoFeedback.innerHTML = `Você acertou <strong>${pontuacao}</strong> de <strong>${dadosQuiz.length}</strong> perguntas!<br><br>${mensagemDesempenho}`;
     
     btnProximo.innerText = "Refazer Desafio";
-    btnProximo.classList.remove('escondido');
+    btnProximo.style.display = "block";
 }
 
-// --- LOGICA DE ATIVAÇÃO DO BOTÃO INICIAR ---
+// --- LOGICA DE ATIVAÇÃO DO BOTÃO ---
 btnProximo.addEventListener('click', () => {
     if (btnProximo.innerText === "Iniciar Desafio" || btnProximo.innerText === "Refazer Desafio") {
         iniciarQuiz();
@@ -235,5 +234,5 @@ btnProximo.addEventListener('click', () => {
     }
 });
 
-// Mantém travado com o cronômetro desligado até clicar no botão
+// Carrega travado na tela inicial sem rodar cronômetro
 carregarTelaInicial();
