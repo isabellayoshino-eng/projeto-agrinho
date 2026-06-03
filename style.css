@@ -31,10 +31,6 @@ body {
     scroll-behavior: smooth;
 }
 
-button {
-    font-family: inherit;
-}
-
 a {
     text-decoration: none;
     color: inherit;
@@ -143,8 +139,6 @@ header {
     box-shadow: 0 0 20px rgba(82, 183, 136, 0.4);
     transition: var(--transicao);
     display: inline-block;
-    border: none;
-    cursor: pointer;
 }
 
 .btn-cta:hover {
@@ -199,78 +193,6 @@ header {
     border-radius: 15px;
     box-shadow: 0 0 30px rgba(45, 106, 79, 0.4);
     border: 2px solid var(--verde-vibrante);
-}
-
-/* --- ESTILOS DA MODAL (NOVO) --- */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
-    overflow-y: auto;
-}
-
-.modal-conteudo {
-    background-color: var(--preto-card);
-    margin: 5% auto;
-    padding: 3rem 2rem;
-    border: 2px solid var(--verde-destaque);
-    width: 90%;
-    max-width: 800px;
-    border-radius: 16px;
-    box-shadow: 0 0 35px rgba(82, 183, 136, 0.3);
-    position: relative;
-}
-
-.fechar-modal {
-    color: var(--texto-mutado);
-    position: absolute;
-    top: 1.5rem;
-    right: 2rem;
-    font-size: 2.5rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: var(--transicao);
-}
-
-.fechar-modal:hover {
-    color: var(--vermelho-alerta);
-}
-
-.modal-conteudo h2 {
-    color: var(--verde-destaque);
-    margin-bottom: 2rem;
-    font-size: 2rem;
-    border-bottom: 1px solid var(--verde-escuro);
-    padding-bottom: 0.5rem;
-}
-
-.modal-texto-longo h3 {
-    color: var(--branco);
-    margin: 1.5rem 0 0.5rem;
-    font-size: 1.3rem;
-}
-
-.modal-texto-longo p {
-    color: var(--texto-claro);
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-    line-height: 1.7;
-}
-
-.modal-texto-longo ul {
-    margin-left: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--texto-claro);
-}
-
-.modal-texto-longo li {
-    margin-bottom: 0.5rem;
 }
 
 /* --- SEÇÃO PILARES --- */
@@ -477,3 +399,61 @@ footer {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a:hover {
+    color: var(--verde-destaque);
+}
+
+.redes-sociais {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 1.2rem;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--preto-card);
+        padding: 1.5rem;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+        gap: 1rem;
+        border-bottom: 2px solid var(--verde-vibrante);
+    }
+
+    .nav-menu.ativo {
+        display: flex;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .tema-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .tema-imagem {
+        height: 250px;
+    }
+}
