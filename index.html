@@ -11,7 +11,7 @@
     <!-- CABEÇALHO -->
     <header>
         <nav class="nav-container">
-            <a href="#" class="logo">🌿 Agrinho <span class="destaque-ano">2026</span></a>
+            <a href="#" class="logo">🌿 Agrinho <span class="destaque-verde">2026</span></a>
             <div class="menu-toggle" id="mobile-menu">
                 <span></span>
                 <span></span>
@@ -30,9 +30,8 @@
     <!-- SEÇÃO HERO -->
     <section class="hero">
         <div class="hero-content">
-            <span class="hero-tagline">🌿 CONCURSO AGRINHO 2026</span>
-            <h1>Agro Forte e Sustentável</h1>
-            <p>Conectando a inovação tecnológica do campo com a preservação do meio ambiente para alimentar as futuras gerações com responsabilidade.</p>
+            <h1>Agrinho 2026: <br><span class="destaque-hero">Agro Forte e Sustentável</span></h1>
+            <p>Conectando a inovação tecnológica do campo com a preservação do meio ambiente para alimentar as futuras gerações.</p>
             <a href="#tema" class="btn-cta">Saiba Mais</a>
         </div>
     </section>
@@ -42,7 +41,7 @@
         <h2 class="section-title">O Tema</h2>
         <div class="tema-grid">
             <div class="tema-texto">
-                <p class="destaque-verde">O agronegócio moderno representa a força motriz da nossa economia e o pilar da produção global de alimentos. Contudo, essa força atua em total harmonia com a preservação ambiental.</p>
+                <p>O agronegócio moderno representa a força motriz da nossa economia e o pilar da produção global de alimentos. Contudo, essa força atua em total harmonia com a preservação ambiental.</p>
                 <p>Unindo técnicas tradicionais de cuidado com o solo a tecnologias limpas de última geração — como geradores de energia solar e mapeamento por agricultura de precisão — a produção rural atual prova que é viável cultivar com produtividade máxima sem agredir os biomas nativos e os recursos hídricos.</p>
             </div>
             <div class="tema-imagem"></div>
@@ -79,33 +78,23 @@
         </section>
     </div>
 
-    <!-- SEÇÃO INTERATIVA (QUIZ) -->
-    <section id="quiz" class="container-secao bg-quiz-secao">
-        <h2 class="section-title titulo-branco">Desafio do Conhecimento</h2>
+    <!-- SEÇÃO INTERATIVA (QUIZ COM TIMER TRAVADO) -->
+    <section id="quiz" class="container-secao">
+        <h2 class="section-title">Desafio do Conhecimento</h2>
         <div class="quiz-container">
-            
-            <!-- TELA INICIAL DO QUIZ -->
-            <div id="quiz-tela-inicial" class="quiz-tela">
-                <h3>Você está pronto para o desafio?</h3>
-                <p>Responda a 5 perguntas sobre sustentabilidade, tecnologia e conservação no campo brasileiro.</p>
-                <p class="quiz-regras">⏱️ Cada pergunta possui um limite de 15 segundos!</p>
-                <button id="btn-iniciar-quiz" class="btn-verde-largo">Começar Desafio 🚀</button>
+            <div id="quiz-header">
+                <span id="placar-passo">Prepare-se!</span>
+                <div id="cronometro-box">⏱️ <span id="tempo-restante">15</span>s</div>
             </div>
-
-            <!-- TELA DO JOGO (ESCONDIDA ATÉ CLICAR EM INICIAR) -->
-            <div id="quiz-tela-jogo" class="quiz-tela escondido">
-                <div id="quiz-header">
-                    <span id="placar-passo">Pergunta 1 de 5</span>
-                    <div id="cronometro-box">⏱️ <span id="tempo-restante">15</span>s</div>
-                </div>
-                <div id="barra-progresso-tempo"><div id="progresso-tempo"></div></div>
-                
-                <div class="quiz-pergunta" id="pergunta-texto">Carregando pergunta...</div>
+            <div id="barra-progresso-tempo"><div id="progresso-tempo"></div></div>
+            
+            <div id="quiz-tela-jogo">
+                <div class="quiz-pergunta" id="pergunta-texto">Pronto para testar seus conhecimentos sobre o Agro Forte e Sustentável?</div>
                 <div class="quiz-opcoes" id="opcoes-container"></div>
-                <div class="quiz-feedback" id="feedback-texto"></div>
+                <div class="quiz-feedback" id="feedback-texto">Você terá 15 segundos para responder cada pergunta.</div>
                 <div class="quiz-controles">
                     <div></div> 
-                    <button id="btn-proximo" class="btn-proximo escondido">Próxima</button>
+                    <button id="btn-proximo" class="btn-proximo">Iniciar Desafio</button>
                 </div>
             </div>
         </div>
