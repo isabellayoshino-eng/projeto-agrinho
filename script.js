@@ -1,99 +1,103 @@
+// Menu Responsivo Mobile
+const menuToggle = document.getElementById('mobile-menu');
+const navMenu = document.querySelector('.nav-menu');
+
+menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+});
+
+// Fechar menu ao clicar em um link mobile
+document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+    });
+});
+
+// Dados do Quiz Educativo
 const quizData = [
     {
-        question: "1. Com base nos dados da Embrapa, qual o percentual aproximado de áreas nativas preservadas e de baixo carbono mantidas pelos produtores rurais?",
-        options: [
-            "A) Cerca de 10%, concentrados apenas no Sul rústico.",
-            "B) Aproximadamente 66%, aliando preservação florestal e novas técnicas ambientais.",
-            "C) Mais de 95%, interrompendo qualquer atividade comercial produtiva.",
-            "D) Nenhuma área verde é preservada no cenário produtivo nacional atual."
-        ],
+        question: "Qual tecnologia ajuda a monitorar a saúde das plantações lá do alto?",
+        options: ["Tratores antigos", "Drones agrícolas", "Enxadas manuais", "Espantalhos eletrônicos"],
         correct: 1
     },
     {
-        question: "2. Qual técnica une o aumento da eficiência produtiva à conservação biológica direta e diminuição do desgaste físico do solo?",
-        options: [
-            "A) Queima contínua da palhada residual pós-colheita.",
-            "B) Monocultura intensiva sem períodos de descanso para a terra.",
-            "C) Sistema de Plantio Direto e rotação estratégica de culturas.",
-            "D) Uso desmedido e preventivo de defensivos agroquímicos."
-        ],
+        question: "A prática de alternar plantas na mesma área para descansar o solo chama-se:",
+        options: ["Desmatamento", "Monocultura", "Rotação de culturas", "Queimada controlada"],
         correct: 2
     },
     {
-        question: "3. No contexto da triagem de descarte, qual o principal risco do descarte inadequado de óleos, químicos e lixo eletrônico (e-waste)?",
-        options: [
-            "A) Contaminação severa do solo produtivo e dos aquíferos/lençóis freáticos.",
-            "B) Aceleração do crescimento espontâneo de árvores frutíferas nativas.",
-            "C) Redução do preço de revenda dos maquinários pesados da fazenda.",
-            "D) Nenhum risco prático, pois o solo rural limpa qualquer resíduo industrial."
-        ],
-        correct: 0
-    },
-    {
-        question: "4. Qual a função de fontes limpas de energia, como as turbinas eólicas e painéis solares, instaladas nas fazendas?",
-        options: [
-            "A) Reduzir o crescimento da plantação criando sombras excessivas.",
-            "B) Aumentar o consumo de combustíveis fósseis no uso diário de tratores.",
-            "C) Diversificar a matriz, diminuir a pegada de carbono e trazer autossuficiência.",
-            "D) Eliminar completamente a necessidade de irrigar as plantas da lavoura."
-        ],
-        correct: 2
+        question: "Como a agricultura inteligente economiza água?",
+        options: ["Deixando de regar as plantas", "Usando sensores de umidade no solo", "Esperando apenas a chuva cair", "Regando as plantas ao meio-dia"],
+        correct: 1
     }
 ];
 
-let currentQuestionIndex = 0;
+let currentQuiz = 0;
+let score = 0;
 
-const questionText = document.getElementById("question-text");
-const optionsGrid = document.getElementById("options-grid");
-const quizWindow = document.getElementById("quiz-window");
-const quizResult = document.getElementById("quiz-result");
-const resultText = document.getElementById("result-text");
-const btnRestart = document.getElementById("btn-restart");
+const questionEl = document.getElementById('question');
+const optionsContainer = document.getElementById('options-container');
+const nextBtn = document.getElementById('next-btn');
 
-function loadQuestion() {
-    optionsGrid.innerHTML = "";
+function loadQuiz() {
+    deselectAnswers();
+    const currentQuizData = quizData[currentQuiz];
+    questionEl.innerText = currentQuizData.question;
+    optionsContainer.innerHTML = '';
+
+    currentQuizData.options.forEach((option, index) => {
+        const btn = document.createElement('div');
+        btn.classList.add('quiz-option');
+        btn.innerText = option;
+        btn.addEventListener('click', () => selectOption(btn, index));
+        optionsContainer.appendChild(btn);
+    });
+}
+
+function deselectAnswers() {
+    nextBtn.style.display = 'none';
+}
+
+function selectOption(element, selectedIndex) {
+    const correctAnswer = quizData[currentQuiz].correct;
+    const options = optionsContainer.querySelectorAll('.quiz-option');
     
-    if (currentQuestionIndex < quizData.length) {
-        const currentQuiz = quizData[currentQuestionIndex];
-        questionText.textContent = currentQuiz.question;
+    // Impede cliques múltiplos após responder
+    options.forEach(opt => opt.style.pointerEvents = 'none');
 
-        currentQuiz.options.forEach((option, index) => {
-            const button = document.createElement("button");
-            button.classList.add("btn-opt", `opt-${index}`);
-            button.textContent = option;
-            
-            button.addEventListener("click", () => checkAnswer(index, button));
-            optionsGrid.appendChild(button);
-        });
+    if(selectedIndex === correctAnswer) {
+        element.classList.add('correct');
+        score++;
     } else {
-        showResults();
+        element.classList.add('incorrect');
+        options[correctAnswer].classList.add('correct'); // Mostra a certa
     }
+    
+    nextBtn.style.display = 'block';
 }
 
-function checkAnswer(selectedIndex, clickedButton) {
-    const correctIndex = quizData[currentQuestionIndex].correct;
-
-    if (selectedIndex === correctIndex) {
-        currentQuestionIndex++;
-        setTimeout(() => {
-            loadQuestion();
-        }, 250); // Transição suave ao acertar
+nextBtn.addEventListener('click', () => {
+    currentQuiz++;
+    if(currentQuiz < quizData.length) {
+        loadQuiz();
     } else {
-        clickedButton.classList.add("wrong"); // Fica vermelho se errar
+        document.getElementById('quiz-window').innerHTML = `
+            <div style="text-align:center;">
+                <i class="fa-solid fa-trophy" style="font-size: 3rem; color: var(--amarelo-sol); margin-bottom:15px;"></i>
+                <h3>Você concluiu o Quiz!</h3>
+                <p style="margin: 15px 0; font-size:1.2rem;">Acertou <strong>${score}</strong> de <strong>${quizData.length}</strong> perguntas.</p>
+                <button onclick="location.reload()" class="btn-cta" style="padding:8px 20px; font-size:0.9rem;">Refazer Quiz</button>
+            </div>
+        `;
     }
-}
-
-function showResults() {
-    quizWindow.style.display = "none";
-    quizResult.style.display = "block";
-    resultText.innerHTML = "<strong>🏆 Excelente Trabalho!</strong><br>Você passou por todas as etapas, analisou a triagem de resíduos, o manejo do solo, as energias eólicas renováveis e provou ser um mestre da Sustentabilidade!";
-}
-
-btnRestart.addEventListener("click", () => {
-    currentQuestionIndex = 0;
-    quizResult.style.display = "none";
-    quizWindow.style.display = "block";
-    loadQuestion();
 });
 
-document.addEventListener("DOMContentLoaded", loadQuestion);
+// Inicia o Quiz
+loadQuiz();
+
+// Envio do Formulário de Contato (Simulação)
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Muito obrigado por sua participação! Sua mensagem foi enviada com sucesso para a comissão do Agrinho 2026.');
+    this.reset();
+});
