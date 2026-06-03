@@ -3,175 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecos do Campo - Agrinho 2026</title>
+    <title>Agrinho 2026 - Agro Forte e Sustentável</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- NAVEGAÇÃO REESTRUTURADA -->
-    <header class="site-header">
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo">
-                <span class="icon-brand">🌾</span> AGRO<span>SUSTENTÁVEL</span>
+    <!-- CABEÇALHO -->
+    <header>
+        <nav class="nav-container">
+            <a href="#" class="logo">🌿 Agrinho <span class="destaque-ano">2026</span></a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <button class="hamburger-menu" id="btn-menu-toggle" aria-label="Abrir Menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-            <nav class="navigation-links" id="menu-principal">
-                <a href="#manifesto" class="menu-item">Manifesto</a>
-                <a href="#imersao" class="menu-item">Aprofundamento</a>
-                <a href="#pilares-inovacao" class="menu-item">Pilares Reais</a>
-                <a href="#arena-conhecimento" class="menu-item">Desafio</a>
-            </nav>
-        </div>
+            <ul class="nav-menu" id="nav-links">
+                <li><a href="#" class="nav-link">Início</a></li>
+                <li><a href="#tema" class="nav-link">O Tema</a></li>
+                <li><a href="#pilares" class="nav-link">Práticas Sustentáveis</a></li>
+                <li><a href="#quiz" class="nav-link">Quiz</a></li>
+                <li><a href="#contato" class="nav-link">Contato</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- HERO PRINCIPAL CONCEPTUAL -->
-    <main class="hero-section">
-        <div class="hero-overlay-grid">
-            <div class="hero-inner">
-                <span class="badge-concurso">CONCURSO AGRINHO 2026</span>
-                <h1>O Futuro Brota da Inovação e do Cuidado</h1>
-                <p>O conceito "Agro Forte e Sustentável" traduz a ciência, a tecnologia e a proteção ambiental que consagram o Brasil como líder em produtividade responsável.</p>
-                <div class="hero-actions">
-                    <a href="#manifesto" class="action-main-btn">Explorar Conteúdo</a>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- SEÇÃO 1: MANIFESTO EDUCATIVO (TEXTO AMPLIADO) -->
-    <section id="manifesto" class="section-padding content-block">
-        <div class="container">
-            <div class="text-layout-grid">
-                <div class="main-heading-group">
-                    <span class="section-subtitle">CONCEITO CENTRAL</span>
-                    <h2>A Aliança entre Produtividade e Preservação</h2>
-                </div>
-                <div class="rich-text-content">
-                    <p>Falar em <strong>Agro Forte</strong> significa reconhecer uma cadeia produtiva que alimenta mais de 800 milhões de pessoas mundialmente. Essa eficiência não decorre da expansão desordenada de terras, mas do uso intensivo de ciência, desenvolvimento biológico e inteligência artificial aplicada ao campo.</p>
-                    <p>A vertente <strong>Sustentável</strong> consolida-se através do cumprimento rigoroso das metas de conservação ambiental. Técnicas como o manejo integrado de pragas, o reuso estratégico de água e a substituição progressiva de fertilizantes químicos por bioinsumos provam que as riquezas naturais atuam como parceiras do agricultor, e não como recursos finitos.</p>
-                </div>
-            </div>
+    <!-- SEÇÃO HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tagline">🌿 CONCURSO AGRINHO 2026</span>
+            <h1>Agro Forte e Sustentável</h1>
+            <p>Conectando a inovação tecnológica do campo com a preservação do meio ambiente para alimentar as futuras gerações com responsabilidade.</p>
+            <a href="#tema" class="btn-cta">Saiba Mais</a>
         </div>
     </section>
 
-    <!-- SEÇÃO 2: IMERSÃO TEMÁTICA AVANÇADA -->
-    <section id="imersao" class="section-padding advanced-topics bg-light">
-        <div class="container">
-            <div class="center-title">
-                <h2>Tecnologias que Protegem a Terra</h2>
-                <p class="lead-text">O ecossistema agrícola opera com práticas avançadas que regeneram o ambiente enquanto batem recordes de safra.</p>
+    <!-- SEÇÃO O TEMA -->
+    <section id="tema" class="container-secao">
+        <h2 class="section-title">O Tema</h2>
+        <div class="tema-grid">
+            <div class="tema-texto">
+                <p class="destaque-verde">O agronegócio moderno representa a força motriz da nossa economia e o pilar da produção global de alimentos. Contudo, essa força atua em total harmonia com a preservação ambiental.</p>
+                <p>Unindo técnicas tradicionais de cuidado com o solo a tecnologias limpas de última geração — como geradores de energia solar e mapeamento por agricultura de precisão — a produção rural atual prova que é viável cultivar com produtividade máxima sem agredir os biomas nativos e os recursos hídricos.</p>
             </div>
+            <div class="tema-imagem"></div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO PILARES -->
+    <div class="bg-pilares">
+        <section id="pilares" class="container-secao">
+            <h2 class="section-title">Pilares do Agro Sustentável</h2>
+            <div class="pilares-grid">
+                <div class="pilar-card">
+                    <div class="pilar-icon-wrapper">
+                        <span class="pilar-icon">🛸</span>
+                    </div>
+                    <h3>Tecnologia no Campo</h3>
+                    <p>O monitoramento por drones e o uso de sensores inteligentes reduzem o desperdício de água e defensivos agrícolas na lavoura.</p>
+                </div>
+                <div class="pilar-card">
+                    <div class="pilar-icon-wrapper">
+                        <span class="pilar-icon">🌳</span>
+                    </div>
+                    <h3>Conservação Ambiental</h3>
+                    <p>O sistema de plantio direto, a rotação planejada de culturas e o reflorestamento ativo protegem os solos e as bacias de rios.</p>
+                </div>
+                <div class="pilar-card">
+                    <div class="pilar-icon-wrapper">
+                        <span class="pilar-icon">🧑‍🌾</span>
+                    </div>
+                    <h3>Valor Social</h3>
+                    <p>A valorização do produtor rural e o incentivo à sucessão familiar asseguram que o amor pela terra continue vivo de geração em geração.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- SEÇÃO INTERATIVA (QUIZ) -->
+    <section id="quiz" class="container-secao bg-quiz-secao">
+        <h2 class="section-title titulo-branco">Desafio do Conhecimento</h2>
+        <div class="quiz-container">
             
-            <div class="asymmetric-grid">
-                <div class="topic-box">
-                    <div class="box-number">01</div>
-                    <h3>ILPF (Integração Lavoura-Pecuária-Floresta)</h3>
-                    <p>Estratégia produtiva que integra componentes agrícolas, pecuários e florestais em uma mesma área. Otimiza o ciclo de nutrientes, melhora as condições físicas do solo e neutraliza emissões de gases de efeito estufa através do crescimento das árvores.</p>
-                </div>
-                <div class="topic-box">
-                    <div class="box-number">02</div>
-                    <h3>Agricultura de Precisão e IoT</h3>
-                    <p>Sensores acoplados ao solo e dados via satélite fornecem leituras exatas da necessidade nutricional e hídrica de cada metro quadrado. O resultado é a eliminação do desperdício de insumos e máxima economia de água nas lavouras.</p>
-                </div>
-                <div class="topic-box">
-                    <div class="box-number">03</div>
-                    <h3>Matriz Energética Limpa</h3>
-                    <p>Propriedades rurais convertem resíduos orgânicos e esterco animal em biogás e biofertilizantes, além de implementarem usinas fotovoltaicas conectadas. O agro gera sua própria energia a partir de fontes totalmente renováveis.</p>
-                </div>
+            <!-- TELA INICIAL DO QUIZ -->
+            <div id="quiz-tela-inicial" class="quiz-tela">
+                <h3>Você está pronto para o desafio?</h3>
+                <p>Responda a 5 perguntas sobre sustentabilidade, tecnologia e conservação no campo brasileiro.</p>
+                <p class="quiz-regras">⏱️ Cada pergunta possui um limite de 15 segundos!</p>
+                <button id="btn-iniciar-quiz" class="btn-verde-largo">Começar Desafio 🚀</button>
             </div>
-        </div>
-    </section>
 
-    <!-- SEÇÃO 3: TRÊS PILARES COMPACTOS INTERATIVOS -->
-    <section id="pilares-inovacao" class="section-padding pillars-section">
-        <div class="container">
-            <div class="center-title white-text">
-                <h2>Os Alicerces do Campo Moderno</h2>
-            </div>
-            <div class="interactive-pillars-grid">
-                <!-- Pilar 1 -->
-                <article class="pilar-interactive-card">
-                    <div class="card-icon-header">🚁</div>
-                    <div class="card-body-content">
-                        <h3>Hiper-Tecnologia</h3>
-                        <p>Drones autônomos escaneiam focos isolados de pragas, permitindo ações cirúrgicas que preservam polinizadores naturais.</p>
-                    </div>
-                </article>
-                <!-- Pilar 2 -->
-                <article class="pilar-interactive-card">
-                    <div class="card-icon-header">🌱</div>
-                    <div class="card-body-content">
-                        <h3>Manejo Regenerativo</h3>
-                        <p>O plantio direto na palha funciona como um escudo térmico e físico para o solo, retendo a umidade e prevenindo a erosão.</p>
-                    </div>
-                </article>
-                <!-- Pilar 3 -->
-                <article class="pilar-interactive-card">
-                    <div class="card-icon-header">🤝</div>
-                    <div class="card-body-content">
-                        <h3>Sucessão Familiar</h3>
-                        <p>Jovens estudantes retornam às propriedades rurais munidos de capacitação tecnológica, unindo sabedoria tradicional e inovação.</p>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEÇÃO 4: ARENA DO CONHECIMENTO (QUIZ ADAPTATIVO COM TIMER) -->
-    <section id="arena-conhecimento" class="section-padding quiz-section bg-light">
-        <div class="container">
-            <div class="quiz-layout-wrapper">
-                <div class="quiz-info-panel">
-                    <h2>Arena do Conhecimento</h2>
-                    <p>Responda às questões antes que o tempo se esgote e conquiste o selo de Especialista em Sustentabilidade Rural!</p>
-                    <div class="timer-display" id="area-cronometro">
-                        <span class="timer-icon">⏱️</span> Tempo: <strong id="segundos-regressivos">15</strong>s
-                        <div class="gauge-bar"><div id="gauge-fill"></div></div>
-                    </div>
+            <!-- TELA DO JOGO (ESCONDIDA ATÉ CLICAR EM INICIAR) -->
+            <div id="quiz-tela-jogo" class="quiz-tela escondido">
+                <div id="quiz-header">
+                    <span id="placar-passo">Pergunta 1 de 5</span>
+                    <div id="cronometro-box">⏱️ <span id="tempo-restante">15</span>s</div>
                 </div>
+                <div id="barra-progresso-tempo"><div id="progresso-tempo"></div></div>
                 
-                <div class="quiz-interactive-panel">
-                    <div class="quiz-status-header">
-                        <span id="label-passo">Preparando...</span>
-                    </div>
-                    <h3 id="texto-da-pergunta">Carregando questionário escolar...</h3>
-                    <div class="quiz-options-stack" id="lista-opcoes"></div>
-                    <div id="caixa-feedback-aula" class="feedback-container-aula"></div>
-                    <div class="quiz-action-footer">
-                        <button id="btn-proxima-fase" class="main-action-quiz-btn disabled-btn" disabled>Aguardando Resposta</button>
-                    </div>
+                <div class="quiz-pergunta" id="pergunta-texto">Carregando pergunta...</div>
+                <div class="quiz-opcoes" id="opcoes-container"></div>
+                <div class="quiz-feedback" id="feedback-texto"></div>
+                <div class="quiz-controles">
+                    <div></div> 
+                    <button id="btn-proximo" class="btn-proximo escondido">Próxima</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- RODAPÉ REVISADO -->
-    <footer class="main-footer">
-        <div class="container footer-grid">
-            <div class="footer-brand-info">
-                <h3>Agrinho 2026</h3>
-                <p>Promovendo a educação e a consciência ambiental nas escolas de todo o país.</p>
+    <!-- RODAPÉ -->
+    <footer id="contato">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="#regulamento-ficticio">Regulamento do Concurso</a>
+                <a href="#contato">Suporte Escolar</a>
             </div>
-            <div class="footer-navigation">
-                <h4>Documentos e Links</h4>
-                <a href="#regulamento">Regulamento Oficial Fictício</a>
-                <a href="#politicas">Diretrizes de Participação</a>
+            <div class="redes-sociais">
+                <a href="#ficticio">📘</a>
+                <a href="#ficticio">📸</a>
+                <a href="#ficticio">🎥</a>
             </div>
-            <div class="footer-social-stamps">
-                <h4>Redes Educativas</h4>
-                <div class="social-icons-row">
-                    <a href="#" aria-label="Facebook">📘</a>
-                    <a href="#" aria-label="Instagram">📸</a>
-                    <a href="#" aria-label="YouTube">🎥</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <p>&copy; 2026 Concurso Agrinho. Proposta digital pedagógica "Agro Forte e Sustentável". Todos os direitos reservados.</p>
+            <p>&copy; 2026 Concurso Agrinho. Todos os direitos reservados. Projeto Educacional "Agro Forte e Sustentável".</p>
         </div>
     </footer>
 
