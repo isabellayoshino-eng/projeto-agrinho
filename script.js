@@ -103,7 +103,7 @@ function iniciarCronometro() {
     tempoRestante = TEMPO_LIMITE;
     elementoTempo.innerText = tempoRestante;
     barraTempo.style.width = "100%";
-    barraTempo.style.backgroundColor = "var(--verde-claro)";
+    barraTempo.style.backgroundColor = "var(--verde-neon-agro)";
     
     clearInterval(cronometroIntervalo);
 
@@ -181,12 +181,12 @@ function selecionarOpcao(botaoSelecionado, indiceSelecionado) {
 
     if (indiceSelecionado === respostaCorreta) {
         botaoSelecionado.classList.add('correta');
-        elementoFeedback.innerHTML = `<span style="color: #28a745; font-weight: bold;">🎉 ${dadosQuiz[indicePerguntaAtual].feedback}</span>`;
+        elementoFeedback.innerHTML = `<span>🎉 ${dadosQuiz[indicePerguntaAtual].feedback}</span>`;
         pontuacao++;
     } else {
         botaoSelecionado.classList.add('errada');
         todosBotoes[respostaCorreta].classList.add('correta'); 
-        elementoFeedback.innerHTML = `<span style="color: #dc3545; font-weight: bold;">❌ Ah, quase lá! Veja a explicação correta destacada.</span>`;
+        elementoFeedback.innerHTML = `<span style="color: var(--vermelho-alerta);">❌ Ah, quase lá! Veja a explicação correta destacada.</span>`;
     }
 
     btnProximo.classList.remove('escondido');
@@ -226,9 +226,8 @@ function mostrarResultadoFinal() {
     btnProximo.classList.remove('escondido');
 }
 
-// --- CONFIGURAÇÃO DO BOTÃO PRINCIPAL ---
+// --- LOGICA DE ATIVAÇÃO DO BOTÃO INICIAR ---
 btnProximo.addEventListener('click', () => {
-    // Se o botão está com texto de Iniciar ou Reiniciar
     if (btnProximo.innerText === "Iniciar Desafio" || btnProximo.innerText === "Refazer Desafio") {
         iniciarQuiz();
     } else {
@@ -236,5 +235,5 @@ btnProximo.addEventListener('click', () => {
     }
 });
 
-// Inicializa o Quiz travado na tela de Início
+// Mantém travado com o cronômetro desligado até clicar no botão
 carregarTelaInicial();
