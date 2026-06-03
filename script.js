@@ -1,222 +1,131 @@
-// --- MENU MOBILE ---
-const mobileMenu = document.getElementById('mobile-menu');
-const navLinks = document.getElementById('nav-links');
+// --- MENU RESPONSIVO MOBILE ---
+const botaoMenu = document.getElementById('btn-menu-toggle');
+const linksMenu = document.getElementById('menu-principal');
 
-mobileMenu.addEventListener('click', () => {
-    navLinks.classList.toggle('ativo');
+botaoMenu.addEventListener('click', () => {
+    linksMenu.classList.toggle('active-menu');
 });
 
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('ativo');
+document.querySelectorAll('.menu-item').forEach(item => {
+    item.addEventListener('click', () => {
+        linksMenu.classList.remove('active-menu');
     });
 });
 
-// --- BANCO DE DADOS DO QUIZ ---
-const dadosQuiz = [
+// --- BASE DE DADOS AMPLIADA E PEDAGÓGICA ---
+const bancoQuestoes = [
     {
-        pergunta: "Qual das alternativas abaixo é um exemplo de tecnologia aplicada ao agro sustentável?",
-        opcoes: [
-            "A) Irrigação contínua sem controle técnico.",
-            "B) Monitoramento por drones para aplicar água e insumos no local exato.",
-            "C) Eliminação completa de toda a vegetação ao redor da plantação."
+        pergunta: "A tecnologia ILPF (Integração Lavoura-Pecuária-Floresta) promove qual benefício direto ao ecossistema?",
+        alternativas: [
+            "A) O esgotamento planejado dos recursos minerais da fazenda.",
+            "B) Neutralização de gases do efeito estufa pelo crescimento de árvores e recuperação do solo.",
+            "C) Concentração da produção em um único mês do ano."
         ],
-        correta: 1,
-        feedback: "Certinho! O uso de drones ajuda no mapeamento detalhado, evitando desperdício de insumos e água."
+        gabarito: 1,
+        explicacao: "Excelente! A ILPF otimiza a ciclagem de nutrientes e retém carbono na biomassa florestal e no solo."
     },
     {
-        pergunta: "Como o sistema de Plantio Direto ajuda na conservação ambiental?",
-        opcoes: [
-            "A) Revirando a terra profundamente todas as semanas.",
-            "B) Queimando os restos da colheita anterior para limpar o solo.",
-            "C) Mantendo a palhada sobre o solo para protegê-lo da erosão."
+        pergunta: "Na agricultura de precisão, como a Internet das Coisas (IoT) atua diretamente na sustentabilidade?",
+        alternativas: [
+            "A) Automatizando a compra de combustíveis fósseis sem controle do proprietário.",
+            "B) Ignorando as variações do clima e mantendo o maquinário ligado.",
+            "C) Monitorando os índices do solo em tempo real, evitando o desperdício de água e fertilizantes."
         ],
-        correta: 2,
-        feedback: "Muito bem! A palhada protege a terra contra o impacto da chuva e do vento, mantendo a umidade natural."
+        gabarito: 2,
+        explicacao: "Exato! Sensores inteligentes informam a dose exata que a planta necessita, eliminando excessos nocivos."
     },
     {
-        pergunta: "O que significa o termo 'Sucessão Familiar' no contexto do agronegócio?",
-        opcoes: [
-            "A) A continuidade do trabalho na propriedade rural pelas novas gerais da família.",
-            "B) A venda obrigatória da fazenda quando os donos originais ficam idosos.",
-            "C) O abandono total das terras para morar exclusivamente nas grandes cidades."
+        pergunta: "Por que o Sistema de Plantio Direto é considerado fundamental para a segurança do solo brasileiro?",
+        alternativas: [
+            "A) Pois mantém a palhada protetora sobre a terra, reduzindo drasticamente a erosão hídrica e eólica.",
+            "B) Pois exige que o solo seja revirado profundamente todas as semanas.",
+            "C) Porque elimina a necessidade do uso de sementes selecionadas."
         ],
-        correta: 0,
-        feedback: "Isso mesmo! A sucessão familiar mantém vivas as tradições do campo com a chegada de novas tecnologias trazidas pelos jovens."
+        gabarito: 0,
+        explicacao: "Correto! Sem perturbar a terra e mantendo a cobertura vegetal, o solo guarda umidade e evita assorear rios."
     },
     {
-        pergunta: "Qual fonte de energia limpa tem crescido rapidamente nas fazendas para reduzir a pegada de carbono?",
-        opcoes: [
-            "A) Geradores movidos a óleo diesel pesado.",
-            "B) Painéis de energia solar fotovoltaica.",
-            "C) Queima de carvão mineral em caldeiras."
+        pergunta: "De qual forma o Agronegócio moderno contribui de maneira sustentável com a matriz energética do Brasil?",
+        alternativas: [
+            "A) Utilizando exclusivamente geradores a carvão vegetal.",
+            "B) Gerando energia limpa por meio da biomassa de cana, painéis solares e reaproveitamento de dejetos para biogás.",
+            "C) Aumentando a importação de derivados de petróleo pesado."
         ],
-        correta: 1,
-        feedback: "Excelente! A energia solar aproveita o grande espaço aberto do campo para produzir eletricidade 100% limpa."
+        gabarito: 1,
+        explicacao: "Perfeito! O aproveitamento de subprodutos e resíduos transforma passivos ambientais em fontes elétricas limpas."
     },
     {
-        pergunta: "Para que serve os 'Bioinsumos' que estão ganhando espaço na produção rural?",
-        opcoes: [
-            "A) Alternar os tipos de plantas cultivadas para cansar as pragas.",
-            "B) Utilizar microrganismos naturais para combater pragas e fertilizar o solo sem poluir.",
-            "C) Substituir os tratores por ferramentas manuais de madeira antiga."
+        pergunta: "Qual é o principal ganho social proporcionado pelo incentivo à Sucessão Familiar no campo?",
+        alternativas: [
+            "A) Garantir que as novas gerações levem formação tecnológica avançada de volta à gestão das propriedades rurais.",
+            "B) Forçar o êxodo rural imediato de todos os jovens da comunidade.",
+            "C) Acabar com as técnicas tradicionais de cultivo familiar."
         ],
-        correta: 1,
-        feedback: "Exatamente! Os bioinsumos utilizam a própria natureza (fungos e bactérias do bem) para proteger as plantas de forma limpa."
+        gabarito: 0,
+        explicacao: "Sensacional! O jovem capacitado promove a transformação tecnológica da fazenda de seus pais, perpetuando o agro forte."
     }
 ];
 
-// --- VARIÁVEIS DE ESTADO DO QUIZ ---
-let indicePerguntaAtual = 0;
-let pontuacao = 0;
-let tempoRestante = 15;
-let cronometroIntervalo;
-const TEMPO_LIMITE = 15;
+// --- MECÂNICA DO QUIZ ---
+let faseAtual = 0;
+let acertosTotais = 0;
+let contadorRegressivo = 15;
+let temporizadorID;
+const MAX_TEMPO = 15;
 
-// --- ELEMENTOS DO DOM ---
-const elementoPergunta = document.getElementById('pergunta-texto');
-const containerOpcoes = document.getElementById('opcoes-container');
-const elementoFeedback = document.getElementById('feedback-texto');
-const elementoPasso = document.getElementById('placar-passo');
-const btnProximo = document.getElementById('btn-proximo');
-const elementoTempo = document.getElementById('tempo-restante');
-const barraTempo = document.getElementById('progresso-tempo');
-const caixaCronometro = document.getElementById('cronometro-box');
+const txtPergunta = document.getElementById('texto-da-pergunta');
+const containerOpcoes = document.getElementById('lista-opcoes');
+const painelFeedback = document.getElementById('caixa-feedback-aula');
+const txtPasso = document.getElementById('label-passo');
+const btnAcaoQuiz = document.getElementById('btn-proxima-fase');
+const txtSegundos = document.getElementById('segundos-regressivos');
+const preenchimentoBarra = document.getElementById('gauge-fill');
+const painelCronometro = document.getElementById('area-cronometro');
 
-// --- SISTEMA DE CRONÔMETRO ---
-function iniciarCronometro() {
-    tempoRestante = TEMPO_LIMITE;
-    elementoTempo.innerText = tempoRestante;
-    barraTempo.style.width = "100%";
-    barraTempo.style.backgroundColor = "var(--verde-principal)";
-    
-    clearInterval(cronometroIntervalo);
-
-    cronometroIntervalo = setInterval(() => {
-        tempoRestante--;
-        elementoTempo.innerText = tempoRestante;
-        
-        let porcentagem = (tempoRestante / TEMPO_LIMITE) * 100;
-        barraTempo.style.width = `${porcentagem}%`;
-
-        if (tempoRestante <= 5) {
-            barraTempo.style.backgroundColor = "var(--vermelho-alerta)";
-        }
-
-        if (tempoRestante <= 0) {
-            clearInterval(cronometroIntervalo);
-            tempoEsgotado();
-        }
-    }, 1000);
+function iniciarDesafio() {
+    faseAtual = 0;
+    acertosTotais = 0;
+    painelCronometro.style.display = "block";
+    btnAcaoQuiz.innerText = "Aguardando Resposta";
+    carregarFase();
 }
 
-function tempoEsgotado() {
-    const respostaCorreta = dadosQuiz[indicePerguntaAtual].correta;
-    const todosBotoes = containerOpcoes.querySelectorAll('.opcao-btn');
+function carregarFase() {
+    limparEstadoFase();
+    let dadosFase = bancoQuestoes[faseAtual];
+    txtPergunta.innerText = dadosFase.pergunta;
+    txtPasso.innerText = `Etapa ${faseAtual + 1} de ${bancoQuestoes.length}`;
 
-    todosBotoes.forEach(btn => btn.disabled = true);
-    todosBotoes[respostaCorreta].classList.add('correta');
-    
-    elementoFeedback.innerHTML = `<span style="color: var(--vermelho-alerta);">⏰ O tempo acabou! A resposta correta foi destacada em verde.</span>`;
-    btnProximo.classList.remove('escondido');
-}
-
-// --- LOGICA DE NAVEGAÇÃO ---
-function iniciarQuiz() {
-    indicePerguntaAtual = 0;
-    pontuacao = 0;
-    caixaCronometro.style.display = "block";
-    btnProximo.innerText = "Próxima";
-    mostrarPergunta();
-}
-
-function mostrarPergunta() {
-    resetarEstado();
-    let perguntaAtual = dadosQuiz[indicePerguntaAtual];
-    elementoPergunta.innerText = perguntaAtual.pergunta;
-    elementoPasso.innerText = `Pergunta ${indicePerguntaAtual + 1} de ${dadosQuiz.length}`;
-
-    perguntaAtual.opcoes.forEach((opcao, indice) => {
-        const botao = document.createElement('button');
-        botao.innerText = opcao;
-        botao.classList.add('opcao-btn');
-        botao.addEventListener('click', () => selecionarOpcao(botao, indice));
-        containerOpcoes.appendChild(botao);
+    dadosFase.alternativas.forEach((textoOpcao, indice) => {
+        const botaoOpcao = document.createElement('button');
+        botaoOpcao.innerText = textoOpcao;
+        botaoOpcao.classList.add('opcao-quiz-btn');
+        botaoOpcao.addEventListener('click', () => avaliarEscolha(botaoOpcao, indice));
+        containerOpcoes.appendChild(botaoOpcao);
     });
 
-    iniciarCronometro();
+    dispararRelogio();
 }
 
-function resetarEstado() {
-    elementoFeedback.innerText = "";
-    btnProximo.classList.add('escondido');
+function limparEstadoFase() {
+    painelFeedback.innerText = "";
+    painelFeedback.style.display = "none";
+    btnAcaoQuiz.classList.add('disabled-btn');
+    btnAcaoQuiz.disabled = true;
+    btnAcaoQuiz.innerText = "Aguardando Resposta";
     while (containerOpcoes.firstChild) {
         containerOpcoes.removeChild(containerOpcoes.firstChild);
     }
 }
 
-function selecionarOpcao(botaoSelecionado, indiceSelecionado) {
-    clearInterval(cronometroIntervalo); 
+function dispararRelogio() {
+    contadorRegressive = MAX_TEMPO;
+    txtSegundos.innerText = contadorRegressive;
+    preenchimentoBarra.style.width = "100%";
+    preenchimentoBarra.style.backgroundColor = "var(--ouro-solar)";
     
-    const respostaCorreta = dadosQuiz[indicePerguntaAtual].correta;
-    const todosBotoes = containerOpcoes.querySelectorAll('.opcao-btn');
+    clearInterval(temporizadorID);
 
-    todosBotoes.forEach(btn => btn.disabled = true); 
-
-    if (indiceSelecionado === respostaCorreta) {
-        botaoSelecionado.classList.add('correta');
-        elementoFeedback.innerHTML = `<span style="color: #28a745;">🎉 ${dadosQuiz[indicePerguntaAtual].feedback}</span>`;
-        pontuacao++;
-    } else {
-        botaoSelecionado.classList.add('errada');
-        todosBotoes[respostaCorreta].classList.add('correta'); 
-        elementoFeedback.innerHTML = `<span style="color: #dc3545;">❌ Ah, quase lá! Veja a explicação correta acima.</span>`;
-    }
-
-    btnProximo.classList.remove('escondido');
-}
-
-function avancarQuiz() {
-    indicePerguntaAtual++;
-    if (indicePerguntaAtual < dadosQuiz.length) {
-        mostrarPergunta();
-    } else {
-        mostrarResultadoFinal();
-    }
-}
-
-function mostrarResultadoFinal() {
-    resetarEstado();
-    clearInterval(cronometroIntervalo);
-    
-    caixaCronometro.style.display = "none";
-    barraTempo.style.width = "0%";
-    
-    elementoPergunta.innerText = "Desafio Concluído!";
-    elementoPasso.innerText = "";
-    
-    let mensagemDesempenho = "";
-    if (pontuacao === dadosQuiz.length) {
-        mensagemDesempenho = "Incrível! Você é um verdadeiro embaixador do agro sustentável! 🌟";
-    } else if (pontuacao >= 3) {
-        mensagemDesempenho = "Muito bom! Você conhece bem o nosso campo. 🌱";
-    } else {
-        mensagemDesempenho = "Bom esforço! Que tal ler o texto informativo do site novamente para gabaritar na próxima? 📚";
-    }
-
-    elementoFeedback.innerHTML = `Você acertou <strong>${pontuacao}</strong> de <strong>${dadosQuiz.length}</strong> perguntas!<br><br>${mensagemDesempenho}`;
-    
-    btnProximo.innerText = "Refazer Desafio";
-    btnProximo.classList.remove('escondido');
-}
-
-btnProximo.addEventListener('click', () => {
-    if (indicePerguntaAtual < dadosQuiz.length) {
-        avancarQuiz();
-    } else {
-        iniciarQuiz();
-    }
-});
-
-iniciarQuiz();
-
+    temporizadorID = setInterval(() => {
+        contadorRegressive--;
+        
