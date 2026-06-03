@@ -1,18 +1,16 @@
-/* --- PALETA VERDE E PRETO (DARK DESIGN) --- */
+/* --- PALETA VERDE E PRETO --- */
 :root {
-    --preto-fundo: #0b0f12;
-    --preto-card: #141a1f;
-    --verde-neon: #390099; /* Mudado para foco em tom verde escuro e vivo abaixo */
-    --verde-escuro: #0f261c;
+    --preto-fundo: #000000;
+    --preto-card: #0d0d0d;
+    --verde-escuro: #0a1f15;
     --verde-principal: #1b4332;
     --verde-vibrante: #2d6a4f;
-    --verde-neon-agro: #52b788;
+    --verde-destaque: #52b788;
     --verde-folha: #74c69d;
     --verde-brilhante: #b7e4c7;
-    --marrom-suave: #9c8978;
     --branco: #ffffff;
-    --texto-claro: #e9ecef;
-    --texto-mutado: #adb5bd;
+    --texto-claro: #f8f9fa;
+    --texto-mutado: #a0aec0;
     --vermelho-alerta: #ff4d6d;
     --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --transicao: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -41,7 +39,7 @@ a {
 /* --- CABEÇALHO --- */
 header {
     background-color: var(--preto-card);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.7);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -67,7 +65,7 @@ header {
 }
 
 .destaque-verde {
-    color: var(--verde-neon-agro);
+    color: var(--verde-destaque);
 }
 
 .nav-menu {
@@ -84,7 +82,7 @@ header {
 }
 
 .nav-link:hover {
-    color: var(--verde-neon-agro);
+    color: var(--verde-destaque);
 }
 
 .menu-toggle {
@@ -97,13 +95,13 @@ header {
 .menu-toggle span {
     width: 25px;
     height: 3px;
-    background-color: var(--verde-neon-agro);
+    background-color: var(--verde-destaque);
     border-radius: 2px;
 }
 
 /* --- SEÇÃO HERO --- */
 .hero {
-    background: linear-gradient(135deg, rgba(11, 15, 18, 0.9), rgba(27, 67, 50, 0.8)), url('https://unsplash.com') no-repeat center center/cover;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(27, 67, 50, 0.85)), url('https://unsplash.com') no-repeat center center/cover;
     color: var(--branco);
     padding: 10rem 1rem;
     text-align: center;
@@ -112,8 +110,8 @@ header {
 }
 
 .destaque-hero {
-    color: var(--verde-neon-agro);
-    text-shadow: 0 0 20px rgba(82, 183, 136, 0.3);
+    color: var(--verde-destaque);
+    text-shadow: 0 0 20px rgba(82, 183, 136, 0.4);
 }
 
 .hero h1 {
@@ -133,7 +131,7 @@ header {
 }
 
 .btn-cta {
-    background-color: var(--verde-neon-agro);
+    background-color: var(--verde-destaque);
     color: var(--preto-fundo);
     padding: 0.9rem 2.8rem;
     font-weight: bold;
@@ -146,7 +144,7 @@ header {
 .btn-cta:hover {
     background-color: var(--verde-brilhante);
     transform: translateY(-3px);
-    box-shadow: 0 0 30px rgba(82, 183, 136, 0.6);
+    box-shadow: 0 0 30px rgba(82, 183, 136, 0.7);
 }
 
 /* --- SEÇÕES GERAIS --- */
@@ -169,7 +167,7 @@ header {
     display: block;
     width: 80px;
     height: 4px;
-    background-color: var(--verde-neon-agro);
+    background-color: var(--verde-destaque);
     margin: 0.5rem auto 0;
     border-radius: 2px;
 }
@@ -193,7 +191,7 @@ header {
     height: 380px;
     background: url('https://unsplash.com') center center/cover;
     border-radius: 15px;
-    box-shadow: 0 0 30px rgba(45, 106, 79, 0.3);
+    box-shadow: 0 0 30px rgba(45, 106, 79, 0.4);
     border: 2px solid var(--verde-vibrante);
 }
 
@@ -215,12 +213,11 @@ header {
     background-color: var(--preto-fundo);
     padding: 3rem 2rem;
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
     border-top: 6px solid var(--verde-vibrante);
     transition: var(--transicao);
     text-align: center;
-    border-left: 1px solid rgba(255,255,255,0.02);
-    border-right: 1px solid rgba(255,255,255,0.02);
+    border: 1px solid rgba(82, 183, 136, 0.05);
 }
 
 .pilar-icon-wrapper {
@@ -242,13 +239,13 @@ header {
 
 .pilar-card:hover {
     transform: translateY(-12px);
-    box-shadow: 0 20px 40px rgba(82, 183, 136, 0.2);
-    border-top-color: var(--verde-neon-agro);
+    box-shadow: 0 20px 40px rgba(82, 183, 136, 0.25);
+    border-top-color: var(--verde-destaque);
 }
 
 .pilar-card:hover .pilar-icon-wrapper {
     transform: scale(1.1) rotate(10deg);
-    background-color: var(--verde-neon-agro);
+    background-color: var(--verde-destaque);
 }
 
 .pilar-card h3 {
@@ -268,7 +265,7 @@ header {
     background-color: var(--preto-card);
     padding: 2.5rem;
     border-radius: 15px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.8);
     border: 2px solid var(--verde-vibrante);
 }
 
@@ -286,7 +283,7 @@ header {
     padding: 0.4rem 1rem;
     border-radius: 20px;
     border: 1px solid var(--verde-vibrante);
-    display: none; /* Ativado via JS ao iniciar */
+    display: none; 
 }
 
 #barra-progresso-tempo {
@@ -301,7 +298,7 @@ header {
 #progresso-tempo {
     height: 100%;
     width: 0%;
-    background-color: var(--verde-neon-agro);
+    background-color: var(--verde-destaque);
     transition: width 1s linear;
 }
 
@@ -333,7 +330,7 @@ header {
 
 .opcao-btn:hover:not([disabled]) {
     background-color: var(--verde-escuro);
-    border-color: var(--verde-neon-agro);
+    border-color: var(--verde-destaque);
     transform: translateX(5px);
     color: var(--branco);
 }
@@ -373,7 +370,7 @@ header {
 }
 
 .btn-proximo {
-    background-color: var(--verde-neon-agro);
+    background-color: var(--verde-destaque);
     color: var(--preto-fundo);
     border: none;
     padding: 0.9rem 2rem;
@@ -387,10 +384,6 @@ header {
 .btn-proximo:hover {
     background-color: var(--branco);
     transform: translateY(-2px);
-}
-
-.btn-proximo.escondido {
-    display: none;
 }
 
 /* --- RODAPÉ --- */
@@ -418,7 +411,7 @@ footer {
 }
 
 .footer-links a:hover {
-    color: var(--verde-neon-agro);
+    color: var(--verde-destaque);
 }
 
 .redes-sociais {
@@ -442,7 +435,7 @@ footer {
         width: 100%;
         background-color: var(--preto-card);
         padding: 1.5rem;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.6);
         gap: 1rem;
         border-bottom: 2px solid var(--verde-vibrante);
     }
