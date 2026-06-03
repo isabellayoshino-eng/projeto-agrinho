@@ -1,4 +1,4 @@
-// --- MENU MOBILE ---
+// --- MENU MOBILE RESPONSIVO ---
 const mobileMenu = document.getElementById('mobile-menu');
 const navLinks = document.getElementById('nav-links');
 
@@ -6,6 +6,7 @@ mobileMenu.addEventListener('click', () => {
     navLinks.classList.toggle('ativo');
 });
 
+// Fecha o menu ao clicar em qualquer link (melhoria de usabilidade para celular)
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('ativo');
@@ -66,7 +67,7 @@ const dadosQuiz = [
     }
 ];
 
-// --- VARIÁVEIS DE ESTADO ---
+// --- VARIÁVEIS DE ESTADO DO SISTEMA ---
 let indicePerguntaAtual = 0;
 let pontuacao = 0;
 let tempoRestante = 15;
@@ -83,7 +84,7 @@ const elementoTempo = document.getElementById('tempo-restante');
 const barraTempo = document.getElementById('progresso-tempo');
 const caixaCronometro = document.getElementById('cronometro-box');
 
-// --- TELA INICIAL DO QUIZ ---
+// --- TELA INICIAL DO QUIZ (PREPARE-SE) ---
 function carregarTelaInicial() {
     clearInterval(cronometroIntervalo);
     caixaCronometro.style.display = "none";
@@ -97,7 +98,7 @@ function carregarTelaInicial() {
     btnProximo.innerText = "Iniciar Desafio";
 }
 
-// --- CRONÔMETRO ---
+// --- CONTROLE DE TEMPO (CRONÔMETRO) ---
 function iniciarCronometro() {
     tempoRestante = TEMPO_LIMITE;
     elementoTempo.innerText = tempoRestante;
@@ -113,6 +114,7 @@ function iniciarCronometro() {
         let porcentagem = (tempoRestante / TEMPO_LIMITE) * 100;
         barraTempo.style.width = `${porcentagem}%`;
 
+        // Alerta visual nos últimos 5 segundos
         if (tempoRestante <= 5) {
             barraTempo.style.backgroundColor = "var(--vermelho-alerta)";
         }
@@ -124,6 +126,7 @@ function iniciarCronometro() {
     }, 1000);
 }
 
+// Evento disparado quando o tempo zera sozinho
 function tempoEsgotado() {
     const respostaCorreta = dadosQuiz[indicePerguntaAtual].correta;
     const todosBotoes = containerOpcoes.querySelectorAll('.opcao-btn');
@@ -136,7 +139,7 @@ function tempoEsgotado() {
     btnProximo.style.display = "block";
 }
 
-// --- CONTROLE DO QUIZ ---
+// --- LOGICA DE EXIBIÇÃO DAS QUESTÕES ---
 function iniciarQuiz() {
     indicePerguntaAtual = 0;
     pontuacao = 0;
@@ -151,6 +154,7 @@ function mostrarPergunta() {
     elementoPergunta.innerText = perguntaAtual.pergunta;
     elementoPasso.innerText = `Pergunta ${indicePerguntaAtual + 1} de ${dadosQuiz.length}`;
 
+    // Monta os botões das alternativas dinamicamente
     perguntaAtual.opcoes.forEach((opcao, indice) => {
         const botao = document.createElement('button');
         botao.innerText = opcao;
@@ -170,13 +174,14 @@ function resetarEstado() {
     }
 }
 
+// Validação da escolha do usuário
 function selecionarOpcao(botaoSelecionado, indiceSelecionado) {
-    clearInterval(cronometroIntervalo); 
+    clearInterval(cronometroIntervalo); // Trava o cronômetro
     
     const respostaCorreta = dadosQuiz[indicePerguntaAtual].correta;
     const todosBotoes = containerOpcoes.querySelectorAll('.opcao-btn');
 
-    todosBotoes.forEach(btn => btn.disabled = true); 
+    todosBotoes.forEach(btn => btn.disabled = true); // Bloqueia novos cliques
 
     if (indiceSelecionado === respostaCorreta) {
         botaoSelecionado.classList.add('correta');
@@ -184,7 +189,7 @@ function selecionarOpcao(botaoSelecionado, indiceSelecionado) {
         pontuacao++;
     } else {
         botaoSelecionado.classList.add('errada');
-        todosBotoes[respostaCorreta].classList.add('correta'); 
+        todosBotoes[respostaCorreta].classList.add('correta'); // Revela a alternativa certa
         elementoFeedback.innerHTML = `<span style="color: var(--vermelho-alerta);">❌ Ah, quase lá! Veja a explicação correta destacada.</span>`;
     }
 
@@ -200,6 +205,7 @@ function avancarQuiz() {
     }
 }
 
+// --- TELA DE RESULTADO FINAL ---
 function mostrarResultadoFinal() {
     resetarEstado();
     clearInterval(cronometroIntervalo);
@@ -216,7 +222,7 @@ function mostrarResultadoFinal() {
     } else if (pontuacao >= 3) {
         mensagemDesempenho = "Muito bom! Você conhece bem o nosso campo. 🌱";
     } else {
-        mensagemDesempenho = "Bom esfoço! Que tal ler os textos do site novamente para gabaritar na próxima? 📚";
+        mensagemDesempenho = "Bom esforço! Que tal ler os textos estruturados do site novamente para gabaritar na próxima? 📚";
     }
 
     elementoFeedback.innerHTML = `Você acertou <strong>${pontuacao}</strong> de <strong>${dadosQuiz.length}</strong> perguntas!<br><br>${mensagemDesempenho}`;
@@ -225,7 +231,7 @@ function mostrarResultadoFinal() {
     btnProximo.style.display = "block";
 }
 
-// --- LOGICA DE ATIVAÇÃO DO BOTÃO ---
+// --- CONFIGURAÇÃO DE EVENTOS DO BOTÃO PRINCIPAL ---
 btnProximo.addEventListener('click', () => {
     if (btnProximo.innerText === "Iniciar Desafio" || btnProximo.innerText === "Refazer Desafio") {
         iniciarQuiz();
@@ -234,5 +240,5 @@ btnProximo.addEventListener('click', () => {
     }
 });
 
-// Inicialização travada na tela de boas-vindas
+// Inicialização imediata travada na tela de boas-vindas
 carregarTelaInicial();
