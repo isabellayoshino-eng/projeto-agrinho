@@ -3,123 +3,369 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Agrinho - Agro Forte, Futuro Sustentável</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <title>Agrinho 2026 | Agro Forte, Futuro Sustentável</title>
+    <!-- Ícones FontAwesome -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        :root {
+            --verde-principal: #2E7D32;
+            --verde-claro: #4CAF50;
+            --azul-destaque: #1565C0;
+            --azul-suave: #E3F2FD;
+            --amarelo-sol: #FBC02D;
+            --texto-escuro: #212121;
+            --texto-claro: #FFFFFF;
+            --cinza-fundo: #F5F5F5;
+            --transicao: all 0.3s ease;
+        }
 
-    <!-- Seção de Abertura (Carrega a foto1.jpg do Trator pelo CSS) -->
-    <header class="hero-section">
-        <div class="hero-content">
-            <h1>AGRO FORTE, FUTURO SUSTENTÁVEL:<br>EQUILÍBRIO ENTRE PRODUÇÃO E MEIO AMBIENTE</h1>
-            <a href="#conteudo" class="scroll-arrow" aria-label="Rolar para baixo">&#11167;</a>
-        </div>
-    </header>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
 
-    <!-- Seção de Conteúdo e Explicações -->
-    <main id="conteudo" class="content-section">
-        
-        <h2>O Desafio da Produção com Conservação</h2>
-        
-        <!-- Bloco 1: Plantio Manual / Manejo -->
-        <div class="info-block">
-            <div class="speech-bubble">
-                <h3>1. Intensificação Tecnológica Poupando Recursos</h3>
-                <p>O avanço do agronegócio moderno demonstra que aumentar a produtividade não exige a expansão predatória sobre biomas nativos. Através do avanço tecnológico promovido por órgãos oficiais, as lavouras e florestas plantadas otimizam o uso do espaço de forma consciente e focada.</p>
-                <span class="source-citation">Fonte: Embrapa Visão / Megatendências</span>
-            </div>
-            <!-- Sua foto 2 integrada -->
-            <img src="foto2.jpg" alt="Trabalho cuidadoso e manejo no campo agrícola" class="agro-img">
-        </div>
+        body {
+            background-color: var(--cinza-fundo);
+            color: var(--texto-escuro);
+            line-height: 1.6;
+        }
 
-        <!-- Bloco 2: GIF Divertido -->
-        <div class="info-block reverse">
-            <div class="speech-bubble">
-                <h3>2. Práticas que Protegem o Ecossistema</h3>
-                <p>A consolidação de métodos sustentáveis, como o Sistema de Plantio Direto (SPD), a rotação de culturas e o Manejo Integrado de Pragas (MIP), reduz drasticamente a erosão do solo e o uso desmedido de insumos químicos, garantindo resiliência ambiental para as próximas gerações.</p>
-                <span class="source-citation">Fonte: Ministério da Agricultura e Pecuária (MAPA)</span>
-            </div>
-            <!-- GIF para deixar o site dinâmico e divertido -->
-            <img src="https://giphy.com" alt="Tecnologia verde no campo" class="agro-img">
-        </div>
+        /* Menu Fixo */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
 
-        <!-- Bloco 3: Triagem de Resíduos -->
-        <div class="info-block">
-            <div class="speech-bubble">
-                <h3>3. Logística Reversa e Destinação de Resíduos</h3>
-                <p>A sustentabilidade no campo também envolve o pós-produção. O descarte correto de embalagens de defensivos, pilhas, eletrônicos (e-waste) e óleos lubrificantes é fundamental para evitar a contaminação dos lençóis freáticos. Programas como a entrega em postos autorizados de triagem garantem o destino correto aos resíduos agrícolas perigosos ou recicláveis.</p>
-                <span class="source-citation">Fonte: Sistema inpEV / Campo Limpo</span>
-            </div>
-            <!-- Sua foto 3 integrada -->
-            <img src="foto3.jpg" alt="Tabela educativa de triagem e descarte de materiais" class="agro-img">
-        </div>
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
 
-        <!-- Bloco 4: Energia Renovável / Eólica -->
-        <div class="info-block reverse">
-            <div class="speech-bubble">
-                <h3>4. Matriz Energética Limpa e Renovável</h3>
-                <p>O campo inteligente também produz sua própria energia. A instalação de aerogeradores eólicos e painéis solares em propriedades rurais reduz a dependência de combustíveis fósseis, diminui a pegada de carbono global da produção de grãos e gera excedentes de energia limpa para abastecer as cidades vizinhas.</p>
-                <span class="source-citation">Fonte: Agência Nacional de Energia Elétrica (ANEEL)</span>
-            </div>
-            <!-- Sua foto 4 integrada -->
-            <img src="foto4.jpg" alt="Turbina eólica gerando energia limpa" class="agro-img">
-        </div>
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--verde-principal);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-        <!-- Bloco de Porcentagem de Sustentabilidade -->
-        <section class="metrics-container">
-            <h3>Indicadores Agroambientais Globais</h3>
-            <p class="metrics-intro">Estudos de produtividade e preservação mostram o impacto real das boas práticas versus os gargalos que ainda precisam ser superados no campo:</p>
-            
-            <div class="charts-wrapper">
-                <div class="chart-box sustainability">
-                    <div class="circle-progress" style="--percent: 66;">
-                        <span class="percentage-value">66%</span>
-                    </div>
-                    <h4>Área Preservada / Práticas de Baixo Carbono</h4>
-                    <p>Percentual de vegetação nativa mantida e protegida dentro das propriedades rurais brasileiras aliada a tecnologias sustentáveis.</p>
-                    <span class="source-citation">Fonte: Dados Consolidados Embrapa Territorial / Sicar</span>
-                </div>
+        .logo span {
+            color: var(--azul-destaque);
+        }
 
-                <div class="chart-box non-sustainability">
-                    <div class="circle-progress" style="--percent: 34;">
-                        <span class="percentage-value">34%</span>
-                    </div>
-                    <h4>Gargalos Tecnológicos e Desafios Ambientais</h4>
-                    <p>Áreas que ainda carecem de transição para manejo de baixo carbono, recuperação de pastagens degradadas ou controle integrado.</p>
-                    <span class="source-citation">Fonte: Estimativas de Mitigação / Planos de Agricultura de Baixo Carbono</span>
-                </div>
-            </div>
-            
-            <!-- Seta abaixo de tudo levando para o Quiz -->
-            <div class="arrow-to-quiz">
-                <p>Pronto para testar seus conhecimentos?</p>
-                <a href="#quiz-section" class="quiz-arrow">&#11167;</a>
-            </div>
-        </section>
-    </main>
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
 
-    <!-- Seção do Quiz Dinâmico -->
-    <section id="quiz-section" class="quiz-container">
-        <h2>Quiz Interativo: O que você aprendeu?</h2>
-        
-        <div class="quiz-card">
-            <div id="quiz-window">
-                <p id="question-text" class="question-text"></p>
-                <div id="options-grid" class="options-grid"></div>
-            </div>
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--texto-escuro);
+            font-weight: 500;
+            transition: var(--transicao);
+        }
 
-            <!-- Tela de Resultado Final -->
-            <div id="quiz-result" class="quiz-result-box" style="display: none;">
-                <p id="result-text"></p>
-                <button id="btn-restart" class="btn-restart">Refazer Quiz</button>
-            </div>
-        </div>
-    </section>
+        .nav-menu a:hover {
+            color: var(--verde-claro);
+        }
 
-    <footer class="site-footer">
-        <p>Projeto Agrinho — Equilíbrio Eficiente e Sustentável</p>
-    </footer>
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--verde-principal);
+        }
 
-    <script src="script.js"></script>
-</body>
-</html>
+        /* Banner Principal */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://unsplash.com') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--texto-claro);
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: textFade 1.5s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            color: var(--amarelo-sol);
+            font-weight: bold;
+            animation: textFade 2s ease;
+        }
+
+        .btn-cta {
+            background-color: var(--verde-claro);
+            color: var(--texto-claro);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transicao);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-cta:hover {
+            background-color: var(--verde-principal);
+            transform: translateY(-3px);
+        }
+
+        /* Seções Gerais */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--verde-principal);
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--amarelo-sol);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Sobre o Tema */
+        .sobre-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .sobre-img img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .sobre-texto h3 {
+            color: var(--azul-destaque);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .sobre-texto p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        /* Galeria Interativa */
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .galeria-card {
+            background: var(--texto-claro);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transicao);
+            position: relative;
+        }
+
+        .galeria-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .galeria-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .galeria-info {
+            padding: 20px;
+        }
+
+        .galeria-info h3 {
+            color: var(--verde-principal);
+            margin-bottom: 10px;
+        }
+
+        /* Tecnologia no Campo */
+        .tech-bg {
+            background-color: var(--azul-suave);
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .tech-card {
+            background: var(--texto-claro);
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 10px;
+            border-bottom: 4px solid var(--azul-destaque);
+            transition: var(--transicao);
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tech-card i {
+            font-size: 3rem;
+            color: var(--azul-destaque);
+            margin-bottom: 15px;
+        }
+
+        /* Quiz Educativo */
+        .quiz-container {
+            background: var(--texto-claro);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .quiz-option {
+            background: var(--cinza-fundo);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transicao);
+            border: 2px solid transparent;
+        }
+
+        .quiz-option:hover {
+            background: #E8F5E9;
+            border-color: var(--verde-claro);
+        }
+
+        .correct {
+            background: #C8E6C9 !important;
+            border-color: var(--verde-principal) !important;
+        }
+
+        .incorrect {
+            background: #FFCDD2 !important;
+            border-color: #D32F2F !important;
+        }
+
+        #next-btn {
+            background-color: var(--azul-destaque);
+            color: var(--texto-claro);
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: none;
+        }
+
+        /* Curiosidades */
+        .curiosidades-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .curiosidade-item {
+            background: var(--texto-claro);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid var(--amarelo-sol);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        /* Impactos Positivos */
+        .impactos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .impacto-card {
+            background: var(--texto-claro);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .impacto-card.econ { border-top: 5px solid var(--amarelo-sol); }
+        .impacto-card.soc { border-top: 5px solid var(--azul-destaque); }
+        .impacto-card.amb { border-top: 5px solid var(--verde-principal); }
+
+        .impacto-card i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .econ i { color: var(--amarelo-sol); }
+        .soc i { color: var(--azul-destaque); }
+        .amb i { color: var(--verde-principal); }
+
+        /* Área de Vídeos */
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Contato */
