@@ -20,7 +20,8 @@
             <ul class="nav-menu" id="nav-links">
                 <li><a href="#" class="nav-link">Início</a></li>
                 <li><a href="#tema" class="nav-link">O Tema</a></li>
-                <li><a href="#pilares" class="nav-link">Práticas Sustentáveis</a></li>
+                <li><a href="#detalhes" class="nav-link">Práticas na Prática</a></li>
+                <li><a href="#pilares" class="nav-link">Pilares</a></li>
                 <li><a href="#quiz" class="nav-link">Quiz</a></li>
                 <li><a href="#contato" class="nav-link">Contato</a></li>
             </ul>
@@ -32,23 +33,52 @@
         <div class="hero-content">
             <h1>Agrinho 2026: Agro Forte e Sustentável</h1>
             <p>Conectando a inovação tecnológica do campo com a preservação do meio ambiente para alimentar as futuras gerações.</p>
-            <a href="#tema" class="btn-cta">Saiba Mais</a>
+            <a href="#tema" class="btn-cta">Explorar Conteúdo</a>
         </div>
     </section>
 
-    <!-- SEÇÃO O TEMA -->
+    <!-- SEÇÃO O TEMA (INTRODUÇÃO) -->
     <section id="tema" class="container-secao">
         <h2 class="section-title">O Tema</h2>
         <div class="tema-grid">
             <div class="tema-texto">
-                <p>O agronegócio moderno representa a força motriz da nossa economia e o pilar da produção global de alimentos. Contudo, essa força atua em total harmonia com a preservação ambiental.</p>
+                <p>O agronegócio moderno representa a força motriz da nossa economia e o pilar da produção global de alimentos. Contudo, essa força atua em total harmonia com a preservação ambiental. O grande desafio do século XXI é produzir mais alimentos usando menos recursos naturais, e o Brasil lidera essa transformação.</p>
                 <p>Unindo técnicas tradicionais de cuidado com o solo a tecnologias limpas de última geração — como geradores de energia solar e mapeamento por agricultura de precisão — a produção rural atual prova que é viável cultivar com produtividade máxima sem agredir os biomas nativos e os recursos hídricos.</p>
             </div>
             <div class="tema-imagem"></div>
         </div>
     </section>
 
-    <!-- SEÇÃO PILARES (Com Animação de Scroll via CSS) -->
+    <!-- NOVA SEÇÃO: DETALHAMENTO DO TEMA -->
+    <section id="detalhes" class="container-secao secao-conteudo-expandido">
+        <h2 class="section-title">Ciência e Sustentabilidade no Campo</h2>
+        
+        <div class="conteudo-bloco">
+            <div class="conteudo-texto">
+                <h3>🛰️ Agricultura de Precisão e Dados</h3>
+                <p>A força do agro moderno está na informação. Sensores instalados no solo medem a umidade e os nutrientes em tempo real. Satélites e drones sobrevoam as plantações gerando mapas de calor que indicam exatamente quais plantas precisam de atenção.</p>
+                <p>Em vez de irrigar ou fertilizar um campo inteiro de forma igual, o produtor aplica os recursos **apenas onde é necessário**, centímetro por centímetro. Isso gera uma economia gigantesca de água, reduz custos e evita que o solo fique sobrecarregado.</p>
+            </div>
+        </div>
+
+        <div class="conteudo-bloco invertido">
+            <div class="conteudo-texto">
+                <h3>🪲 Bioinsumos: Defensores Naturais</h3>
+                <p>A proteção das lavouras está se tornando biológica. Os bioinsumos são defensores agrícolas feitos a partir de microrganismos, como fungos, bactérias e insetos benéficos, que combatem as pragas que atacam as plantações.</p>
+                <p>Ao substituir ou reduzir o uso de produtos químicos sintéticos por essas soluções naturais, o agricultor protege a saúde do trabalhador rural, mantém o equilíbrio dos ecossistemas locais e garante alimentos ainda mais saudáveis na mesa das escolas e das famílias.</p>
+            </div>
+        </div>
+
+        <div class="conteudo-bloco">
+            <div class="conteudo-texto">
+                <h3>☀️ Energia Limpa e Economia Circular</h3>
+                <p>As propriedades rurais modernas funcionam como usinas de sustentabilidade. O topo dos galpões e as áreas abertas dão lugar a painéis solares fotovoltaicos, aproveitando a forte luz do sol do campo para gerar toda a eletricidade da fazenda.</p>
+                <p>Além disso, resíduos orgânicos da criação de animais e restos de colheita não são descartados: eles são transformados em **biogás** para gerar energia térmica ou convertidos em adubo orgânico de alta qualidade (compostagem), fechando um ciclo perfeito onde nada se perde.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO PILARES -->
     <div class="bg-pilares">
         <section id="pilares" class="container-secao">
             <h2 class="section-title">Pilares do Agro Sustentável</h2>
@@ -84,7 +114,6 @@
         <div class="quiz-container">
             <div id="quiz-header">
                 <span id="placar-passo">Pergunta 1 de 5</span>
-                <!-- Barra e contador de tempo adicionados -->
                 <div id="cronometro-box">⏱️ <span id="tempo-restante">15</span>s</div>
             </div>
             <div id="barra-progresso-tempo"><div id="progresso-tempo"></div></div>
@@ -94,7 +123,7 @@
                 <div class="quiz-opcoes" id="opcoes-container"></div>
                 <div class="quiz-feedback" id="feedback-texto"></div>
                 <div class="quiz-controles">
-                    <div></div> <!-- Espaçador -->
+                    <div></div> 
                     <button id="btn-proximo" class="btn-proximo escondido">Próxima</button>
                 </div>
             </div>
