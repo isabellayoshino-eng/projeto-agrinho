@@ -3,203 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agrinho 2026 | Agro Forte, Futuro Sustentável</title>
+    <title>Agrinho 2026 - Agro Forte, Futuro Sustentável</title>
     <!-- Ícones FontAwesome -->
     <link rel="stylesheet" href="https://cloudflare.com">
-    
-    <!-- CONEXÃO COM O SEU ARQUIVO CSS -->
+    <!-- Fontes Google -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Link para o CSS Externo -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Menu Superior Fixo -->
+    <!-- MENU FIXO -->
     <header>
-        <nav class="nav-container">
-            <div class="logo">
-                <i class="fa-solid fa-leaf"></i> Agrinho <span>2026</span>
-            </div>
-            <div class="menu-toggle" id="mobile-menu">
-                <i class="fa-solid fa-bars"></i>
-            </div>
+        <div class="nav-container">
+            <div class="logo"><i class="fa-solid fa-leaf"></i> Agrinho <span>2026</span></div>
+            <div class="menu-toggle" id="mobile-menu"><i class="fa-solid fa-bars"></i></div>
             <ul class="nav-menu">
                 <li><a href="#home">Início</a></li>
-                <li><a href="#sobre">O Tema</a></li>
+                <li><a href="#sobre">Sobre o Tema</a></li>
                 <li><a href="#galeria">Práticas</a></li>
                 <li><a href="#tecnologia">Tecnologia</a></li>
-                <li><a href="#quiz">Quiz</a></li>
+                <li><a href="#quiz-secao">Quiz</a></li>
                 <li><a href="#curiosidades">Curiosidades</a></li>
                 <li><a href="#impactos">Impactos</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
-        </nav>
+        </div>
     </header>
 
-    <!-- Página Inicial (Home) -->
-    <section id="home" class="hero" style="max-width: 100%; padding: 0;">
-        <h1>Agro Forte, Futuro Sustentável</h1>
-        <p>Concurso Agrinho 2026: O equilíbrio perfeito entre a produção de alimentos e a preservação do meio ambiente.</p>
-        <a href="#sobre" class="btn-cta">Explore o Futuro do Campo</a>
+    <!-- PÁGINA INICIAL (HOME) -->
+    <section id="home">
+        <h1>Agro Forte, <span>Futuro Sustentável</span></h1>
+        <p>O equilíbrio perfeito entre a produção de alimentos e a preservação do nosso meio ambiente.</p>
+        <a href="#sobre" class="btn">Explorar Projeto</a>
     </section>
 
-    <!-- Sobre o Tema -->
+    <!-- SEÇÃO SOBRE O TEMA -->
     <section id="sobre">
-        <h2 class="section-title">Sobre o Tema</h2>
+        <h2 class="titulo-secao">Sobre o Tema</h2>
         <div class="sobre-grid">
-            <div class="sobre-img">
-                <img src="https://unsplash.com" alt="Plantação sustentável">
+            <div class="sobre-card">
+                <i class="fa-solid fa-seedling"></i>
+                <h3>Produção Sustentável</h3>
+                <p>Produzir alimentos saudáveis em abundância utilizando técnicas que protegem a biodiversidade e regeneram o ecossistema local.</p>
             </div>
-            <div class="sobre-texto">
-                <h3>Produzir sem Destruir</h3>
-                <p>O agronegócio moderno desempenha um papel vital no abastecimento global. Para garantir o amanhã, o campo adotou o caminho da sustentabilidade.</p>
-                <p>A união entre ciência e campo possibilita a <strong>agricultura de precisão</strong>, reduzindo o desperdício de insumos, protegendo a rica biodiversidade do solo e gerenciando com máxima eficiência os recursos hídricos.</p>
-                <p>O equilíbrio real acontece quando as florestas nativas e os mananciais são preservados paralelamente ao crescimento das safras, gerando oxigênio, fixando carbono e resguardando a fauna.</p>
+            <div class="sobre-card">
+                <i class="fa-solid fa-droplet"></i>
+                <h3>Economia de Água</h3>
+                <p>Sistemas modernos de irrigação gota a gota reduzem o desperdício, aplicando a quantidade exata de água que a planta necessita.</p>
+            </div>
+            <div class="sobre-card">
+                <i class="fa-solid fa-earth-americas"></i>
+                <h3>Preservação do Solo</h3>
+                <p>O plantio direto e a rotação de culturas evitam a erosão, mantendo a terra fértil e rica em nutrientes para as próximas gerações.</p>
             </div>
         </div>
     </section>
 
-    <!-- Galeria Interativa -->
+    <!-- GALERIA INTERATIVA -->
     <section id="galeria">
-        <h2 class="section-title">Práticas Sustentáveis</h2>
+        <h2 class="titulo-secao">Práticas Sustentáveis</h2>
         <div class="galeria-grid">
-            <div class="galeria-card">
-                <img src="https://unsplash.com" alt="Plantio Direto">
-                <div class="galeria-info">
-                    <h3>Plantio Direto</h3>
-                    <p>Cultivo sobre os resíduos da colheita anterior. Protege o solo contra a erosão e retém muito mais umidade.</p>
-                </div>
-            </div>
-            <div class="galeria-card">
-                <img src="https://unsplash.com" alt="Rotação de Culturas">
+            <div class="galeria-item">
+                <img src="https://unsplash.com" alt="Plantação">
                 <div class="galeria-info">
                     <h3>Rotação de Culturas</h3>
-                    <p>Alternar espécies vegetais na mesma área melhora as propriedades físicas e biológicas da terra de forma natural.</p>
+                    <p>Alternar espécies de plantas para melhorar a saúde biológica do solo.</p>
                 </div>
             </div>
-            <div class="galeria-card">
-                <img src="https://unsplash.com" alt="Reflorestamento">
+            <div class="galeria-item">
+                <img src="https://unsplash.com" alt="Floresta">
                 <div class="galeria-info">
-                    <h3>Preservação de APPs</h3>
-                    <p>Manutenção das Áreas de Preservação Permanente ao redor de rios e encostas para resguardar a água e a vida silvestre.</p>
+                    <h3>ILPF</h3>
+                    <p>Integração Lavoura-Pecuária-Floresta une árvores, pasto e plantio em uma mesma área.</p>
+                </div>
+            </div>
+            <div class="galeria-item">
+                <img src="https://unsplash.com" alt="Energia Solar">
+                <div class="galeria-info">
+                    <h3>Energias Renováveis</h3>
+                    <p>Uso de painéis solares e biomassa para abastecer maquinários agrícolas de forma limpa.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tecnologia no Campo -->
-    <div class="tech-bg">
-        <section id="tecnologia">
-            <h2 class="section-title">Tecnologia no Campo</h2>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <i class="fa-solid fa-helicopter"></i>
-                    <h3>Drones Agrícolas</h3>
-                    <p>Mapeamento de lavouras e aplicação precisa de insumos apenas onde é necessário.</p>
-                </div>
-                <div class="tech-card">
-                    <i class="fa-solid fa-droplet"></i>
-                    <h3>Irrigação Inteligente</h3>
-                    <p>Sistemas com sensores climáticos que evitam o desperdício de água regando no momento exato.</p>
-                </div>
-                <div class="tech-card">
-                    <i class="fa-solid fa-solar-panel"></i>
-                    <h3>Energia Limpa</h3>
-                    <p>Uso de painéis solares e biomassa para abastecer propriedades de forma autossustentável.</p>
-                </div>
-                <div class="tech-card">
-                    <i class="fa-solid fa-network-wired"></i>
-                    <h3>Sensores de Solo</h3>
-                    <p>Dispositivos enterrados monitoram nutrientes e umidade em tempo real enviando dados ao celular.</p>
-                </div>
+    <!-- TECNOLOGIA NO CAMPO -->
+    <section id="tecnologia">
+        <h2 class="titulo-secao">Tecnologia no Campo</h2>
+        <div class="tech-container">
+            <div class="tech-texto">
+                <h3>A Agricultura de Precisão</h3>
+                <p>A tecnologia mudou a forma como cuidamos da terra. Hoje, a inovação digital trabalha lado a lado com a ecologia para gerar eficiência máxima sem agredir a natureza.</p>
+                <ul class="tech-lista">
+                    <li><i class="fa-solid fa-helicopter"></i> Drones monitoram a saúde das lavouras em tempo real.</li>
+                    <li><i class="fa-solid fa-temperature-high"></i> Sensores no solo medem a umidade e evitam excessos.</li>
+                    <li><i class="fa-solid fa-robot"></i> Automação de tratores diminui a pegada de carbono.</li>
+                </ul>
             </div>
-        </section>
-    </div>
-
-    <!-- Quiz Educativo -->
-    <section id="quiz">
-        <h2 class="section-title">Quiz do Agro Sustentável</h2>
-        <div class="quiz-container">
-            <div id="quiz-window">
-                <h3 id="question" style="margin-bottom: 20px;">Carregando pergunta...</h3>
-                <div id="options-container"></div>
-                <button id="next-btn">Próxima Pergunta</button>
+            <div class="tech-imagem">
+                <img src="https://unsplash.com" alt="Drone na agricultura">
             </div>
         </div>
     </section>
 
-    <!-- Curiosidades -->
+    <!-- QUIZ EDUCATIVO -->
+    <section id="quiz-secao">
+        <h2 class="titulo-secao">Desafio Quiz Agrinho</h2>
+        <div id="quiz">
+            <div id="quiz-conteudo">
+                <!-- Inserido dinamicamente via JS -->
+            </div>
+            <button class="quiz-btn-proximo" id="btn-proximo">Próxima Pergunta</button>
+        </div>
+    </section>
+
+    <!-- CURIOSIDADES DO AGRO -->
     <section id="curiosidades">
-        <h2 class="section-title">Curiosidades do Agro</h2>
-        <div class="curiosidades-container">
-            <div class="curiosidade-item">
-                <h3>O Brasil alimenta o mundo</h3>
-                <p>A agricultura brasileira produz alimentos suficientes para nutrir mais de 800 milhões de pessoas ao redor do planeta, usando alta tecnologia.</p>
+        <h2 class="titulo-secao">Curiosidades do Agro</h2>
+        <div class="curiosidades-grid">
+            <div class="curiosidade-box">
+                <h4><i class="fa-solid fa-lightbulb"></i> Código Florestal</h4>
+                <p>O Brasil é um dos poucos países que exige que os produtores preservem de 20% a 80% da vegetação nativa dentro de suas propriedades agrícolas.</p>
             </div>
-            <div class="curiosidade-item">
-                <h3>Florestas Protegidas</h3>
-                <p>Os produtores rurais brasileiros são os que mais preservam vegetação nativa no mundo dentro de suas propriedades, cumprindo regras rígidas do Código Florestal.</p>
+            <div class="curiosidade-box">
+                <h4><i class="fa-solid fa-bug"></i> Defensivos Biológicos</h4>
+                <p>Você sabia que insetos do bem, como as joaninhas, são usados para combater pragas naturalmente, dispensando produtos químicos?</p>
             </div>
-            <div class="curiosidade-item">
-                <h3>Combustível Verde</h3>
-                <p>O etanol da cana-de-açúcar e o biodiesel reduzem drasticamente as emissões de gases poluentes quando comparados aos combustibles fósseis.</p>
+            <div class="curiosidade-box">
+                <h4><i class="fa-solid fa-satellite"></i> Olho no Espaço</h4>
+                <p>Satélites em órbita ajudam o agricultor a prever o clima exato e mapear focos de incêndios florestais instantaneamente.</p>
             </div>
         </div>
     </section>
 
-    <!-- Impactos Positivos -->
+    <!-- SEÇÃO DE IMPACTOS POSITIVOS -->
     <section id="impactos">
-        <h2 class="section-title">Impactos Positivos</h2>
-        <div class="impactos-grid">
-            <div class="impacto-card econ">
+        <h2 class="titulo-secao">Impactos Positivos</h2>
+        <div class="impactos-container">
+            <div class="impacto-card">
                 <i class="fa-solid fa-chart-line"></i>
-                <h3>Econômico</h3>
-                <p>Geração de milhões de empregos, fortalecimento do comércio nas pequenas cidades e liderança nas exportações do país.</p>
+                <div>
+                    <h3>Econômico</h3>
+                    <p>Geração de empregos verdes e liderança global na exportação sustentável de grãos.</p>
+                </div>
             </div>
-            <div class="impacto-card soc">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <h3>Social</h3>
-                <p>Fixação das famílias no campo com alta qualidade de vida, acesso à educação tecnológica e segurança alimentar garantida.</p>
+            <div class="impacto-card">
+                <i class="fa-solid fa-users"></i>
+                <div>
+                    <h3>Social</h3>
+                    <p>Fixação das famílias no campo com melhor qualidade de vida e sucessão familiar qualificada.</p>
+                </div>
             </div>
-            <div class="impacto-card amb">
-                <i class="fa-solid fa-hand-holding-heart"></i>
-                <h3>Ambiental</h3>
-                <p>Recuperação de áreas degradadas, sequestro de carbono pelas culturas em crescimento e conservação da biodiversidade local.</p>
+            <div class="impacto-card">
+                <i class="fa-solid fa-tree"></i>
+                <div>
+                    <h3>Ambiental</h3>
+                    <p>Redução da emissão de gases estufa e conservação ativa de milhares de nascentes d'água.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Área de Vídeos -->
+    <!-- ÁREA DE VÍDEOS -->
     <section id="videos">
-        <h2 class="section-title">Conteúdo Educativo</h2>
-        <div class="video-container">
-            <iframe src="https://youtube.com" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h2 class="titulo-secao">Conteúdo Educativo</h2>
+        <div class="video-wrapper">
+            <iframe src="https://youtube.com" allowfullscreen></iframe>
         </div>
     </section>
 
-    <!-- Página de Contato -->
+    <!-- CONTATO -->
     <section id="contato">
-        <h2 class="section-title">Fale Conosco</h2>
-        <div class="contato-container">
-            <form id="contactForm">
-                <div class="form-group">
-                    <label for="name">Nome Completo</label>
-                    <input type="text" id="name" required placeholder="Digite seu nome">
-                </div>
-                <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" required placeholder="seuemail@escola.com">
-                </div>
-                <div class="form-group">
-                    <label for="message">Sua Mensagem ou Ideia para o Agrinho</label>
-                    <textarea id="message" rows="5" required placeholder="Compartilhe sua visão sobre o agro sustentável..."></textarea>
-                </div>
-                <button type="submit" class="btn-submit">Enviar Mensagem</button>
-            </form>
-        </div>
+        <h2 class="titulo-secao">Fale Conosco</h2>
+        <form class="contato-form" id="meuFormulario">
+            <div class="form-grupo">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" required placeholder="Digite seu nome">
+            </div>
+            <div class="form-grupo">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" required placeholder="Seu e-mail escolar ou pessoal">
+            </div>
+            <div class="form-grupo">
+                <label for="mensagem">Mensagem / Ideia para o Agrinho:</label>
+                <textarea id="mensagem" rows="5" required placeholder="Compartilhe sua ideia sustentável..."></textarea>
+            </div>
+            <button type="submit" class="form-btn">Enviar Mensagem</button>
+        </form>
     </section>
 
-    <!-- Rodapé -->
+    <!-- RODAPÉ -->
     <footer>
-        <p>&copy; 2026 Concurso Agrinho. Todos os direitos reservados.</p>
-        <p style="margin-top: 10px; font-size: 0.8rem;">Tema: Agro Forte, Futuro Sustentável: equilíbrio entre produção e meio ambiente.</p>
+        <p>&copy; 2026 Concurso Agrinho. Tema: Agro Forte, Futuro Sustentável.</p>
+        <p>Desenvolvido com fins educativos para a conscientização ambiental.</p>
     </footer>
 
+    <!-- Link para o Script Externo -->
+    <script src="script.js"></script>
+</body>
+</html>
