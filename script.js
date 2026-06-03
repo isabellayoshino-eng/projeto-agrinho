@@ -1,103 +1,113 @@
-// Menu Responsivo Mobile
-const menuToggle = document.getElementById('mobile-menu');
+// 1. Menu Mobile (Hambúrguer)
+const mobileMenu = document.getElementById('mobile-menu');
 const navMenu = document.querySelector('.nav-menu');
 
-menuToggle.addEventListener('click', () => {
+mobileMenu.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
-// Fechar menu ao clicar em um link mobile
+// Fecha o menu ao clicar em qualquer item (mobile)
 document.querySelectorAll('.nav-menu a').forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.remove('active');
     });
 });
 
-// Dados do Quiz Educativo
-const quizData = [
+// 2. Sistema de Quiz Interativo
+const dadosQuiz = [
     {
-        question: "Qual tecnologia ajuda a monitorar a saúde das plantações lá do alto?",
-        options: ["Tratores antigos", "Drones agrícolas", "Enxadas manuais", "Espantalhos eletrônicos"],
-        correct: 1
+        pergunta: "Qual prática ajuda a evitar a erosão e mantém os nutrientes do solo?",
+        opcoes: ["Queimada controlada", "Plantio Direto e Rotação de Culturas", "Uso excessivo de fertilizantes", "Desmatamento parcial"],
+        correta: 1
     },
     {
-        question: "A prática de alternar plantas na mesma área para descansar o solo chama-se:",
-        options: ["Desmatamento", "Monocultura", "Rotação de culturas", "Queimada controlada"],
-        correct: 2
+        pergunta: "Para que servem os drones na agricultura sustentável?",
+        opcoes: ["Apenas para tirar fotos bonitas", "Para espantar pássaros", "Para monitorar lavouras de forma precisa economizando recursos", "Para transportar colheitas pesadas"],
+        correta: 2
     },
     {
-        question: "Como a agricultura inteligente economiza água?",
-        options: ["Deixando de regar as plantas", "Usando sensores de umidade no solo", "Esperando apenas a chuva cair", "Regando as plantas ao meio-dia"],
-        correct: 1
+        pergunta: "O equilíbrio entre produzir alimentos e cuidar do ecossistema chama-se:",
+        opcoes: ["Desenvolvimento Desenfreado", "Sustentabilidade", "Monocultura Comercial", "Urbanização Agrícola"],
+        correta: 2
     }
 ];
 
-let currentQuiz = 0;
-let score = 0;
+let perguntaAtual = 0;
+let pontuacao = 0;
 
-const questionEl = document.getElementById('question');
-const optionsContainer = document.getElementById('options-container');
-const nextBtn = document.getElementById('next-btn');
+const quizConteudo = document.getElementById('quiz-conteudo');
+const btnProximo = document.getElementById('btn-proximo');
 
-function loadQuiz() {
-    deselectAnswers();
-    const currentQuizData = quizData[currentQuiz];
-    questionEl.innerText = currentQuizData.question;
-    optionsContainer.innerHTML = '';
+function carregarQuiz() {
+    btnProximo.style.display = "none";
+    quizConteudo.innerHTML = "";
 
-    currentQuizData.options.forEach((option, index) => {
-        const btn = document.createElement('div');
-        btn.classList.add('quiz-option');
-        btn.innerText = option;
-        btn.addEventListener('click', () => selectOption(btn, index));
-        optionsContainer.appendChild(btn);
-    });
-}
+    if (perguntaAtual < dadosQuiz.length) {
+        const item = dadosQuiz[perguntaAtual];
+        
+        const elementoPergunta = document.createElement('div');
+        elementoPergunta.className = 'quiz-pergunta';
+        elementoPergunta.innerText = `${perguntaAtual + 1}. ${item.pergunta}`;
+        quizConteudo.appendChild(elementoPergunta);
 
-function deselectAnswers() {
-    nextBtn.style.display = 'none';
-}
+        const elementoOpcoes = document.createElement('div');
+        elementoOpcoes.className = 'quiz-opcoes';
 
-function selectOption(element, selectedIndex) {
-    const correctAnswer = quizData[currentQuiz].correct;
-    const options = optionsContainer.querySelectorAll('.quiz-option');
-    
-    // Impede cliques múltiplos após responder
-    options.forEach(opt => opt.style.pointerEvents = 'none');
+        item.opcoes.forEach((opcao, index) => {
+            const botaoOpcao = document.createElement('div');
+            botaoOpcao.className = 'quiz-opcao';
+            botaoOpcao.innerText = opcao;
+            botaoOpcao.addEventListener('click', () => selecionarOpcao(botaoOpcao, index, item.correta));
+            elementoOpcoes.appendChild(botaoOpcao);
+        });
 
-    if(selectedIndex === correctAnswer) {
-        element.classList.add('correct');
-        score++;
+        quizConteudo.appendChild(elementoOpcoes);
     } else {
-        element.classList.add('incorrect');
-        options[correctAnswer].classList.add('correct'); // Mostra a certa
-    }
-    
-    nextBtn.style.display = 'block';
-}
-
-nextBtn.addEventListener('click', () => {
-    currentQuiz++;
-    if(currentQuiz < quizData.length) {
-        loadQuiz();
-    } else {
-        document.getElementById('quiz-window').innerHTML = `
-            <div style="text-align:center;">
-                <i class="fa-solid fa-trophy" style="font-size: 3rem; color: var(--amarelo-sol); margin-bottom:15px;"></i>
-                <h3>Você concluiu o Quiz!</h3>
-                <p style="margin: 15px 0; font-size:1.2rem;">Acertou <strong>${score}</strong> de <strong>${quizData.length}</strong> perguntas.</p>
-                <button onclick="location.reload()" class="btn-cta" style="padding:8px 20px; font-size:0.9rem;">Refazer Quiz</button>
+        // Fim do quiz
+        quizConteudo.innerHTML = `
+            <div class='quiz-pergunta' style='text-align:center;'>
+                <i class="fa-solid fa-award" style="font-size:4rem; color:var(--amarelo); margin-bottom:15px;"></i>
+                <br>Você concluiu o Quiz!
             </div>
+            <p style='text-align:center; font-size:1.2rem;'>Sua pontuação: <strong>${pontuacao} de ${dadosQuiz.length}</strong> acertos.</p>
         `;
+        btnProximo.style.display = "none";
     }
+}
+
+function selecionarOpcao(elemento, indiceSelecionado, indiceCorreto) {
+    const todasOpcoes = document.querySelectorAll('.quiz-opcao');
+    
+    // Desabilita cliques adicionais
+    todasOpcoes.forEach(op => {
+        op.style.pointerEvents = 'none';
+        if(op.innerText === dadosQuiz[perguntaAtual].opcoes[indiceCorreto]){
+            op.classList.add('correta'); // Mostra a certa de qualquer forma
+        }
+    });
+
+    if (indiceSelecionado === indiceCorreto) {
+        elemento.classList.add('correta');
+        pontuacao++;
+    } else {
+        elemento.classList.add('errada');
+    }
+
+    btnProximo.style.display = "block";
+}
+
+btnProximo.addEventListener('click', () => {
+    perguntaAtual++;
+    carregarQuiz();
 });
 
-// Inicia o Quiz
-loadQuiz();
+// Inicia o quiz ao carregar a página
+carregarQuiz();
 
-// Envio do Formulário de Contato (Simulação)
-document.getElementById('contactForm').addEventListener('submit', function(e) {
+// 3. Validação Básica de Formulário com Alerta
+document.getElementById('meuFormulario').addEventListener('submit', function(e) {
     e.preventDefault();
-    alert('Muito obrigado por sua participação! Sua mensagem foi enviada com sucesso para a comissão do Agrinho 2026.');
+    const nome = document.getElementById('nome').value;
+    alert(`Obrigado pelo contato, ${nome}! Sua mensagem sobre sustentabilidade no campo foi enviada com sucesso ao Agrinho 2026.`);
     this.reset();
 });
