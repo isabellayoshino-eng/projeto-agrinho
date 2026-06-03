@@ -1,19 +1,3 @@
-// 1. Menu Mobile (Hambúrguer)
-const mobileMenu = document.getElementById('mobile-menu');
-const navMenu = document.querySelector('.nav-menu');
-
-mobileMenu.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-});
-
-// Fecha o menu ao clicar em qualquer item (mobile)
-document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-    });
-});
-
-// 2. Sistema de Quiz Interativo
 const dadosQuiz = [
     {
         pergunta: "Qual prática ajuda a evitar a erosão e mantém os nutrientes do solo?",
@@ -22,24 +6,26 @@ const dadosQuiz = [
     },
     {
         pergunta: "Para que servem os drones na agricultura sustentável?",
-        opcoes: ["Apenas para tirar fotos bonitas", "Para espantar pássaros", "Para monitorar lavouras de forma precisa economizando recursos", "Para transportar colheitas pesadas"],
+        opcoes: ["Apenas para tirar fotos bonitas", "Para espantar pássaros e roedores", "Para monitorar lavouras com precisão e economizar insumos", "Para transportar colheitas pesadas"],
         correta: 2
     },
     {
         pergunta: "O equilíbrio entre produzir alimentos e cuidar do ecossistema chama-se:",
-        opcoes: ["Desenvolvimento Desenfreado", "Sustentabilidade", "Monocultura Comercial", "Urbanização Agrícola"],
+        opcoes: ["Desenvolvimento Desenfreado", "Expansão Irrestrita", "Sustentabilidade", "Urbanização Agrícola"],
         correta: 2
+    },
+    {
+        pergunta: "Qual sistema integra árvores, pastagens e produção agrícola em um mesmo espaço?",
+        opcoes: ["ILPF (Integração Lavoura-Pecuária-Floresta)", "Monocultura extensiva", "Pecuária Tradicional", "Silvicultura isolada"],
+        correta: 0
     }
 ];
 
 let perguntaAtual = 0;
 let pontuacao = 0;
-
 const quizConteudo = document.getElementById('quiz-conteudo');
-const btnProximo = document.getElementById('btn-proximo');
 
 function carregarQuiz() {
-    btnProximo.style.display = "none";
     quizConteudo.innerHTML = "";
 
     if (perguntaAtual < dadosQuiz.length) {
@@ -56,58 +42,61 @@ function carregarQuiz() {
         item.opcoes.forEach((opcao, index) => {
             const botaoOpcao = document.createElement('div');
             botaoOpcao.className = 'quiz-opcao';
-            botaoOpcao.innerText = opcao;
-            botaoOpcao.addEventListener('click', () => selecionarOpcao(botaoOpcao, index, item.correta));
+            botaoOpcao.innerText = opacity = opcao;
+            botaoOpcao.addEventListener('click', () => verificarResposta(botaoOpcao, index, item.correta));
             elementoOpcoes.appendChild(botaoOpcao);
         });
 
         quizConteudo.appendChild(elementoOpcoes);
     } else {
-        // Fim do quiz
+        // Tela de Resultados Finais
         quizConteudo.innerHTML = `
             <div class='quiz-pergunta' style='text-align:center;'>
-                <i class="fa-solid fa-award" style="font-size:4rem; color:var(--amarelo); margin-bottom:15px;"></i>
-                <br>Você concluiu o Quiz!
+                <i class="fa-solid fa-trophy" style="font-size:4rem; color:var(--amarelo); margin-bottom:15px;"></i>
+                <br>Parabéns! Desafio Concluído!
             </div>
-            <p style='text-align:center; font-size:1.2rem;'>Sua pontuação: <strong>${pontuacao} de ${dadosQuiz.length}</strong> acertos.</p>
+            <p style='text-align:center; font-size:1.2rem; margin-bottom:25px;'>
+                Você acertou <strong>${pontuacao} de ${dadosQuiz.length}</strong> perguntas sobre o Agro Sustentável.
+            </p>
+            <div style="text-align:center;">
+                <a href="index.html" class="btn">Voltar ao Início</a>
+            </div>
         `;
-        btnProximo.style.display = "none";
     }
 }
 
-function selecionarOpcao(elemento, indiceSelecionado, indiceCorreto) {
+function verificarResposta(elemento, indiceSelecionado, indiceCorreto) {
     const todasOpcoes = document.querySelectorAll('.quiz-opcao');
     
-    // Desabilita cliques adicionais
-    todasOpcoes.forEach(op => {
-        op.style.pointerEvents = 'none';
-        if(op.innerText === dadosQuiz[perguntaAtual].opcoes[indiceCorreto]){
-            op.classList.add('correta'); // Mostra a certa de qualquer forma
-        }
-    });
+    // Trava cliques extras enquanto processa a transição
+    todasOpcoes.forEach(op => op.style.pointerEvents = 'none');
 
     if (indiceSelecionado === indiceCorreto) {
-        elemento.classList.add('correta');
+        // Se acertou: fica verde e passa de fase automaticamente após 800ms
+        elemento.classList.add('opcao-correta');
         pontuacao++;
+        setTimeout(() => {
+            perguntaAtual++;
+            carregarQuiz();
+        }, 800);
     } else {
-        elemento.classList.add('errada');
+        // Se errou: apenas a opção clicada fica vermelha e a certa é revelada
+        elemento.classList.add('opcao-errada');
+        todasOpcoes[indiceCorreto].classList.add('opcao-correta');
+        
+        // Cria botão para o aluno poder avançar manualmente após ver o erro
+        const btnAvancar = document.createElement('button');
+        btnAvancar.className = 'btn';
+        btnAvancar.style.marginTop = '25px';
+        btnAvancar.style.width = '100%';
+        btnAvancar.innerText = 'Continuar';
+        btnAvancar.addEventListener('click', () => {
+            perguntaAtual++;
+            carregarQuiz();
+        });
+        quizConteudo.appendChild(btnAvancar);
     }
-
-    btnProximo.style.display = "block";
 }
 
-btnProximo.addEventListener('click', () => {
-    perguntaAtual++;
-    carregarQuiz();
-});
-
-// Inicia o quiz ao carregar a página
+// Inicialização
 carregarQuiz();
-
-// 3. Validação Básica de Formulário com Alerta
-document.getElementById('meuFormulario').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const nome = document.getElementById('nome').value;
-    alert(`Obrigado pelo contato, ${nome}! Sua mensagem sobre sustentabilidade no campo foi enviada com sucesso ao Agrinho 2026.`);
-    this.reset();
-});
