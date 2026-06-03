@@ -37,7 +37,7 @@ const dadosQuiz = [
     {
         pergunta: "O que significa o termo 'Sucessão Familiar' no contexto do agronegócio?",
         opcoes: [
-            "A) A continuidade do trabalho na propriedade rural pelas novas gerais da família.",
+            "A) A continuidade do trabalho na propriedade rural pelas novas gerações da família.",
             "B) A venda obrigatória da fazenda quando os donos originais ficam idosos.",
             "C) O abandono total das terras para morar exclusivamente nas grandes cidades."
         ],
@@ -216,7 +216,7 @@ function mostrarResultadoFinal() {
     } else if (pontuacao >= 3) {
         mensagemDesempenho = "Muito bom! Você conhece bem o nosso campo. 🌱";
     } else {
-        mensagemDesempenho = "Bom esforço! Que tal ler os textos do site novamente para gabaritar na próxima? 📚";
+        mensagemDesempenho = "Bom esfoço! Que tal ler os textos do site novamente para gabaritar na próxima? 📚";
     }
 
     elementoFeedback.innerHTML = `Você acertou <strong>${pontuacao}</strong> de <strong>${dadosQuiz.length}</strong> perguntas!<br><br>${mensagemDesempenho}`;
@@ -234,5 +234,5 @@ btnProximo.addEventListener('click', () => {
     }
 });
 
-// Carrega travado na tela inicial sem rodar cronômetro
+// Inicialização travada na tela de boas-vindas
 carregarTelaInicial();
