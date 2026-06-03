@@ -12,7 +12,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
     });
 });
 
-// --- BANCO DE DADOS DO QUIZ (EXPANDIDO PARA 5 QUESTÕES) ---
+// --- BANCO DE DADOS DO QUIZ ---
 const dadosQuiz = [
     {
         pergunta: "Qual das alternativas abaixo é um exemplo de tecnologia aplicada ao agro sustentável?",
@@ -37,7 +37,7 @@ const dadosQuiz = [
     {
         pergunta: "O que significa o termo 'Sucessão Familiar' no contexto do agronegócio?",
         opcoes: [
-            "A) A continuidade do trabalho na propriedade rural pelas novas gerações da família.",
+            "A) A continuidade do trabalho na propriedade rural pelas novas gerais da família.",
             "B) A venda obrigatória da fazenda quando os donos originais ficam idosos.",
             "C) O abandono total das terras para morar exclusivamente nas grandes cidades."
         ],
@@ -55,14 +55,14 @@ const dadosQuiz = [
         feedback: "Excelente! A energia solar aproveita o grande espaço aberto do campo para produzir eletricidade 100% limpa."
     },
     {
-        pergunta: "Para que serve a 'Rotação de Culturas' praticada pelos produtores?",
+        pergunta: "Para que serve os 'Bioinsumos' que estão ganhando espaço na produção rural?",
         opcoes: [
-            "A) Alternar os tipos de plantas cultivadas para preservar os nutrientes do solo.",
-            "B) Mudar os tratores de lugar para que trabalhem em círculos.",
-            "C) Plantar a mesma cultura durante 20 anos seguidos sem interrupção."
+            "A) Alternar os tipos de plantas cultivadas para cansar as pragas.",
+            "B) Utilizar microrganismos naturais para combater pragas e fertilizar o solo sem poluir.",
+            "C) Substituir os tratores por ferramentas manuais de madeira antiga."
         ],
-        correta: 0,
-        feedback: "Exatamente! Alternar plantas (como soja e milho) melhora a fertilidade do solo e quebra naturalmente o ciclo de pragas."
+        correta: 1,
+        feedback: "Exatamente! Os bioinsumos utilizam a própria natureza (fungos e bactérias do bem) para proteger as plantas de forma limpa."
     }
 ];
 
@@ -90,14 +90,12 @@ function iniciarCronometro() {
     barraTempo.style.width = "100%";
     barraTempo.style.backgroundColor = "var(--verde-principal)";
     
-    // Zera intervalos órfãos se existirem
     clearInterval(cronometroIntervalo);
 
     cronometroIntervalo = setInterval(() => {
         tempoRestante--;
         elementoTempo.innerText = tempoRestante;
         
-        // Atualiza a barra de progresso visual
         let porcentagem = (tempoRestante / TEMPO_LIMITE) * 100;
         barraTempo.style.width = `${porcentagem}%`;
 
@@ -123,7 +121,7 @@ function tempoEsgotado() {
     btnProximo.classList.remove('escondido');
 }
 
-// --- LOGICA DE NAVEGAÇÃO DO QUIZ ---
+// --- LOGICA DE NAVEGAÇÃO ---
 function iniciarQuiz() {
     indicePerguntaAtual = 0;
     pontuacao = 0;
@@ -158,7 +156,7 @@ function resetarEstado() {
 }
 
 function selecionarOpcao(botaoSelecionado, indiceSelecionado) {
-    clearInterval(cronometroIntervalo); // Interrompe o relógio
+    clearInterval(cronometroIntervalo); 
     
     const respostaCorreta = dadosQuiz[indicePerguntaAtual].correta;
     const todosBotoes = containerOpcoes.querySelectorAll('.opcao-btn');
@@ -203,7 +201,7 @@ function mostrarResultadoFinal() {
     } else if (pontuacao >= 3) {
         mensagemDesempenho = "Muito bom! Você conhece bem o nosso campo. 🌱";
     } else {
-        mensagemDesempenho = "Bom esforço! Que tal ler o texto 'O Tema' novamente para gabaritar na próxima? 📚";
+        mensagemDesempenho = "Bom esforço! Que tal ler o texto informativo do site novamente para gabaritar na próxima? 📚";
     }
 
     elementoFeedback.innerHTML = `Você acertou <strong>${pontuacao}</strong> de <strong>${dadosQuiz.length}</strong> perguntas!<br><br>${mensagemDesempenho}`;
@@ -212,7 +210,6 @@ function mostrarResultadoFinal() {
     btnProximo.classList.remove('escondido');
 }
 
-// --- EVENTOS ---
 btnProximo.addEventListener('click', () => {
     if (indicePerguntaAtual < dadosQuiz.length) {
         avancarQuiz();
@@ -221,6 +218,5 @@ btnProximo.addEventListener('click', () => {
     }
 });
 
-// Inicialização
 iniciarQuiz();
 
