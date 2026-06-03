@@ -10,8 +10,9 @@
     --branco: #ffffff;
     --cinza-claro: #f8f9fa;
     --texto-escuro: #212529;
+    --vermelho-alerta: #e63946;
     --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --transicao: all 0.3s ease;
+    --transicao: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* --- RESET PADRÃO --- */
@@ -100,17 +101,12 @@ header {
 .hero {
     background: linear-gradient(135deg, rgba(45, 106, 79, 0.95), rgba(108, 88, 76, 0.85)), url('https://unsplash.com') no-repeat center center/cover;
     color: var(--branco);
-    padding: 8rem 1rem;
+    padding: 9rem 1rem;
     text-align: center;
     width: 100%;
 }
 
-.hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.hero h1 {
+.hero-content h1 {
     font-size: 3rem;
     margin-bottom: 1.5rem;
     font-weight: 800;
@@ -126,7 +122,7 @@ header {
 .btn-cta {
     background-color: var(--verde-claro);
     color: var(--verde-escuro);
-    padding: 0.75rem 2rem;
+    padding: 0.8rem 2.5rem;
     font-weight: bold;
     border-radius: 30px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
@@ -186,7 +182,7 @@ header {
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-/* --- SEÇÃO PILARES --- */
+/* --- SEÇÃO PILARES (COM ANIMAÇÕES ADICIONADAS) --- */
 .bg-pilares {
     background-color: var(--cinza-claro);
     width: 100%;
@@ -195,28 +191,47 @@ header {
 .pilares-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .pilar-card {
     background-color: var(--branco);
-    padding: 2.5rem 2rem;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    border-top: 5px solid var(--verde-principal);
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    border-top: 6px solid var(--verde-principal);
     transition: var(--transicao);
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
-.pilar-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+.pilar-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background-color: var(--verde-folha);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    transition: var(--transicao);
 }
 
 .pilar-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    display: inline-block;
+    font-size: 2.5rem;
+}
+
+/* Efeito Hover Avançado nos Cards */
+.pilar-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(45, 106, 79, 0.15);
+    border-top-color: var(--verde-claro);
+}
+
+.pilar-card:hover .pilar-icon-wrapper {
+    transform: scale(1.1) rotate(10deg);
+    background-color: var(--verde-claro);
 }
 
 .pilar-card h3 {
@@ -225,18 +240,50 @@ header {
     font-size: 1.4rem;
 }
 
-/* --- SEÇÃO QUIZ --- */
+/* --- SEÇÃO QUIZ COM TIMER --- */
 .quiz-container {
     max-width: 700px;
     margin: 0 auto;
     background-color: var(--bege-claro);
     padding: 2.5rem;
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+}
+
+#quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--marrom-terra);
+}
+
+#cronometro-box {
+    background-color: var(--branco);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+#barra-progresso-tempo {
+    width: 100%;
+    height: 6px;
+    background-color: rgba(0,0,0,0.05);
+    border-radius: 3px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+#progresso-tempo {
+    height: 100%;
+    width: 100%;
+    background-color: var(--verde-principal);
+    transition: width 1s linear;
 }
 
 .quiz-pergunta {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
     color: var(--verde-escuro);
@@ -245,24 +292,26 @@ header {
 .quiz-opcoes {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.8rem;
 }
 
 .opcao-btn {
     background-color: var(--branco);
     border: 2px solid transparent;
-    padding: 1rem;
-    border-radius: 8px;
+    padding: 1.1rem;
+    border-radius: 10px;
     cursor: pointer;
     text-align: left;
     font-size: 1rem;
     font-weight: 500;
-    transition: var(--transicao);
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
 }
 
 .opcao-btn:hover:not([disabled]) {
     background-color: var(--verde-folha);
     border-color: var(--verde-claro);
+    transform: translateX(5px);
 }
 
 .opcao-btn[disabled] {
@@ -273,6 +322,7 @@ header {
     background-color: #d4edda !important;
     border-color: #28a745 !important;
     color: #155724;
+    font-weight: bold;
 }
 
 .errada {
@@ -283,32 +333,36 @@ header {
 
 .quiz-feedback {
     margin-top: 1.5rem;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 1.1rem;
     text-align: center;
     min-height: 1.6rem;
+    padding: 0.5rem;
+    border-radius: 8px;
 }
 
 .quiz-controles {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 .btn-proximo {
     background-color: var(--verde-principal);
     color: var(--branco);
     border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 5px;
+    padding: 0.8rem 1.8rem;
+    border-radius: 25px;
     cursor: pointer;
     font-weight: bold;
     transition: var(--transicao);
+    box-shadow: 0 4px 10px rgba(45, 106, 79, 0.2);
 }
 
 .btn-proximo:hover {
     background-color: var(--verde-escuro);
+    transform: translateY(-2px);
 }
 
 .btn-proximo.escondido {
@@ -347,10 +401,6 @@ footer {
     display: flex;
     gap: 1.5rem;
     font-size: 1.2rem;
-}
-
-.redes-sociais a:hover {
-    color: var(--verde-claro);
 }
 
 /* --- RESPONSIVIDADE --- */
