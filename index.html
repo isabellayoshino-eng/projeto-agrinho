@@ -10,7 +10,6 @@
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Link para o CSS Externo -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -25,10 +24,9 @@
                 <li><a href="#sobre">Sobre o Tema</a></li>
                 <li><a href="#galeria">Práticas</a></li>
                 <li><a href="#tecnologia">Tecnologia</a></li>
-                <li><a href="#quiz-secao">Quiz</a></li>
+                <li><a href="quiz.html" class="destaque-quiz"><i class="fa-solid fa-gamepad"></i> Jogar Quiz</a></li>
                 <li><a href="#curiosidades">Curiosidades</a></li>
                 <li><a href="#impactos">Impactos</a></li>
-                <li><a href="#contato">Contato</a></li>
             </ul>
         </div>
     </header>
@@ -37,7 +35,10 @@
     <section id="home">
         <h1>Agro Forte, <span>Futuro Sustentável</span></h1>
         <p>O equilíbrio perfeito entre a produção de alimentos e a preservação do nosso meio ambiente.</p>
-        <a href="#sobre" class="btn">Explorar Projeto</a>
+        <div class="home-botoes">
+            <a href="#sobre" class="btn">Explorar Projeto</a>
+            <a href="quiz.html" class="btn btn-amarelo">Testar Conhecimentos</a>
+        </div>
     </section>
 
     <!-- SEÇÃO SOBRE O TEMA -->
@@ -109,32 +110,21 @@
         </div>
     </section>
 
-    <!-- QUIZ EDUCATIVO -->
-    <section id="quiz-secao">
-        <h2 class="titulo-secao">Desafio Quiz Agrinho</h2>
-        <div id="quiz">
-            <div id="quiz-conteudo">
-                <!-- Inserido dinamicamente via JS -->
-            </div>
-            <button class="quiz-btn-proximo" id="btn-proximo">Próxima Pergunta</button>
-        </div>
-    </section>
-
     <!-- CURIOSIDADES DO AGRO -->
     <section id="curiosidades">
         <h2 class="titulo-secao">Curiosidades do Agro</h2>
         <div class="curiosidades-grid">
             <div class="curiosidade-box">
                 <h4><i class="fa-solid fa-lightbulb"></i> Código Florestal</h4>
-                <p>O Brasil é um dos poucos países que exige que os produtores preservem de 20% a 80% da vegetação nativa dentro de suas propriedades agrícolas.</p>
+                <p>O Brasil exige que os produtores preservem de 20% a 80% da vegetação nativa dentro de suas propriedades rurais.</p>
             </div>
             <div class="curiosidade-box">
                 <h4><i class="fa-solid fa-bug"></i> Defensivos Biológicos</h4>
-                <p>Você sabia que insetos do bem, como as joaninhas, são usados para combater pragas naturalmente, dispensando produtos químicos?</p>
+                <p>Insetos benéficos, como joaninhas, são usados para combater pragas naturalmente, reduzindo o uso de químicos.</p>
             </div>
             <div class="curiosidade-box">
                 <h4><i class="fa-solid fa-satellite"></i> Olho no Espaço</h4>
-                <p>Satélites em órbita ajudam o agricultor a prever o clima exato e mapear focos de incêndios florestais instantaneamente.</p>
+                <p>Satélites em órbita ajudam o agricultor a prever o clima e mapear focos de incêndios florestais instantaneamente.</p>
             </div>
         </div>
     </section>
@@ -175,33 +165,12 @@
         </div>
     </section>
 
-    <!-- CONTATO -->
-    <section id="contato">
-        <h2 class="titulo-secao">Fale Conosco</h2>
-        <form class="contato-form" id="meuFormulario">
-            <div class="form-grupo">
-                <label for="nome">Nome Completo:</label>
-                <input type="text" id="nome" required placeholder="Digite seu nome">
-            </div>
-            <div class="form-grupo">
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" required placeholder="Seu e-mail escolar ou pessoal">
-            </div>
-            <div class="form-grupo">
-                <label for="mensagem">Mensagem / Ideia para o Agrinho:</label>
-                <textarea id="mensagem" rows="5" required placeholder="Compartilhe sua ideia sustentável..."></textarea>
-            </div>
-            <button type="submit" class="form-btn">Enviar Mensagem</button>
-        </form>
-    </section>
-
     <!-- RODAPÉ -->
     <footer>
         <p>&copy; 2026 Concurso Agrinho. Tema: Agro Forte, Futuro Sustentável.</p>
         <p>Desenvolvido com fins educativos para a conscientização ambiental.</p>
     </footer>
 
-    <!-- Link para o Script Externo -->
     <script src="script.js"></script>
 </body>
 </html>
