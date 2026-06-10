@@ -8,6 +8,7 @@ const startButton = document.getElementById('start-btn');
 const nextButton = document.getElementById('next-btn');
 const restartButton = document.getElementById('restart-btn');
 const progressText = document.getElementById('progress-text');
+const timerBox = document.getElementById('timer-box');
 const timerCount = document.getElementById('timer-count');
 const finalScoreText = document.getElementById('final-score');
 const feedbackMessage = document.getElementById('feedback-message');
@@ -64,15 +65,25 @@ function showQuestion(index) {
     startTimer();
 }
 
-// Lógica do Cronômetro de 15 segundos
+// Lógica do Cronômetro de 15 segundos com mudança de classes CSS
 function startTimer() {
     timeLeft = 15;
     timerCount.textContent = timeLeft;
+    
+    // Configuração de cor padrão inicial
+    timerBox.className = 'timer-normal';
     clearInterval(timerInterval);
 
     timerInterval = setInterval(() => {
         timeLeft--;
         timerCount.textContent = timeLeft;
+
+        // Atualização dinâmica de classes baseado nos segundos restantes
+        if (timeLeft <= 8 && timeLeft > 4) {
+            timerBox.className = 'timer-warning';
+        } else if (timeLeft <= 4) {
+            timerBox.className = 'timer-danger';
+        }
 
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
