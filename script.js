@@ -1,117 +1,125 @@
-// ==========================
-// Animação de seções ao scroll
-// ==========================
-const sections = document.querySelectorAll("section");
+document.addEventListener("DOMContentLoaded", () => {
+    
+    /* ==========================================================================
+       1. ANIMAÇÕES DE ROLAGEM (SCROLL EFFECT)
+       ========================================================================== */
+    const faders = document.querySelectorAll('.fade-in');
+    const fillBars = document.querySelectorAll('.chart-fill');
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add("visible");
-        }
-    });
-}, { threshold: 0.2 });
+    const appearOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
 
-sections.forEach(section => observer.observe(section));
-
-
-// ==========================
-// Gráfico dos desafios ambientais
-// ==========================
-const ctx = document.getElementById('desafiosChart').getContext('2d');
-
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Poluição Hídrica', 'Desmatamento', 'Degradação do Solo', 'Mudanças Climáticas', 'Desperdício de Recursos'],
-        datasets: [{
-            label: 'Impacto (em índice)',
-            data: [80, 70, 65, 75, 60],
-            backgroundColor: ['#4caf50','#66bb6a','#81c784','#a5d6a7','#c8e6c9']
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: { display: false },
-            title: {
-                display: true,
-                text: 'Principais desafios ambientais no agronegócio'
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            
+            // Ativa o surgimento visual da seção
+            entry.target.classList.add('visible');
+            
+            // Se a seção de dados do agro surgir, dispara o preenchimento dos gráficos
+            if(entry.target.id === 'importancia') {
+                fillBars.forEach(bar => {
+                    bar.style.width = bar.getAttribute('data-width');
+                });
             }
-        }
-    }
-});
+            
+            appearOnScroll.unobserve(entry.target);
+        });
+    }, appearOptions);
 
-
-// ==========================
-// Quiz Interativo
-// ==========================
-const quizData = [
-    {
-        question: "Qual prática ajuda a economizar água na agricultura?",
-        options: ["Plantio direto", "Irrigação inteligente", "Desmatamento", "Uso de agrotóxicos"],
-        answer: "Irrigação inteligente"
-    },
-    {
-        question: "O que é agricultura de precisão?",
-        options: ["Uso de drones e sensores", "Desmatamento controlado", "Queima de resíduos", "Uso de fertilizantes químicos apenas"],
-        answer: "Uso de drones e sensores"
-    },
-    {
-        question: "Qual técnica melhora a fertilidade do solo?",
-        options: ["Rotação de culturas", "Uso excessivo de pesticidas", "Erosão controlada", "Extração mineral"],
-        answer: "Rotação de culturas"
-    }
-];
-
-let currentQuestion = 0;
-
-function loadQuiz(){
-    const quizContainer = document.getElementById("quizContent");
-    quizContainer.innerHTML = "";
-
-    const q = quizData[currentQuestion];
-    const questionEl = document.createElement("h4");
-    questionEl.textContent = q.question;
-    quizContainer.appendChild(questionEl);
-
-    q.options.forEach(option => {
-        const btn = document.createElement("button");
-        btn.textContent = option;
-        btn.classList.add("quiz-option");
-        btn.onclick = () => selectAnswer(btn, option);
-        quizContainer.appendChild(btn);
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
     });
-}
 
-function selectAnswer(btn, selected){
-    const correct = quizData[currentQuestion].answer;
-    const buttons = document.querySelectorAll(".quiz-option");
-    buttons.forEach(b => b.disabled = true);
 
-    if(selected === correct){
-        btn.classList.add("correct");
-    } else {
-        btn.classList.add("incorrect");
-        buttons.forEach(b => {
-            if(b.textContent === correct){
-                b.classList.add("correct");
-            }
+    /* ==========================================================================
+       2. LÓGICA DO QUIZ INTERATIVO
+       ========================================================================== */
+    const quizData = [
+        {
+            question: "Qual tecnologia ajuda a evitar o desperdício aplicando recursos apenas no local necessário?",
+            answers: ["Trator convencional", "Agricultura de Precisão", "Arado manual", "Queimada controlada"],
+            correct: 1
+        },
+        {
+            question: "O que é rotação de culturas?",
+            answers: ["Girar o trator no campo de forma rápida", "Mudar o tipo de planta plantada na mesma área para proteger o solo", "Vender os produtos colhidos em locais diferentes", "Plantar apenas soja continuamente o ano todo"],
+            correct: 1
+        },
+        {
+            question: "Como o agronegócio sustentável contribui para as futuras gerações?",
+            answers: ["Esgotando os recursos de água rapidamente", "Produzindo alimentos em abundância sem destruir o meio ambiente", "Focando exclusivamente no lucro financeiro imediato", "Abandonando o uso de tecnologias ecológicas"],
+            correct: 1
+        }
+    ];
+
+    let currentQuestionIndex = 0;
+
+    const questionText = document.getElementById("question-text");
+    const optionsContainer = document.getElementById("options-container");
+    const nextButton = document.getElementById("next-btn");
+
+    function startQuiz() {
+        currentQuestionIndex = 0;
+        nextButton.innerText = "Próxima Pergunta";
+        nextButton.onclick = moveToNext;
+        showQuestion();
+    }
+
+    function showQuestion() {
+        resetQuizState();
+        let currentQuestion = quizData[currentQuestionIndex];
+        questionText.innerText = currentQuestion.question;
+
+        currentQuestion.answers.forEach((answer, index) => {
+            const button = document.createElement("button");
+            button.innerText = answer;
+            button.classList.add("quiz-option");
+            button.addEventListener("click", () => selectAnswer(index, currentQuestion.correct));
+            optionsContainer.appendChild(button);
         });
     }
 
-    const nextBtn = document.createElement("button");
-    nextBtn.textContent = currentQuestion < quizData.length - 1 ? "Próxima" : "Finalizar Quiz";
-    nextBtn.onclick = () => {
-        currentQuestion++;
-        if(currentQuestion < quizData.length){
-            loadQuiz();
-        } else {
-            document.getElementById("quizContent").innerHTML = "<h4>Parabéns! Você concluiu o quiz.</h4>";
+    function resetQuizState() {
+        nextButton.style.display = "none";
+        while (optionsContainer.firstChild) {
+            optionsContainer.removeChild(optionsContainer.firstChild);
         }
-    };
-    document.getElementById("quizContent").appendChild(nextBtn);
-}
+    }
 
-document.addEventListener("DOMContentLoaded", () => {
-    loadQuiz();
+    function selectAnswer(selectedIndex, correctIndex) {
+        const buttons = optionsContainer.querySelectorAll(".quiz-option");
+        buttons.forEach((button, index) => {
+            button.disabled = true; // Impede novos cliques na mesma pergunta
+            
+            if (index === correctIndex) {
+                button.classList.add("correct"); // Destaca a correta em verde
+            }
+            if (index === selectedIndex && selectedIndex !== correctIndex) {
+                button.classList.add("incorrect"); // Destaca a errada escolhida em vermelho
+            }
+        });
+
+        nextButton.style.display = "block";
+    }
+
+    function moveToNext() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < quizData.length) {
+            showQuestion();
+        } else {
+            questionText.innerText = "Parabéns! Você completou o Quiz do Agrinho 2026 e entendeu a importância do equilíbrio sustentável!";
+            resetQuizState();
+            nextButton.innerText = "Refazer Quiz";
+            nextButton.style.display = "block";
+            nextButton.onclick = startQuiz;
+        }
+    }
+
+    // Inicializa o quiz ao carregar a página
+    if (questionText && optionsContainer && nextButton) {
+        startQuiz();
+    }
 });
