@@ -1,244 +1,169 @@
-// --- MENU MOBILE RESPONSIVO ---
-const mobileMenu = document.getElementById('mobile-menu');
-const navLinks = document.getElementById('nav-links');
+/* --- ROLAGEM E REVELAÇÃO SUAVE (SCROLL REVEAL EFFECT) --- */
+window.addEventListener('scroll', revealElements);
 
-mobileMenu.addEventListener('click', () => {
-    navLinks.classList.toggle('ativo');
-});
+function revealElements() {
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach(element => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 120;
 
-// Fecha o menu ao clicar em qualquer link (melhoria de usabilidade para celular)
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('ativo');
+        if (elementTop < windowHeight - elementVisible) {
+            element.classList.add('active');
+            
+            // Dispara o preenchimento dos gráficos quando o painel fica visível
+            if(element.id === 'dados') {
+                triggerCharts();
+            }
+        }
     });
-});
+}
 
-// --- BANCO DE DADOS DO QUIZ ---
-const dadosQuiz = [
+function triggerCharts() {
+    const fills = document.querySelectorAll('.bar-fill[data-width]');
+    fills.forEach(fill => {
+        fill.style.width = fill.getAttribute('data-width');
+    });
+}
+
+/* --- ALTERNAÇÃO DINÂMICA DE ABAS (TABS LOGIC) --- */
+function switchTab(event, panelId) {
+    const panels = document.querySelectorAll('.tab-panel');
+    const triggers = document.querySelectorAll('.tab-trigger');
+
+    panels.forEach(panel => panel.classList.remove('active'));
+    triggers.forEach(trigger => trigger.classList.remove('active'));
+
+    document.getElementById(panelId).classList.add('active');
+    event.currentTarget.classList.add('active');
+}
+
+/* --- CONTADORES NUMÉRICOS ANIMADOS --- */
+function startCounter(id, start, end, suffix, duration) {
+    let obj = document.getElementById(id);
+    if (!obj) return;
+    let current = start;
+    let range = end - start;
+    let increment = end > start ? 1 : -1;
+    let step = Math.abs(Math.floor(duration / range));
+    step = Math.max(step, 10);
+    
+    let timer = setInterval(() => {
+        current += Math.ceil(range / (duration / 30));
+        if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+            clearInterval(timer);
+            obj.textContent = end + suffix;
+        } else {
+            obj.textContent = current + suffix;
+        }
+    }, 30);
+}
+
+// Inicializadores numéricos disparados pós-carregamento controlado
+setTimeout(() => {
+    startCounter("m1", 0, 18, " Milhões", 2000);
+    startCounter("m2", 0, 40, "%", 2000);
+    startCounter("m3", 0, 520, "+", 2000);
+    revealElements(); // Roda checagem posicional imediata
+}, 300);
+
+/* --- SISTEMA DINÂMICO DO QUIZ --- */
+const quizQuestions = [
     {
-        pergunta: "Qual das alternativas abaixo é um exemplo de tecnologia aplicada ao agro sustentável?",
-        opcoes: [
-            "A) Irrigação contínua sem controle técnico.",
-            "B) Monitoramento por drones para aplicar água e insumos no local exato.",
-            "C) Eliminação completa de toda a vegetação ao redor da plantação."
+        q: "Qual o principal benefício do Sistema de Plantio Direto para o solo rural?",
+        options: [
+            "Expor as camadas profundas ao calor do sol", 
+            "Reduzir a erosão ao manter a cobertura de palhada", 
+            "Aumentar a compactação mecânica", 
+            "Eliminar a necessidade de rotação de culturas"
         ],
-        correta: 1,
-        feedback: "Certinho! O uso de drones ajuda no mapeamento detalhado, evitando desperdício de insumos e água."
+        answer: 1
     },
     {
-        pergunta: "Como o sistema de Plantio Direto ajuda na conservação ambiental?",
-        opcoes: [
-            "A) Revirando a terra profundamente todas as semanas.",
-            "B) Queimando os restos da colheita anterior para limpar o solo.",
-            "C) Mantendo a palhada sobre o solo para protegê-lo da erosão."
+        q: "Como os drones e sensores colaboram para diminuir a contaminação ambiental?",
+        options: [
+            "Aumentando o consumo hídrico geral", 
+            "Modificando geneticamente as sementes em tempo real", 
+            "Permitindo aplicar defensivos agrícolas apenas onde há necessidade real", 
+            "Substituindo completamente o trabalho dos agricultores"
         ],
-        correta: 2,
-        feedback: "Muito bem! A palhada protege a terra contra o impacto da chuva e do vento, mantendo a umidade natural."
+        answer: 2
     },
     {
-        pergunta: "O que significa o termo 'Sucessão Familiar' no contexto do agronegócio?",
-        opcoes: [
-            "A) A continuidade do trabalho na propriedade rural pelas novas gerações da família.",
-            "B) A venda obrigatória da fazenda quando os donos originais ficam idosos.",
-            "C) O abandono total das terras para morar exclusivamente nas grandes cidades."
+        q: "Por que conservar as Matas Ciliares e as cabeceiras das nascentes é obrigatório?",
+        options: [
+            "Para secar os rios mais rápido", 
+            "Para evitar o assoreamento e garantir a pureza das bacias de água", 
+            "Apenas para fins estéticos da fazenda", 
+            "Para impedir a circulação de fauna silvestre"
         ],
-        correta: 0,
-        feedback: "Isso mesmo! A sucessão familiar mantém vivas as tradições do campo com a chegada de novas tecnologias trazidas pelos jovens."
-    },
-    {
-        pergunta: "Qual fonte de energia limpa tem crescido rapidamente nas fazendas para reduzir a pegada de carbono?",
-        opcoes: [
-            "A) Geradores movidos a óleo diesel pesado.",
-            "B) Painéis de energia solar fotovoltaica.",
-            "C) Queima de carvão mineral em caldeiras."
-        ],
-        correta: 1,
-        feedback: "Excelente! A energia solar aproveita o grande espaço aberto do campo para produzir eletricidade 100% limpa."
-    },
-    {
-        pergunta: "Para que serve a 'Rotação de Culturas' praticada pelos produtores?",
-        opcoes: [
-            "A) Alternar os tipos de plantas cultivadas para preservar os nutrientes do solo.",
-            "B) Mudar os tratores de lugar para que trabalhem em círculos.",
-            "C) Plantar a mesma cultura durante 20 anos seguidos sem interrupção."
-        ],
-        correta: 0,
-        feedback: "Exatamente! Alternar plantas (como soja e milho) melhora a fertilidade do solo e quebra naturalmente o ciclo de pragas."
+        answer: 1
     }
 ];
 
-// --- VARIÁVEIS DE ESTADO DO SISTEMA ---
-let indicePerguntaAtual = 0;
-let pontuacao = 0;
-let tempoRestante = 15;
-let cronometroIntervalo;
-const TEMPO_LIMITE = 15;
+let currentQuestionIdx = 0;
+let totalScore = 0;
 
-// --- ELEMENTOS DO DOM ---
-const elementoPergunta = document.getElementById('pergunta-texto');
-const containerOpcoes = document.getElementById('opcoes-container');
-const elementoFeedback = document.getElementById('feedback-texto');
-const elementoPasso = document.getElementById('placar-passo');
-const btnProximo = document.getElementById('btn-proximo');
-const elementoTempo = document.getElementById('tempo-restante');
-const barraTempo = document.getElementById('progresso-tempo');
-const caixaCronometro = document.getElementById('cronometro-box');
+function loadQuestion() {
+    const questionEl = document.getElementById("quiz-question");
+    const optionsEl = document.getElementById("quiz-options");
+    const feedbackEl = document.getElementById("quiz-feedback");
+    const progressEl = document.getElementById("quiz-progress");
 
-// --- TELA INICIAL DO QUIZ (PREPARE-SE) ---
-function carregarTelaInicial() {
-    clearInterval(cronometroIntervalo);
-    caixaCronometro.style.display = "none";
-    barraTempo.style.width = "0%";
-    elementoPasso.innerText = "Prepare-se!";
-    elementoPergunta.innerText = "Pronto para testar seus conhecimentos sobre o Agro Forte e Sustentável?";
-    
-    containerOpcoes.innerHTML = "";
-    elementoFeedback.innerHTML = "Você terá 15 segundos para responder cada pergunta após iniciar.";
-    
-    btnProximo.innerText = "Iniciar Desafio";
-}
+    if (!questionEl || !optionsEl) return;
 
-// --- CONTROLE DE TEMPO (CRONÔMETRO) ---
-function iniciarCronometro() {
-    tempoRestante = TEMPO_LIMITE;
-    elementoTempo.innerText = tempoRestante;
-    barraTempo.style.width = "100%";
-    barraTempo.style.backgroundColor = "var(--verde-destaque)";
-    
-    clearInterval(cronometroIntervalo);
+    feedbackEl.innerText = "";
+    optionsEl.innerHTML = "";
 
-    cronometroIntervalo = setInterval(() => {
-        tempoRestante--;
-        elementoTempo.innerText = tempoRestante;
-        
-        let porcentagem = (tempoRestante / TEMPO_LIMITE) * 100;
-        barraTempo.style.width = `${porcentagem}%`;
+    // Atualiza barra de progresso do jogo
+    let progressPct = (currentQuestionIdx / quizQuestions.length) * 100;
+    progressEl.style.width = `${progressPct}%`;
 
-        // Alerta visual nos últimos 5 segundos
-        if (tempoRestante <= 5) {
-            barraTempo.style.backgroundColor = "var(--vermelho-alerta)";
-        }
+    if (currentQuestionIdx < quizQuestions.length) {
+        let currentItem = quizQuestions[currentQuestionIdx];
+        questionEl.innerText = `${currentQuestionIdx + 1}. ${currentItem.q}`;
 
-        if (tempoRestante <= 0) {
-            clearInterval(cronometroIntervalo);
-            tempoEsgotado();
-        }
-    }, 1000);
-}
-
-// Evento disparado quando o tempo zera sozinho
-function tempoEsgotado() {
-    const respostaCorreta = dadosQuiz[indicePerguntaAtual].correta;
-    const todosBotoes = containerOpcoes.querySelectorAll('.opcao-btn');
-
-    todosBotoes.forEach(btn => btn.disabled = true);
-    todosBotoes[respostaCorreta].classList.add('correta');
-    
-    elementoFeedback.innerHTML = `<span style="color: var(--vermelho-alerta);">⏰ O tempo acabou! A resposta correta foi destacada em verde.</span>`;
-    btnProximo.innerText = "Próxima";
-    btnProximo.style.display = "block";
-}
-
-// --- LOGICA DE EXIBIÇÃO DAS QUESTÕES ---
-function iniciarQuiz() {
-    indicePerguntaAtual = 0;
-    pontuacao = 0;
-    caixaCronometro.style.display = "block";
-    btnProximo.innerText = "Próxima";
-    mostrarPergunta();
-}
-
-function mostrarPergunta() {
-    resetarEstado();
-    let perguntaAtual = dadosQuiz[indicePerguntaAtual];
-    elementoPergunta.innerText = perguntaAtual.pergunta;
-    elementoPasso.innerText = `Pergunta ${indicePerguntaAtual + 1} de ${dadosQuiz.length}`;
-
-    // Monta os botões das alternativas dinamicamente
-    perguntaAtual.opcoes.forEach((opcao, indice) => {
-        const botao = document.createElement('button');
-        botao.innerText = opcao;
-        botao.classList.add('opcao-btn');
-        botao.addEventListener('click', () => selecionarOpcao(botao, indice));
-        containerOpcoes.appendChild(botao);
-    });
-
-    iniciarCronometro();
-}
-
-function resetarEstado() {
-    elementoFeedback.innerText = "";
-    btnProximo.style.display = "none";
-    while (containerOpcoes.firstChild) {
-        containerOpcoes.removeChild(containerOpcoes.firstChild);
-    }
-}
-
-// Validação da escolha do usuário
-function selecionarOpcao(botaoSelecionado, indiceSelecionado) {
-    clearInterval(cronometroIntervalo); // Trava o cronômetro
-    
-    const respostaCorreta = dadosQuiz[indicePerguntaAtual].correta;
-    const todosBotoes = containerOpcoes.querySelectorAll('.opcao-btn');
-
-    todosBotoes.forEach(btn => btn.disabled = true); // Bloqueia novos cliques
-
-    if (indiceSelecionado === respostaCorreta) {
-        botaoSelecionado.classList.add('correta');
-        elementoFeedback.innerHTML = `<span>🎉 ${dadosQuiz[indicePerguntaAtual].feedback}</span>`;
-        pontuacao++;
+        currentItem.options.forEach((opt, idx) => {
+            let btn = document.createElement("button");
+            btn.innerText = opt;
+            btn.classList.add("quiz-btn");
+            btn.addEventListener("click", () => evaluateAnswer(idx, btn));
+            optionsEl.appendChild(btn);
+        });
     } else {
-        botaoSelecionado.classList.add('errada');
-        todosBotoes[respostaCorreta].classList.add('correta'); // Revela a alternativa certa
-        elementoFeedback.innerHTML = `<span style="color: var(--vermelho-alerta);">❌ Ah, quase lá! Veja a explicação correta destacada.</span>`;
-    }
-
-    btnProximo.style.display = "block";
-}
-
-function avancarQuiz() {
-    indicePerguntaAtual++;
-    if (indicePerguntaAtual < dadosQuiz.length) {
-        mostrarPergunta();
-    } else {
-        mostrarResultadoFinal();
+        progressEl.style.width = "100%";
+        questionEl.innerText = "Desafio Concluído com Sucesso!";
+        optionsEl.innerHTML = `<p style='font-size:1.1rem; text-align:center; padding:10px 0;'>Você acertou <strong>${totalScore} de ${quizQuestions.length}</strong> questões.</p>`;
+        feedbackEl.innerText = "Parabéns! Continue defendendo o Equilíbrio Sustentável no Campo!";
+        feedbackEl.style.color = "var(--emerald)";
     }
 }
 
-// --- TELA DE RESULTADO FINAL ---
-function mostrarResultadoFinal() {
-    resetarEstado();
-    clearInterval(cronometroIntervalo);
-    
-    caixaCronometro.style.display = "none";
-    barraTempo.style.width = "0%";
-    
-    elementoPergunta.innerText = "Desafio Concluído!";
-    elementoPasso.innerText = "";
-    
-    let mensagemDesempenho = "";
-    if (pontuacao === dadosQuiz.length) {
-        mensagemDesempenho = "Incrível! Você é um verdadeiro embaixador do agro sustentável! 🌟";
-    } else if (pontuacao >= 3) {
-        mensagemDesempenho = "Muito bom! Você conhece bem o nosso campo. 🌱";
+function evaluateAnswer(selectedIdx, clickedBtn) {
+    const feedbackEl = document.getElementById("quiz-feedback");
+    const allButtons = document.querySelectorAll(".quiz-btn");
+    let correctAnswerIdx = quizQuestions[currentQuestionIdx].answer;
+
+    // Bloqueia cliques adicionais nas outras opções enquanto exibe o resultado
+    allButtons.forEach(b => b.style.pointerEvents = "none");
+
+    if (selectedIdx === correctAnswerIdx) {
+        clickedBtn.classList.add("correct");
+        feedbackEl.innerText = "Excelente! Resposta correta! ✨";
+        feedbackEl.style.color = "var(--emerald)";
+        totalScore++;
     } else {
-        mensagemDesempenho = "Bom esforço! Que tal ler os textos estruturados do site novamente para gabaritar na próxima? 📚";
+        clickedBtn.classList.add("wrong");
+        allButtons[correctAnswerIdx].classList.add("correct");
+        feedbackEl.innerText = "Resposta incorreta. O campo exige atenção! 🔄";
+        feedbackEl.style.color = "var(--earth)";
     }
 
-    elementoFeedback.innerHTML = `Você acertou <strong>${pontuacao}</strong> de <strong>${dadosQuiz.length}</strong> perguntas!<br><br>${mensagemDesempenho}`;
-    
-    btnProximo.innerText = "Refazer Desafio";
-    btnProximo.style.display = "block";
+    currentQuestionIdx++;
+    setTimeout(loadQuestion, 2200);
 }
 
-// --- CONFIGURAÇÃO DE EVENTOS DO BOTÃO PRINCIPAL ---
-btnProximo.addEventListener('click', () => {
-    if (btnProximo.innerText === "Iniciar Desafio" || btnProximo.innerText === "Refazer Desafio") {
-        iniciarQuiz();
-    } else {
-        avancarQuiz();
-    }
+// Iniciar aplicação de quiz após carregamento estrutural completo da árvore DOM
+document.addEventListener("DOMContentLoaded", () => {
+    loadQuestion();
 });
-
-// Inicialização imediata travada na tela de boas-vindas
-carregarTelaInicial();
