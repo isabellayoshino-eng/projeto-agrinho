@@ -3,151 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agro Forte, Futuro Sustentável - Agrinho 2026</title>
+    <title>Quiz Agrinho 2026 - Agro Forte</title>
+    <!-- Vinculação do arquivo CSS externo -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Cabeçalho e Menu -->
-    <header>
-        <div class="logo">🌱 AgroSustentável <span class="agrinho-tag">Agrinho 2026</span></div>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#pilares">Importância</a></li>
-                <li><a href="#desafios">Desafios</a></li>
-                <li><a href="#tecnologia">Tecnologia</a></li>
-                <li><a href="#quiz">Quiz Interativo</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Seção Hero (Início) -->
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1>Agro Forte, Futuro Sustentável</h1>
-            <p>O equilíbrio perfeito entre a alta produtividade no campo e a preservação do meio ambiente para as próximas gerações.</p>
-            <a href="#pilares" class="btn">Explorar Conteúdo</a>
-        </div>
-    </section>
-
-    <!-- Os Pilares do Agronegócio -->
-    <section id="pilares" class="container">
-        <h2 class="section-title">O Motor da Vida e da Economia</h2>
-        <p class="section-subtitle">O agronegócio vai muito além do campo; ele sustenta cidades e impulsiona o desenvolvimento global.</p>
-        
-        <div class="grid-3">
-            <div class="card">
-                <h3>🌾 Produção de Alimentos</h3>
-                <p>Garantia de segurança alimentar para bilhões de pessoas através do cultivo eficiente de grãos, frutas e hortaliças de alta qualidade.</p>
-            </div>
-            <div class="card">
-                <h3>💰 Força Econômica</h3>
-                <p>Geração de milhões de empregos, atração de investimentos e equilíbrio da balança comercial por meio das exportações agrícolas.</p>
-            </div>
-            <div class="card">
-                <h3>🍎 Qualidade de Vida</h3>
-                <p>Acesso a alimentos mais nutritivos, fomento ao desenvolvimento técnico regional e fixação do homem no campo com dignidade.</p>
-            </div>
-        </div>
-
-        <!-- Estatísticas Rápidas -->
-        <div class="stats-banner">
-            <div class="stat-item">
-                <span class="stat-num">10Bi</span>
-                <span class="stat-lbl">População mundial estimada para 2050 a ser alimentada.</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-num">+30%</span>
-                <span class="stat-lbl">Aumento necessário na produção sem expandir novas áreas.</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Desafios Ambientais -->
-    <section id="desafios" class="bg-darker">
-        <div class="container">
-            <h2 class="section-title text-danger">⚠️ Desafios Críticos do Setor</h2>
-            <p class="section-subtitle">Para avançar, precisamos enfrentar as barreiras que ameaçam o clima e os biomas naturais.</p>
+    <div class="quiz-container">
+        <!-- Tela Principal do Quiz -->
+        <div id="quiz-window">
+            <h1>Agrinho 2026 🌾</h1>
+            <p class="subtitle">Tema: Agro Forte, Rio Forte e Sustentável</p>
             
-            <div class="grid-2">
-                <div class="list-box">
-                    <h3>Impactos no Solo e na Água</h3>
-                    <ul>
-                        <li><strong>Poluição Hídrica:</strong> Contaminação de rios pelo uso incorreto de defensivos químicos.</li>
-                        <li><strong>Degradação do Solo:</strong> Erosão provocada pelo manejo inadequado e monocultura repetitiva.</li>
-                        <li><strong>Desperdício de Recursos:</strong> Sistemas de irrigação antigos que gastam mais água do que o necessário.</li>
+            <div id="questions-container">
+                <!-- Pergunta 1 -->
+                <div class="question-card active" data-correct="2">
+                    <p class="question-text">1. Qual das seguintes práticas é fundamental para manter o solo do "Agro Forte" protegido contra a erosão? 🚜</p>
+                    <ul class="options-list">
+                        <li class="option-item" data-index="1">Deixar a terra totalmente descoberta antes da chuva 🏜️</li>
+                        <li class="option-item" data-index="2">Realizar o plantio direto e rotação de culturas 🌱</li>
+                        <li class="option-item" data-index="3">Utilizar queimadas frequentes para limpar o terreno 🔥</li>
+                        <li class="option-item" data-index="4">Abandonar o uso de curvas de nível em áreas de morro ⛰️</li>
                     </ul>
                 </div>
-                <div class="list-box">
-                    <h3>Mudanças e Ecossistemas</h3>
-                    <ul>
-                        <li><strong>Desmatamento:</strong> Abertura ilegal de áreas nativas prejudica a biodiversidade local.</li>
-                        <li><strong>Mudanças Climáticas:</strong> Emissão de gases estufa que desregulam o regime de chuvas.</li>
-                        <li><strong>Perda de Habitat:</strong> Redução da fauna e flora essenciais para a polinização natural.</li>
+
+                <!-- Pergunta 2 -->
+                <div class="question-card" data-correct="1">
+                    <p class="question-text">2. Como a tecnologia digital ajuda a fortalecer a sustentabilidade no campo atualmente? 📱</p>
+                    <ul class="options-list">
+                        <li class="option-item" data-index="1">Otimizando o uso de água e insumos com precisão 💧</li>
+                        <li class="option-item" data-index="2">Aumentando o desperdício de energia nas fazendas ⚡</li>
+                        <li class="option-item" data-index="3">Substituindo completamente o trabalho dos produtores humanos 🤖</li>
+                        <li class="option-item" data-index="4">Isolando as comunidades rurais do restante do país 🗺️</li>
+                    </ul>
+                </div>
+
+                <!-- Pergunta 3 -->
+                <div class="question-card" data-correct="4">
+                    <p class="question-text">3. O que define a preservação das Matas Ciliares nas propriedades do Paraná? 🌳</p>
+                    <ul class="options-list">
+                        <li class="option-item" data-index="1">Reduzir a presença de animais silvestres na região 🦊</li>
+                        <li class="option-item" data-index="2">Eliminar a vegetação perto das estradas rurais 🛣️</li>
+                        <li class="option-item" data-index="3">Permitir a construção de indústrias poluentes na floresta 🏭</li>
+                        <li class="option-item" data-index="4">Proteger as margens dos rios contra o assoreamento 🌊</li>
+                    </ul>
+                </div>
+
+                <!-- Pergunta 4 -->
+                <div class="question-card" data-correct="3">
+                    <p class="question-text">4. Qual é o papel das fontes de energia renovável, como o biogás, no ecossistema Agro Forte? ⚡</p>
+                    <ul class="options-list">
+                        <li class="option-item" data-index="1">Aumentar a dependência de combustíveis fósseis importados 🛢️</li>
+                        <li class="option-item" data-index="2">Poluir o ar e os lençóis freáticos da fazenda 🌫️</li>
+                        <li class="option-item" data-index="3">Transformar resíduos agrícolas em energia limpa e barata 🐷</li>
+                        <li class="option-item" data-index="4">Interromper a produção de alimentos para gerar eletricidade ❌</li>
                     </ul>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Tecnologias e Práticas Sustentáveis -->
-    <section id="tecnologia" class="container">
-        <h2 class="section-title">🛠️ Inovação e Práticas Sustentáveis</h2>
-        <p class="section-subtitle">Descubra como a tecnologia e a ciência transformam problemas em soluções ecológicas.</p>
-
-        <div class="grid-4">
-            <div class="tech-card">
-                <h4>🛸 Drones e Sensores</h4>
-                <p>Mapeamento de pragas e aplicação cirúrgica de insumos, reduzindo o desperdício químico.</p>
-            </div>
-            <div class="tech-card">
-                <h4>💧 Irrigação Inteligente</h4>
-                <p>Sistemas automatizados que liberam a quantidade exata de água baseando-se na umidade do solo.</p>
-            </div>
-            <div class="tech-card">
-                <h4>🌱 Plantio Direto</h4>
-                <p>Cultivo sobre a palha do ano anterior, mantendo a umidade, evitando a erosão e retendo carbono.</p>
-            </div>
-            <div class="tech-card">
-                <h4>🔄 Rotação de Culturas</h4>
-                <p>Alternância de espécies para quebrar o ciclo de pragas e repor nutrientes naturalmente.</p>
+            <div class="footer">
+                <span id="progress-text">Pergunta 1 de 4 📋</span>
+                <button class="btn-next" id="next-btn">Próxima ✨</button>
             </div>
         </div>
 
-        <div class="highlight-box">
-            <h3>☀️ Energia Renovável e Preservação</h3>
-            <p>Propriedades modernas utilizam painéis solares e biogás para autossuficiência energética. Além disso, o cercamento e reflorestamento de <strong>nascentes de água</strong> garantem a segurança hídrica de toda a região circundante.</p>
+        <!-- Tela de Resultados Finais -->
+        <div id="result-window" class="score-board">
+            <h2>Fim do Quiz! 🎉</h2>
+            <p id="final-score" style="font-size: 1.3rem; margin: 20px 0;"></p>
+            <p id="feedback-message"></p>
+            <button class="btn-restart" id="restart-btn">Tentar Novamente 🔄</button>
         </div>
-    </section>
+    </div>
 
-    <!-- Quiz Interativo -->
-    <section id="quiz" class="bg-darker">
-        <div class="container quiz-container">
-            <h2 class="section-title">🧠 Teste Seus Conhecimentos</h2>
-            <p class="section-subtitle">Você está pronto para liderar o futuro do agro sustentável? Descubra agora!</p>
-            
-            <div id="quiz-box">
-                <div id="question-container">
-                    <p id="question-text">Carregando pergunta...</p>
-                    <div id="options-container"></div>
-                </div>
-                <button id="next-btn" class="btn hidden">Próxima Pergunta</button>
-                <div id="result-container" class="hidden">
-                    <h3>Parabéns por concluir!</h3>
-                    <p id="score-text"></p>
-                    <button onclick="restartQuiz()" class="btn">Refazer Quiz</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Rodapé -->
-    <footer>
-        <p>&copy; 2026 Concurso Agrinho. Tema: Agro Forte, Futuro Sustentável.</p>
-        <p>Desenvolvido para inspirar o equilíbrio ecológico e o avanço econômico.</p>
-    </footer>
-
+    <!-- Vinculação do arquivo JavaScript externo -->
     <script src="script.js"></script>
 </body>
 </html>
