@@ -3,82 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agrinho 2026 - Agro Forte</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Agro Forte, Futuro Sustentável - Agrinho 2026</title>
+    <!-- VÍNCULO COM O ARQUIVO CSS -->
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
 
-    <!-- Cabeçalho -->
-    <header class="hero">
-        <div class="logo-text">🌾 AGRINHO 2026</div>
-        <h1>O AGRO É FORTE.<br><span class="highlight">O FUTURO É AGORA.</span></h1>
-        <p>Inovação, sustentabilidade e a força do campo transformando a educação.</p>
-        <a href="#quiz-section" class="btn-main">Iniciar Desafio</a>
+    <header>
+        <div class="logo">🌱 Agro Forte, Futuro Sustentável</div>
+        <nav>
+            <ul>
+                <li><a href="#importancia">Importância</a></li>
+                <li><a href="#desafios">Desafios</a></li>
+                <li><a href="#solucoes">Tecnologia & Soluções</a></li>
+                <li><a href="#quiz">Quiz Interativo</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Pilares Informativos -->
-    <section class="info-section">
-        <h2>O Tema: Agro Forte</h2>
-        <p class="lead-text">O tema de 2026 celebra a evolução tecnológica do agronegócio. É a conexão entre dados, preservação de recursos e inteligência no campo.</p>
-        
-        <div class="grid-pilares">
-            <div class="card">
-                <span class="card-icon">🌱</span>
-                <h3>Sustentabilidade</h3>
-                <p>Práticas conscientes que protegem o solo e garantem o futuro através do manejo correto da água.</p>
-            </div>
-            <div class="card">
-                <span class="card-icon">🚀</span>
-                <h3>Tecnologia</h3>
-                <p>Uso de inteligência artificial, drones e sensores para aumentar a precisão da produção rural.</p>
-            </div>
-            <div class="card">
-                <span class="card-icon">🚜</span>
-                <h3>Sucessão Familiar</h3>
-                <p>A valorização dos jovens, trazendo inovação e liderança para as propriedades agrícolas.</p>
-            </div>
-        </div>
-    </section>
+    <div class="hero">
+        <h1>Equilíbrio entre Produção e Meio Ambiente</h1>
+        <p>Descubra como a união entre a força do agronegócio e o respeito aos recursos naturais garante alimentos na mesa hoje e a preservação do planeta para as futuras gerações.</p>
+    </div>
 
-    <!-- Seção do Quiz Interativo -->
-    <section id="quiz-section" class="quiz-container">
-        <div class="quiz-box">
-            <h2>⚡ Quiz Agro Forte</h2>
-            <p>Teste seus conhecimentos sobre a tecnologia e a sustentabilidade no campo.</p>
+    <div class="container">
+
+        <!-- Seção 1: Importância do Agronegócio -->
+        <section id="importancia" class="animate">
+            <h2>O Motor do Mundo: Alimento e Economia</h2>
+            <p>O agronegócio é uma das atividades mais antigas e vitais da humanidade. Ele vai muito além do cultivo da terra: engloba ciência, tecnologia, logística e distribuição. É o setor responsável por garantir a segurança alimentar global, gerando empregos e sustentando economias inteiras, especialmente em países em desenvolvimento como o Brasil.</p>
             
-            <!-- Tela Inicial -->
-            <div id="start-screen">
-                <div class="quiz-alert">⏳ 15 segundos por pergunta!</div>
-                <button id="start-btn" class="btn-quiz">▶️ Iniciar Quiz</button>
-            </div>
-
-            <!-- Tela de Perguntas (Inicia oculta) -->
-            <div id="question-screen" class="hide">
-                <div class="quiz-header">
-                    <span id="question-number">Pergunta 1 de 3</span>
-                    <span id="timer">⏱️ 15s</span>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>🌾 Produção de Alimentos</h3>
+                    <p>Garante o sustento diário de bilhões de pessoas através de grãos, frutas, vegetais, carnes e laticínios de alta qualidade.</p>
                 </div>
-                <div class="progress-bar"><div id="progress-fill"></div></div>
-                <h3 id="question-text">Carregando pergunta...</h3>
-                <div id="options-container" class="options-grid"></div>
+                <div class="card">
+                    <h3>📈 Força Econômica</h3>
+                    <p>Responsável por movimentar cerca de 1/4 do PIB brasileiro, gerando divisas internacionais e impulsionando o comércio.</p>
+                </div>
+                <div class="card">
+                    <h3>🏡 Qualidade de Vida</h3>
+                    <p>Fixa o homem no campo com dignidade, gera empregos indiretos nas indústrias urbanas e desenvolve as regiões do interior.</p>
+                </div>
             </div>
 
-            <!-- Tela de Resultado (Inicia oculta) -->
-            <div id="result-screen" class="hide">
-                <div class="result-icon">🏆</div>
-                <h3>Quiz Concluído!</h3>
-                <p id="result-text">Você acertou 0 de 3 perguntas.</p>
-                <button id="restart-btn" class="btn-quiz">🔄 Tentar Novamente</button>
+            <div class="chart-container">
+                <h3>Participação Estimada no PIB e Empregos</h3>
+                <p style="font-size: 0.9rem; color: #666;">Dados ilustrativos da representatividade macroeconômica do campo:</p>
+                <div class="bar-chart">
+                    <div class="bar-row">
+                        <div class="bar-label">PIB do Agronegócio</div>
+                        <div class="bar-wrapper"><div class="bar-fill" style="width: 28%;">28%</div></div>
+                    </div>
+                    <div class="bar-row">
+                        <div class="bar-label">Empregos Gerados</div>
+                        <div class="bar-wrapper"><div class="bar-fill" style="width: 33%;">33%</div></div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Rodapé -->
+        <!-- Seção 2: Desafios Ambientais -->
+        <section id="desafios" class="animate">
+            <h2>Os Grandes Desafios do Nosso Século</h2>
+            <p>Apesar de sua relevância, a expansão agrícola sem planejamento traz severas consequências. O grande desafio atual da humanidade é frear os impactos ambientais negativos para que a própria agricultura não destrua as bases ecológicas de que necessita para existir.</p>
+            
+            <div class="grid-3">
+                <div class="card alert-card">
+                    <h3>💧 Poluição Hídrica</h3>
+                    <p>O uso inadequado de defensivos químicos e fertilizantes pode contaminar lençóis freáticos e rios, afetando a fauna aquática e o consumo humano.</p>
+                </div>
+                <div class="card alert-card">
+                    <h3>🌳 Desmatamento</h3>
+                    <p>A derrubada ilegal de florestas nativas destrói a biodiversidade e reduz a umidade natural do ar, essencial para o regime de chuvas.</p>
+                </div>
+                <div class="card alert-card">
+                    <h3>⏳ Degradação do Solo</h3>
+                    <p>O manejo incorreto causa erosão extrema, compactação do solo e perda de nutrientes básicos, tornando grandes áreas inférteis.</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 1.5rem;">
+                <p><strong>💡 Curiosidade Climática:</strong> Você sabia que o desmatamento altera o ciclo dos "Rios Voadores"? Essas massas de ar carregadas de vapor de água produzidas pela Floresta Amazônica são responsáveis por levar as chuvas que abastecem as lavouras do Centro-Oeste, Sudeste e Sul do Brasil. Cuidar da floresta é proteger a própria chuva do agricultor!</p>
+            </div>
+        </section>
+
+        <!-- Seção 3: Tecnologia e Práticas Sustentáveis -->
+        <section id="solucoes" class="animate">
+            <h2>A Revolução Verde: Tecnologia e Manejo Sustentável</h2>
+            <p>Produzir mais em menos espaço: essa é a meta da sustentabilidade no campo. Através da inovação e do resgate de boas práticas agrícolas, o produtor consegue expandir sua produtividade enquanto atua como um verdadeiro guardião da natureza.</p>
+
+            <div class="grid-3">
+                <div class="card">
+                    <h3>🛸 Tecnologia e Inovação</h3>
+                    <p><strong>Drones e Sensores:</strong> Mapeiam pragas em tempo real, permitindo a aplicação localizada de insumos e evitando desperdícios.<br>
+                    <strong>Irrigação Inteligente:</strong> Sistemas controlados por computador que aplicam a quantidade exata de água que a planta precisa, direto na raiz.</p>
+                </div>
+                <div class="card">
+                    <h3>🌱 Manejo Conservacionista</h3>
+                    <p><strong>Plantio Direto:</strong> Cultivo feito sobre os restos da colheita anterior, protegendo o solo contra erosões e mantendo a umidade.<br>
+                    <strong>Rotação de Culturas:</strong> Alternar espécies (como soja e milho) na mesma área para quebrar o ciclo de pragas e repor nutrientes naturalmente.</p>
+                </div>
+                <div class="card">
+                    <h3>⚡ Regeneração e Energia</h3>
+                    <p><strong>Recuperação de Áreas:</strong> Transformação de pastagens degradadas em florestas ou lavouras produtivas.<br>
+                    <strong>Preservação de Nascentes:</strong> Isolamento de fontes de água e reflorestamento de Matas Ciliares para garantir o fluxo hídrico.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 4: Quiz Interativo -->
+        <section id="quiz" class="quiz-container animate">
+            <h2 style="border-bottom-color: var(--primary);">Desafio Agrinho: Teste Seus Conhecimentos!</h2>
+            <p>Será que você assimilou a importância do equilíbrio entre a produção e o meio ambiente? Responda às perguntas abaixo!</p>
+            
+            <div class="quiz-box">
+                <div id="quiz-content">
+                    <h3 id="question-text">Carregando pergunta...</h3>
+                    <div class="quiz-options" id="options-container"></div>
+                    <button class="next-btn" id="next-button" onclick="nextQuestion()">Próxima Pergunta</button>
+                </div>
+                <div id="quiz-result" style="display:none; text-align:center;">
+                    <h3>Parabéns por concluir o teste!</h3>
+                    <p id="score-text" style="font-size: 1.3rem; margin: 1rem 0; font-weight: bold; color: var(--primary);"></p>
+                    <button class="quiz-btn" style="text-align:center; display:inline-block;" onclick="restartQuiz()">Refazer Quiz</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
     <footer>
-        <p>© 2026 Concurso Agrinho - Tema Agro Forte.</p>
-        <p>Desenvolvido sem nenhuma imagem, utilizando apenas código e texto.</p>
+        <p>© 2026 Concurso Agrinho - "Agro Forte, Futuro Sustentável: equilíbrio entre produção e meio ambiente"</p>
     </footer>
 
+    <!-- VÍNCULO COM O ARQUIVO SCRIPT JAVASCRIPT -->
     <script src="script.js"></script>
 </body>
 </html>
