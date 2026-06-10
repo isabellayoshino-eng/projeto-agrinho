@@ -3,80 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Agrinho 2026 - Agro Forte</title>
-    <!-- Vinculação do arquivo CSS externo -->
+    <title>Agrinho 2026 - Agro Forte</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="quiz-container">
-        <!-- Tela Principal do Quiz -->
-        <div id="quiz-window">
-            <h1>Agrinho 2026 🌾</h1>
-            <p class="subtitle">Tema: Agro Forte, Rio Forte e Sustentável</p>
-            
-            <div id="questions-container">
-                <!-- Pergunta 1 -->
-                <div class="question-card active" data-correct="2">
-                    <p class="question-text">1. Qual das seguintes práticas é fundamental para manter o solo do "Agro Forte" protegido contra a erosão? 🚜</p>
-                    <ul class="options-list">
-                        <li class="option-item" data-index="1">Deixar a terra totalmente descoberta antes da chuva 🏜️</li>
-                        <li class="option-item" data-index="2">Realizar o plantio direto e rotação de culturas 🌱</li>
-                        <li class="option-item" data-index="3">Utilizar queimadas frequentes para limpar o terreno 🔥</li>
-                        <li class="option-item" data-index="4">Abandonar o uso de curvas de nível em áreas de morro ⛰️</li>
-                    </ul>
-                </div>
+    <!-- Cabeçalho do Site -->
+    <header class="site-header">
+        <h1>Concurso Agrinho 2026</h1>
+        <p>Plataforma de Estudos: Agro Forte, Rio Forte e Sustentável</p>
+    </header>
 
-                <!-- Pergunta 2 -->
-                <div class="question-card" data-correct="1">
-                    <p class="question-text">2. Como a tecnologia digital ajuda a fortalecer a sustentabilidade no campo atualmente? 📱</p>
-                    <ul class="options-list">
-                        <li class="option-item" data-index="1">Otimizando o uso de água e insumos com precisão 💧</li>
-                        <li class="option-item" data-index="2">Aumentando o desperdício de energia nas fazendas ⚡</li>
-                        <li class="option-item" data-index="3">Substituindo completamente o trabalho dos produtores humanos 🤖</li>
-                        <li class="option-item" data-index="4">Isolando as comunidades rurais do restante do país 🗺️</li>
-                    </ul>
-                </div>
-
-                <!-- Pergunta 3 -->
-                <div class="question-card" data-correct="4">
-                    <p class="question-text">3. O que define a preservação das Matas Ciliares nas propriedades do Paraná? 🌳</p>
-                    <ul class="options-list">
-                        <li class="option-item" data-index="1">Reduzir a presença de animais silvestres na região 🦊</li>
-                        <li class="option-item" data-index="2">Eliminar a vegetação perto das estradas rurais 🛣️</li>
-                        <li class="option-item" data-index="3">Permitir a construção de indústrias poluentes na floresta 🏭</li>
-                        <li class="option-item" data-index="4">Proteger as margens dos rios contra o assoreamento 🌊</li>
-                    </ul>
-                </div>
-
-                <!-- Pergunta 4 -->
-                <div class="question-card" data-correct="3">
-                    <p class="question-text">4. Qual é o papel das fontes de energia renovável, como o biogás, no ecossistema Agro Forte? ⚡</p>
-                    <ul class="options-list">
-                        <li class="option-item" data-index="1">Aumentar a dependência de combustíveis fósseis importados 🛢️</li>
-                        <li class="option-item" data-index="2">Poluir o ar e os lençóis freáticos da fazenda 🌫️</li>
-                        <li class="option-item" data-index="3">Transformar resíduos agrícolas em energia limpa e barata 🐷</li>
-                        <li class="option-item" data-index="4">Interromper a produção de alimentos para gerar eletricidade ❌</li>
-                    </ul>
-                </div>
+    <div class="main-container">
+        <!-- Seção de Conteúdo e Caixas de Informações (Com Emojis) -->
+        <section class="info-section">
+            <div class="info-card">
+                <h3>📢 Sobre o Tema 2026</h3>
+                <p>O tema deste ano destaca a importância de um ecossistema agrícola resiliente. A sustentabilidade e a conservação ambiental andam juntas para garantir a força do nosso campo.</p>
             </div>
 
-            <div class="footer">
-                <span id="progress-text">Pergunta 1 de 4 📋</span>
-                <button class="btn-next" id="next-btn">Próxima ✨</button>
+            <div class="info-card">
+                <h3>💡 Pilares do Agro Forte</h3>
+                <p>Baseia-se no plantio direto, rotação de culturas, uso inteligente de tecnologias digitais e a preservação fundamental das matas ciliares e bacias hidrográficas.</p>
             </div>
-        </div>
 
-        <!-- Tela de Resultados Finais -->
-        <div id="result-window" class="score-board">
-            <h2>Fim do Quiz! 🎉</h2>
-            <p id="final-score" style="font-size: 1.3rem; margin: 20px 0;"></p>
-            <p id="feedback-message"></p>
-            <button class="btn-restart" id="restart-btn">Tentar Novamente 🔄</button>
-        </div>
+            <div class="info-card">
+                <h3>🚀 Preparação para o Concurso</h3>
+                <p>Utilize os materiais oficiais de estudo, revise os conceitos de energias renováveis na fazenda (como o biogás) e teste seus conhecimentos práticos antes de enviar sua redação ou projeto.</p>
+            </div>
+        </section>
+
+        <!-- Seção do Quiz (Sem Emojis no conteúdo do Quiz) -->
+        <section class="quiz-section">
+            <div class="quiz-container">
+                
+                <!-- Tela Inicial com Botão de Iniciar -->
+                <div id="start-window" class="quiz-screen active">
+                    <h2>Quiz Preparatório</h2>
+                    <p class="subtitle">Responda a 4 perguntas exclusivas sobre o tema. Você terá apenas 15 segundos para cada questão!</p>
+                    <button class="btn-action" id="start-btn">Iniciar Quiz</button>
+                </div>
+
+                <!-- Janela de Perguntas -->
+                <div id="quiz-window" class="quiz-screen">
+                    <div class="quiz-header">
+                        <span id="progress-text">Pergunta 1 de 4</span>
+                        <!-- Cronômetro -->
+                        <div id="timer-box">Tempo: <span id="timer-count">15</span>s</div>
+                    </div>
+                    
+                    <div id="questions-container">
+                        <!-- Pergunta 1 -->
+                        <div class="question-card" data-correct="2">
+                            <p class="question-text">1. Qual das seguintes práticas é fundamental para manter o solo do Agro Forte protegido contra a erosão?</p>
+                            <ul class="options-list">
+                                <li class="option-item" data-index="1">Deixar a terra totalmente descoberta antes da chuva</li>
+                                <li class="option-item" data-index="2">Realizar o plantio direto e rotação de culturas</li>
+                                <li class="option-item" data-index="3">Utilizar queimadas frequentes para limpar o terreno</li>
+                                <li class="option-item" data-index="4">Abandonar o uso de curvas de nível em áreas de morro</li>
+                            </ul>
+                        </div>
+
+                        <!-- Pergunta 2 -->
+                        <div class="question-card" data-correct="1">
+                            <p class="question-text">2. Como a tecnologia digital ajuda a fortalecer a sustentabilidade no campo atualmente?</p>
+                            <ul class="options-list">
+                                <li class="option-item" data-index="1">Otimizando o uso de água e insumos com precisão</li>
+                                <li class="option-item" data-index="2">Aumentando o desperdício de energia nas fazendas</li>
+                                <li class="option-item" data-index="3">Substituindo completamente o trabalho dos produtores humanos</li>
+                                <li class="option-item" data-index="4">Isolando as comunidades rurais do restante do país</li>
+                            </ul>
+                        </div>
+
+                        <!-- Pergunta 3 -->
+                        <div class="question-card" data-correct="4">
+                            <p class="question-text">3. O que define a preservação das Matas Ciliares nas propriedades do Paraná?</p>
+                            <ul class="options-list">
+                                <li class="option-item" data-index="1">Reduzir a presença de animais silvestres na região</li>
+                                <li class="option-item" data-index="2">Eliminar a vegetação perto das estradas rurais</li>
+                                <li class="option-item" data-index="3">Permitir a construção de indústrias poluentes na floresta</li>
+                                <li class="option-item" data-index="4">Proteger as margens dos rios contra o assoreamento</li>
+                            </ul>
+                        </div>
+
+                        <!-- Pergunta 4 -->
+                        <div class="question-card" data-correct="3">
+                            <p class="question-text">4. Qual é o papel das fontes de energia renovável, como o biogás, no ecossistema Agro Forte?</p>
+                            <ul class="options-list">
+                                <li class="option-item" data-index="1">Aumentar a dependência de combustíveis fósseis importados</li>
+                                <li class="option-item" data-index="2">Poluir o ar e os lençóis freáticos da fazenda</li>
+                                <li class="option-item" data-index="3">Transformar resíduos agrícolas em energia limpa e barata</li>
+                                <li class="option-item" data-index="4">Interromper a produção de alimentos para gerar eletricidade</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="footer">
+                        <button class="btn-action" id="next-btn" style="display: none;">Próxima</button>
+                    </div>
+                </div>
+
+                <!-- Tela de Resultados -->
+                <div id="result-window" class="quiz-screen score-board">
+                    <h2>Fim do Quiz!</h2>
+                    <p id="final-score"></p>
+                    <p id="feedback-message"></p>
+                    <button class="btn-action" id="restart-btn">Tentar Novamente</button>
+                </div>
+
+            </div>
+        </section>
     </div>
 
-    <!-- Vinculação do arquivo JavaScript externo -->
     <script src="script.js"></script>
 </body>
 </html>
