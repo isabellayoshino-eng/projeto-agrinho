@@ -1,9 +1,9 @@
-// Gerenciamento de Telas
+// Capturas de estado e telas do módulo de Simulado
 const startWindow = document.getElementById('start-window');
 const quizWindow = document.getElementById('quiz-window');
 const resultWindow = document.getElementById('result-window');
 
-// Botões e Indicadores
+// Controladores de Interface
 const startButton = document.getElementById('start-btn');
 const nextButton = document.getElementById('next-btn');
 const restartButton = document.getElementById('restart-btn');
@@ -21,25 +21,25 @@ let timeLeft = 15;
 let timerInterval = null;
 const totalQuestions = questionCards.length;
 
-// Evento: Iniciar o Quiz
+// Ação: Disparar início do Simulado
 startButton.addEventListener('click', () => {
     startWindow.classList.remove('active');
     quizWindow.classList.add('active');
-    showQuestion(0);
+    loadQuestion(0);
 });
 
-// Inicialização dos cliques nas alternativas
-function setupOptions() {
+// Vincula o tratamento de clique às opções de resposta
+function initializeQuizLogic() {
     questionCards.forEach((card) => {
         const options = card.querySelectorAll('.option-item');
         const correctAnswer = card.getAttribute('data-correct');
 
         options.forEach((option) => {
             option.addEventListener('click', () => {
-                clearInterval(timerInterval); // Para o tempo imediatamente ao responder
-                const selectedAnswer = option.getAttribute('data-index');
+                clearInterval(timerInterval); // Trava o tempo imediatamente após a resposta
+                const selected = option.getAttribute('data-index');
                 
-                if (selectedAnswer === correctAnswer) {
+                if (selected === correctAnswer) {
                     option.classList.add('correct');
                     totalScore++;
                 } else {
@@ -47,30 +47,28 @@ function setupOptions() {
                     card.querySelector(`[data-index="${correctAnswer}"]`).classList.add('correct');
                 }
 
-                disableOptions(card);
+                lockOptions(card);
                 nextButton.style.display = 'block';
             });
         });
     });
 }
 
-// Controla a exibição e reinicia o cronômetro da pergunta específica
-function showQuestion(index) {
+// Renderiza a pergunta atual e ativa o contador correspondente
+function loadQuestion(index) {
     questionCards.forEach(card => card.classList.remove('active'));
     questionCards[index].classList.add('active');
     
     progressText.textContent = `Pergunta ${index + 1} de ${totalQuestions}`;
     nextButton.style.display = 'none';
     
-    startTimer();
+    runCountdown();
 }
 
-// Lógica do Cronômetro de 15 segundos com mudança de classes CSS
-function startTimer() {
+// Gerenciamento visual do cronômetro de 15s por pergunta
+function runCountdown() {
     timeLeft = 15;
     timerCount.textContent = timeLeft;
-    
-    // Configuração de cor padrão inicial
     timerBox.className = 'timer-normal';
     clearInterval(timerInterval);
 
@@ -78,67 +76,67 @@ function startTimer() {
         timeLeft--;
         timerCount.textContent = timeLeft;
 
-        // Atualização dinâmica de classes baseado nos segundos restantes
+        // Controle dinâmico das classes de cor com base nos limites críticos
         if (timeLeft <= 8 && timeLeft > 4) {
-            timerBox.className = 'timer-warning';
+            timerBox.className = 'timer-warn';
         } else if (timeLeft <= 4) {
-            timerBox.className = 'timer-danger';
+            timerBox.className = 'timer-crit';
         }
 
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            handleTimeOut();
+            expireTime();
         }
     }, 1000);
 }
 
-// Ação quando o tempo esgota
-function handleTimeOut() {
+// Evento disparado caso o cronômetro chegue a zero
+function expireTime() {
     const currentCard = questionCards[currentQuestionIndex];
     const correctAnswer = currentCard.getAttribute('data-correct');
     
-    // Revela a resposta correta em verde
+    // Identifica e marca o acerto correto em verde sem somar ponto
     currentCard.querySelector(`[data-index="${correctAnswer}"]`).classList.add('correct');
     
-    disableOptions(currentCard);
+    lockOptions(currentCard);
     nextButton.style.display = 'block';
 }
 
-// Bloqueia interações após escolha ou estouro do tempo
-function disableOptions(card) {
+// Bloqueia cliques adicionais no bloco de questões atual
+function lockOptions(card) {
     const options = card.querySelectorAll('.option-item');
     options.forEach(opt => opt.classList.add('disabled'));
 }
 
-// Avançar ou Concluir
+// Transição sequencial entre questões
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++;
 
     if (currentQuestionIndex < totalQuestions) {
-        showQuestion(currentQuestionIndex);
+        loadQuestion(currentQuestionIndex);
     } else {
         clearInterval(timerInterval);
-        showResults();
+        displayScoreboard();
     }
 });
 
-// Exibe a tela de pontuação
-function showResults() {
+// Gera o balanço final de aproveitamento dentro do módulo
+function displayScoreboard() {
     quizWindow.classList.remove('active');
     resultWindow.classList.add('active');
     
     finalScoreText.textContent = `Você acertou ${totalScore} de ${totalQuestions} perguntas.`;
     
     if (totalScore === totalQuestions) {
-        feedbackMessage.textContent = "Excelente aproveitamento! Seu conhecimento sobre o Agro Forte é exemplar.";
+        feedbackMessage.textContent = "Excelente! Seu domínio sobre as diretrizes do Agro Forte está completo.";
     } else if (totalScore >= 2) {
-        feedbackMessage.textContent = "Bom resultado! Você possui uma base sólida sobre o desenvolvimento sustentável.";
+        feedbackMessage.textContent = "Bom desempenho! Sua base teórica sobre preservação e campo é sólida.";
     } else {
-        feedbackMessage.textContent = "Continue revisando os materiais informativos do campo para aprimorar seus conhecimentos.";
+        feedbackMessage.textContent = "Recomendamos ler com mais atenção os blocos informativos laterais antes de tentar novamente.";
     }
 }
 
-// Reinicia todas as variáveis e limpa modificações visuais
+// Executa o recarregamento completo do simulado para nova tentativa
 restartButton.addEventListener('click', () => {
     currentQuestionIndex = 0;
     totalScore = 0;
@@ -151,8 +149,8 @@ restartButton.addEventListener('click', () => {
 
     resultWindow.classList.remove('active');
     quizWindow.classList.add('active');
-    showQuestion(0);
+    loadQuestion(0);
 });
 
-// Inicializa escopo do quiz ao carregar o arquivo
-setupOptions();
+// Acionamento inicial da lógica estrutural
+initializeQuizLogic();
