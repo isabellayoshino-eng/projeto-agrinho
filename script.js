@@ -1,100 +1,85 @@
-// Banco de dados das perguntas com temas do Agrinho 2026
 const quizData = [
     {
-        question: "🚜 Qual tecnologia ajuda a monitorar plantações inteiras voando e gerando dados precisos?",
-        options: ["📱 Aplicativos de redes sociais", "🛸 Drones agrícolas com sensores", "📻 Rádios comunitárias do campo"],
+        question: "Qual técnica consiste em plantar uma nova cultura sobre a palhada da colheita anterior sem revolver o solo?",
+        options: [
+            "Aração profunda",
+            "Plantio Direto",
+            "Queimada controlada",
+            "Monocultura contínua"
+        ],
         correct: 1
     },
     {
-        question: "🌱 O que caracteriza a agricultura sustentável no tema Agro Forte?",
-        options: ["💧 Preservar o solo e usar a água de forma inteligente", "🪓 Expandir sem planejamento ambiental", "⏳ Deixar de produzir alimentos para descansar"],
-        correct: 0
+        question: "Como os drones auxiliam na sustentabilidade do agronegócio?",
+        options: [
+            "Substituindo completamente a necessidade de água",
+            "Mapeando lavouras para aplicar insumos apenas onde há necessidade real",
+            "Acelerando o crescimento das plantas por magnetismo",
+            "Eles não possuem utilidade ecológica"
+        ],
+        correct: 1
     },
     {
-        question: "🚀 Qual é o principal objetivo do concurso Agrinho 2026?",
-        options: ["🏙️ Incentivar a mudança em massa para a cidade grande", "💡 Conectar inovação, educação e a força do campo", "💵 Avaliar apenas lucros financeiros imediatos"],
+        question: "O que são as chamadas Matas Ciliares?",
+        options: [
+            "Florestas plantadas para a extração de madeira",
+            "Vegetação nativa que fica às margens de rios e nascentes, protegendo-os da erosão",
+            "Plantações de grãos geneticamente modificados",
+            "Áreas desérticas sem vegetação"
+        ],
         correct: 1
     }
 ];
 
 let currentQuestionIndex = 0;
 let score = 0;
-let timerInterval;
-let timeLeft = 15;
 
-// Mapeamento de Elementos do DOM
-const startScreen = document.getElementById("start-screen");
-const questionScreen = document.getElementById("question-screen");
-const resultScreen = document.getElementById("result-screen");
-const startBtn = document.getElementById("start-btn");
-const restartBtn = document.getElementById("restart-btn");
-const questionText = document.getElementById("question-text");
+const questionTextElement = document.getElementById("question-text");
 const optionsContainer = document.getElementById("options-container");
-const questionNumberText = document.getElementById("question-number");
-const timerText = document.getElementById("timer");
-const progressFill = document.getElementById("progress-fill");
-const resultText = document.getElementById("result-text");
+const nextButton = document.getElementById("next-button");
+const quizContent = document.getElementById("quiz-content");
+const quizResult = document.getElementById("quiz-result");
+const scoreText = document.getElementById("score-text");
 
-// Evento: Iniciar o Quiz (O Cronômetro só começa AQUI)
-startBtn.addEventListener("click", () => {
-    startScreen.classList.add("hide");
-    questionScreen.classList.remove("hide");
-    loadQuestion();
-});
-
-// Evento: Reiniciar
-restartBtn.addEventListener("click", () => {
-    resultScreen.classList.add("hide");
-    startScreen.classList.remove("hide");
-    currentQuestionIndex = 0;
-    score = 0;
-});
-
-// Carregar pergunta na tela e disparar cronômetro específico dela
 function loadQuestion() {
-    clearInterval(timerInterval);
-    timeLeft = 15;
-    timerText.textContent = `⏱️ ${timeLeft}s`;
-    
-    const currentQuestion = quizData[currentQuestionIndex];
-    
-    // Atualiza cabeçalhos de progresso
-    questionNumberText.textContent = `Pergunta ${currentQuestionIndex + 1} de ${quizData.length}`;
-    progressFill.style.width = `${((currentQuestionIndex) / quizData.length) * 100}%`;
-    questionText.textContent = currentQuestion.question;
-    
-    // Limpa opções antigas e desenha novas caixas com emojis
-    optionsContainer.innerHTML = "";
+    resetState();
+    let currentQuestion = quizData[currentQuestionIndex];
+    questionTextElement.innerText = `${currentQuestionIndex + 1}. ${currentQuestion.question}`;
+
     currentQuestion.options.forEach((option, index) => {
         const button = document.createElement("button");
-        button.classList.add("option-btn");
-        button.textContent = option;
-        button.addEventListener("click", () => selectOption(index));
+        button.innerText = option;
+        button.classList.add("quiz-btn");
+        button.addEventListener("click", () => selectOption(button, index));
         optionsContainer.appendChild(button);
     });
-
-    // Inicia a contagem regressiva apenas após renderizar a pergunta ativa
-    startTimer();
 }
 
-function startTimer() {
-    timerInterval = setInterval(() => {
-        timeLeft--;
-        timerText.textContent = `⏱️ ${timeLeft}s`;
-        
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            nextQuestion(); // Avança automaticamente se o tempo esgotar
-        }
-    }, 1000);
-}
-
-function selectOption(selectedIndex) {
-    clearInterval(timerInterval);
-    if (selectedIndex === quizData[currentQuestionIndex].correct) {
-        score++;
+function resetState() {
+    nextButton.style.display = "none";
+    while (optionsContainer.firstChild) {
+        optionsContainer.removeChild(optionsContainer.firstChild);
     }
-    nextQuestion();
+}
+
+function selectOption(selectedBtn, index) {
+    const correctAnswerIndex = quizData[currentQuestionIndex].correct;
+    const allButtons = optionsContainer.querySelectorAll(".quiz-btn");
+
+    allButtons.forEach((btn, btnIndex) => {
+        btn.disabled = true;
+        if (btnIndex === correctAnswerIndex) {
+            btn.classList.add("correct");
+        }
+    });
+
+    if (index === correctAnswerIndex) {
+        score++;
+    } else {
+        selectedBtn.classList.add("wrong");
+    }
+
+    nextButton.style.display = "block";
 }
 
 function nextQuestion() {
@@ -107,8 +92,17 @@ function nextQuestion() {
 }
 
 function showResults() {
-    questionScreen.classList.add("hide");
-    resultScreen.classList.remove("hide");
-    progressFill.style.width = "100%";
-    resultText.innerHTML = `Você acertou <strong>${score}</strong> de <strong>${quizData.length}</strong> perguntas.<br><br> ${score === quizData.length ? "🟢 Excelente! Seu projeto vai ser nota 10!" : "🟡 Bom trabalho! Revise os tópicos para ficar ainda mais forte!"}`;
+    quizContent.style.display = "none";
+    quizResult.style.display = "block";
+    scoreText.innerText = `Você acertou ${score} de ${quizData.length} perguntas!`;
 }
+
+function restartQuiz() {
+    currentQuestionIndex = 0;
+    score = 0;
+    quizResult.style.display = "none";
+    quizContent.style.display = "block";
+    loadQuestion();
+}
+
+window.onload = loadQuestion;
