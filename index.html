@@ -8,64 +8,62 @@
 </head>
 <body>
 
-    <!-- Cabeçalho Principal -->
+    <!-- Cabeçalho -->
     <header class="hero">
-        <div class="logo-text">🌾 Agrinho 2026</div>
-        <h1>O AGRO É FORTE,<br><span class="highlight">O FUTURO É AGORA</span></h1>
+        <div class="logo-text">🌾 AGRINHO 2026</div>
+        <h1>O AGRO É FORTE.<br><span class="highlight">O FUTURO É AGORA.</span></h1>
         <p>Inovação, sustentabilidade e a força do campo transformando a educação.</p>
-        <a href="#quiz-section" class="btn-main">Testar Conhecimentos</a>
+        <a href="#quiz-section" class="btn-main">Iniciar Desafio</a>
     </header>
 
-    <!-- Seção Sobre o Tema -->
-    <section id="sobre" class="info-section">
+    <!-- Pilares Informativos -->
+    <section class="info-section">
         <h2>O Tema: Agro Forte</h2>
-        <p class="lead-text">O tema de 2026 celebra a resiliência e a evolução tecnológica do agronegócio. Não se trata apenas de plantar, mas de conectar dados, preservar recursos e alimentar o planeta de forma inteligente.</p>
+        <p class="lead-text">O tema de 2026 celebra a evolução tecnológica do agronegócio. É a conexão entre dados, preservação de recursos e inteligência no campo.</p>
         
         <div class="grid-pilares">
             <div class="card">
                 <span class="card-icon">🌱</span>
                 <h3>Sustentabilidade</h3>
-                <p>Práticas agrícolas que protegem o solo, economizam água e garantem o futuro das próximas gerações através do manejo consciente.</p>
+                <p>Práticas conscientes que protegem o solo e garantem o futuro através do manejo correto da água.</p>
             </div>
             <div class="card">
                 <span class="card-icon">🚀</span>
-                <h3>Tecnologia no Campo</h3>
-                <p>O uso de drones, inteligência artificial e sensores de precisão que aumentam a produtividade e reduzem o desperdício.</p>
+                <h3>Tecnologia</h3>
+                <p>Uso de inteligência artificial, drones e sensores para aumentar a precisão da produção rural.</p>
             </div>
             <div class="card">
                 <span class="card-icon">🚜</span>
                 <h3>Sucessão Familiar</h3>
-                <p>A valorização do jovem no campo, trazendo novas ideias e modernização para as propriedades rurais tradicionais.</p>
+                <p>A valorização dos jovens, trazendo inovação e liderança para as propriedades agrícolas.</p>
             </div>
         </div>
     </section>
 
-    <!-- Seção do Quiz Interativo (Tema Escuro) -->
+    <!-- Seção do Quiz Interativo -->
     <section id="quiz-section" class="quiz-container">
         <div class="quiz-box">
-            <h2>⚡ Desafio Agro Forte 2026</h2>
-            <p>Mostre que você entende tudo sobre a força da agricultura moderna e sustentável.</p>
+            <h2>⚡ Quiz Agro Forte</h2>
+            <p>Teste seus conhecimentos sobre a tecnologia e a sustentabilidade no campo.</p>
             
-            <!-- Tela Inicial do Quiz -->
+            <!-- Tela Inicial -->
             <div id="start-screen">
-                <div class="quiz-alert">⏳ Cada pergunta tem um tempo de 15 segundos!</div>
+                <div class="quiz-alert">⏳ 15 segundos por pergunta!</div>
                 <button id="start-btn" class="btn-quiz">▶️ Iniciar Quiz</button>
             </div>
 
-            <!-- Tela de Perguntas (Escondida Inicialmente) -->
+            <!-- Tela de Perguntas (Inicia oculta) -->
             <div id="question-screen" class="hide">
                 <div class="quiz-header">
                     <span id="question-number">Pergunta 1 de 3</span>
                     <span id="timer">⏱️ 15s</span>
                 </div>
                 <div class="progress-bar"><div id="progress-fill"></div></div>
-                <h3 id="question-text">Texto da Pergunta aqui?</h3>
-                <div id="options-container" class="options-grid">
-                    <!-- As opções serão geradas pelo JavaScript -->
-                </div>
+                <h3 id="question-text">Carregando pergunta...</h3>
+                <div id="options-container" class="options-grid"></div>
             </div>
 
-            <!-- Tela de Resultado (Escondida Inicialmente) -->
+            <!-- Tela de Resultado (Inicia oculta) -->
             <div id="result-screen" class="hide">
                 <div class="result-icon">🏆</div>
                 <h3>Quiz Concluído!</h3>
@@ -77,11 +75,10 @@
 
     <!-- Rodapé -->
     <footer>
-        <p>© 2026 Concurso Agrinho - Projeto Criativo Agro Forte.</p>
-        <p>Desenvolvido exclusivamente com códigos, emojis e tipografia.</p>
+        <p>© 2026 Concurso Agrinho - Tema Agro Forte.</p>
+        <p>Desenvolvido sem nenhuma imagem, utilizando apenas código e texto.</p>
     </footer>
 
-    <!-- Script do funcionamento do Quiz -->
     <script src="script.js"></script>
 </body>
 </html>
