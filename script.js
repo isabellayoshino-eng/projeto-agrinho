@@ -1,116 +1,96 @@
-// Banco de Dados das Perguntas do Quiz
-const quizData = [
-    {
-        question: "Qual das práticas abaixo ajuda a reter o carbono no solo e evitar a erosão hídrica?",
-        options: [
-            "Queimada controlada",
-            "Plantio Direto sobre a palha",
-            "Uso intensivo de arado comum",
-            "Irrigação por inundação contínua"
-        ],
-        correct: 1
-    },
-    {
-        question: "De que maneira os drones auxiliam diretamente na preservação ambiental no campo?",
-        options: [
-            "Substituindo tratores nas colheitas pesadas",
-            "Espantando aves migratórias das plantações",
-            "Mapeando pragas para aplicar insumos apenas onde é necessário",
-            "Produzindo chuva artificial em tempos de seca extrema"
-        ],
-        correct: 2
-    },
-    {
-        question: "Qual o principal objetivo da rotação de culturas?",
-        options: [
-            "Mudar os maquinários de lugar a cada safra",
-            "Alternar espécies para quebrar ciclos de pragas e nutrir o solo",
-            "Vender produtos apenas para o mercado internacional",
-            "Acelerar o crescimento das plantas usando luz artificial"
-        ],
-        correct: 1
-    }
-];
+// Seleção de elementos da interface
+const questionCards = document.querySelectorAll('.question-card');
+const nextButton = document.getElementById('next-btn');
+const progressText = document.getElementById('progress-text');
+const quizWindow = document.getElementById('quiz-window');
+const resultWindow = document.getElementById('result-window');
+const finalScoreText = document.getElementById('final-score');
+const feedbackMessage = document.getElementById('feedback-message');
+const restartButton = document.getElementById('restart-btn');
 
 let currentQuestionIndex = 0;
-let score = 0;
+let totalScore = 0;
+const totalQuestions = questionCards.length;
 
-// Elementos da Interface
-const questionText = document.getElementById("question-text");
-const optionsContainer = document.getElementById("options-container");
-const nextButton = document.getElementById("next-btn");
-const resultContainer = document.getElementById("result-container");
-const scoreText = document.getElementById("score-text");
-const questionContainer = document.getElementById("question-container");
+// Configuração inicial do sistema de respostas
+function setupOptions() {
+    questionCards.forEach((card) => {
+        const options = card.querySelectorAll('.option-item');
+        const correctAnswer = card.getAttribute('data-correct');
 
-// Inicialização do Quiz
-function startQuiz() {
-    currentQuestionIndex = 0;
-    score = 0;
-    resultContainer.classList.add("hidden");
-    questionContainer.classList.remove("hidden");
-    nextButton.classList.add("hidden");
-    showQuestion();
-}
+        options.forEach((option) => {
+            option.addEventListener('click', () => {
+                const selectedAnswer = option.getAttribute('data-index');
+                
+                // Sistema de cores (verde para acerto, vermelho para erro)
+                if (selectedAnswer === correctAnswer) {
+                    option.classList.add('correct');
+                    totalScore++;
+                } else {
+                    option.classList.add('wrong');
+                    // Revela a alternativa certa para o aluno aprender
+                    card.querySelector(`[data-index="${correctAnswer}"]`).classList.add('correct');
+                }
 
-function showQuestion() {
-    resetOptions();
-    let currentQuestion = quizData[currentQuestionIndex];
-    questionText.innerText = `${currentQuestionIndex + 1}. ${currentQuestion.question}`;
-
-    currentQuestion.options.forEach((option, index) => {
-        const button = document.createElement("button");
-        button.innerText = option;
-        button.classList.add("option-btn");
-        button.addEventListener("click", () => selectOption(button, index));
-        optionsContainer.appendChild(button);
+                // Desativa as outras opções para impedir múltiplos cliques
+                options.forEach(opt => opt.classList.add('disabled'));
+                
+                // Exibe o botão para avançar
+                nextButton.style.display = 'block';
+            });
+        });
     });
 }
 
-function resetOptions() {
-    while (optionsContainer.firstChild) {
-        optionsContainer.removeChild(optionsContainer.firstChild);
-    }
-}
-
-function selectOption(selectedButton, index) {
-    const correctAnswer = quizData[currentQuestionIndex].correct;
-    const allButtons = optionsContainer.querySelectorAll(".option-btn");
-
-    // Desabilita cliques repetidos
-    allButtons.forEach(btn => btn.disabled = true);
-
-    if (index === correctAnswer) {
-        selectedButton.classList.add("correct");
-        score++;
-    } else {
-        selectedButton.classList.add("wrong");
-        allButtons[correctAnswer].classList.add("correct"); // Mostra a certa
-    }
-
-    nextButton.classList.remove("hidden");
-}
-
-nextButton.addEventListener("click", () => {
+// Avança para a próxima pergunta ou encerra o quiz
+nextButton.addEventListener('click', () => {
+    questionCards[currentQuestionIndex].classList.remove('active');
     currentQuestionIndex++;
-    if (currentQuestionIndex < quizData.length) {
-        nextButton.classList.add("hidden");
-        showQuestion();
+
+    if (currentQuestionIndex < totalQuestions) {
+        questionCards[currentQuestionIndex].classList.add('active');
+        progressText.textContent = `Pergunta ${currentQuestionIndex + 1} de ${totalQuestions} 📋`;
+        nextButton.style.display = 'none';
     } else {
         showResults();
     }
 });
 
+// Processa e apresenta a pontuação final
 function showResults() {
-    questionContainer.classList.add("hidden");
-    nextButton.classList.add("hidden");
-    resultContainer.classList.remove("hidden");
-    scoreText.innerText = `Você acertou ${score} de ${quizData.length} perguntas sobre o agro sustentável!`;
+    quizWindow.style.display = 'none';
+    resultWindow.style.display = 'block';
+    finalScoreText.textContent = `Você acertou ${totalScore} de ${totalQuestions} perguntas! 🎯`;
+    
+    if (totalScore === totalQuestions) {
+        feedbackMessage.textContent = "Excelente! Você conhece tudo sobre o Agro Forte! 🥇🏆";
+    } else if (totalScore >= 2) {
+        feedbackMessage.textContent = "Bom trabalho! O agro sustenta o nosso futuro. 🌱👍";
+    } else {
+        feedbackMessage.textContent = "Continue estudando sobre o campo para fortalecer o nosso agro! 📚🚜";
+    }
 }
 
-function restartQuiz() {
-    startQuiz();
-}
+// Reseta o estado do quiz para reiniciar
+restartButton.addEventListener('click', () => {
+    currentQuestionIndex = 0;
+    totalScore = 0;
+    
+    questionCards.forEach((card, index) => {
+        card.classList.remove('active');
+        if(index === 0) card.classList.add('active');
+        
+        const options = card.querySelectorAll('.option-item');
+        options.forEach((option) => {
+            option.classList.remove('correct', 'wrong', 'disabled');
+        });
+    });
 
-// Executa o quiz ao carregar a página
-window.onload = startQuiz;
+    progressText.textContent = `Pergunta 1 de ${totalQuestions} 📋`;
+    nextButton.style.display = 'none';
+    resultWindow.style.display = 'none';
+    quizWindow.style.display = 'block';
+});
+
+// Inicialização imediata do script
+setupOptions();
