@@ -3,58 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agrinho 2026 - Agro Forte</title>
+    <title>Portal Agrinho 2026 - Agro Forte</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Cabeçalho do Site -->
-    <header class="site-header">
-        <h1>Concurso Agrinho 2026</h1>
-        <p>Plataforma de Estudos: Agro Forte, Rio Forte e Sustentável</p>
+    <!-- Barra de Navegação Superior do Portal -->
+    <nav class="navbar">
+        <div class="nav-logo">Agrinho 2026 🎓</div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#conteudo">Conteúdo de Estudo</a></li>
+            <li><a href="#simulado">Simulado Cronometrado</a></li>
+        </ul>
+    </nav>
+
+    <!-- Cabeçalho Principal -->
+    <header id="inicio" class="hero-header">
+        <h1>Plataforma de Estudos Agrinho 2026</h1>
+        <p>Prepare-se para o maior concurso de sustentabilidade e inovação do campo</p>
     </header>
 
-    <div class="main-container">
-        <!-- Seção de Conteúdo e Caixas de Informações (Com Emojis) -->
-        <section class="info-section">
-            <div class="info-card">
-                <h3>📢 Sobre o Tema 2026</h3>
-                <p>O tema deste ano destaca a importância de um ecossistema agrícola resiliente. A sustentabilidade e a conservação ambiental andam juntas para garantir a força do nosso campo.</p>
-            </div>
+    <!-- Área Principal do Site -->
+    <main class="site-layout">
+        
+        <!-- COLUNA ESQUERDA: Portal de Informações e Conteúdos (Com Emojis) -->
+        <section id="conteudo" class="content-column">
+            
+            <article class="info-block">
+                <h2>📢 Diretrizes do Tema: Agro Forte, Rio Forte</h2>
+                <p>O foco central da edição 2026 busca conectar as práticas agrícolas de alta produtividade com a conservação das bacias hidrográficas. Ser uma fazenda sustentável significa garantir a segurança hídrica para toda a região.</p>
+            </article>
 
-            <div class="info-card">
-                <h3>💡 Pilares do Agro Forte</h3>
-                <p>Baseia-se no plantio direto, rotação de culturas, uso inteligente de tecnologias digitais e a preservação fundamental das matas ciliares e bacias hidrográficas.</p>
-            </div>
-
-            <div class="info-card">
-                <h3>📝 Dicas para a Redação</h3>
-                <p>Ao escrever seu texto, conecte as ações locais do produtor rural com os impactos globais de preservação. Argumente sobre como a tecnologia auxilia na economia de recursos hídricos.</p>
-            </div>
-
-            <div class="info-card">
-                <h3>🚀 Preparação para o Concurso</h3>
-                <p>Utilize os materiais oficiais de estudo, revise os conceitos de energias renováveis na fazenda (como o biogás) e teste seus conhecimentos práticos antes de enviar sua redação ou projeto.</p>
-            </div>
-        </section>
-
-        <!-- Seção do Quiz (Sem Emojis no conteúdo do Quiz) -->
-        <section class="quiz-section">
-            <div class="quiz-container">
-                
-                <!-- Tela Inicial com Botão de Iniciar -->
-                <div id="start-window" class="quiz-screen active">
-                    <h2>Quiz Preparatório</h2>
-                    <p class="subtitle">Responda a 4 perguntas exclusivas sobre o tema. Você terá apenas 15 segundos para cada questão!</p>
-                    <button class="btn-action" id="start-btn">Iniciar Quiz</button>
+            <div class="grid-info">
+                <div class="info-card">
+                    <h3>🌱 Manejo de Solo</h3>
+                    <p>O plantio direto na palha evita que as primeiras chuvas lavem a camada fértil da terra, reduzindo a compactação e permitindo que a água infiltre melhor.</p>
                 </div>
 
-                <!-- Janela de Perguntas -->
+                <div class="info-card">
+                    <h3>💧 Matas Ciliares</h3>
+                    <p>A vegetação nas margens dos rios funciona como um filtro biológico natural. Ela impede o assoreamento e protege as encostas contra desmoronamentos.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>🚜 Inovação Digital</h3>
+                    <p>O uso de sensores e drones monitora a umidade e a saúde da lavoura, garantindo que o produtor aplique insumos apenas onde é estritamente necessário.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>⚡ Energia Limpa</h3>
+                    <p>A transformação de dejetos animais e restos de colheitas em biogás gera autonomia energética, reduz custos e neutraliza a emissão de gases poluentes.</p>
+                </div>
+            </div>
+
+            <article class="info-block technical-note">
+                <h3>📝 Estrutura Recomendada para a Redação</h3>
+                <p>Para construir um texto competitivo, apresente o cenário atual do campo, mostre o papel ativo da tecnologia aplicada à ecologia e conclua com soluções aplicáveis para o dia a dia do produtor rural do Paraná.</p>
+            </article>
+
+        </section>
+
+        <!-- COLUNA DIREITA: Módulo do Quiz Integrado (Sem Emojis no conteúdo interno) -->
+        <aside id="simulado" class="sidebar-column">
+            <div class="quiz-box">
+                
+                <!-- Tela 1: Boas-vindas ao Simulado -->
+                <div id="start-window" class="quiz-screen active">
+                    <h2>Testar Conhecimentos</h2>
+                    <p class="subtitle">Avalie seu aprendizado com nosso simulado preparatório. Cada uma das 4 questões possui um tempo limite fixo.</p>
+                    <button class="btn-action btn-block" id="start-btn">Começar Simulado de 15s</button>
+                </div>
+
+                <!-- Tela 2: Janela de Perguntas -->
                 <div id="quiz-window" class="quiz-screen">
-                    <div class="quiz-header">
+                    <div class="quiz-meta">
                         <span id="progress-text">Pergunta 1 de 4</span>
-                        <!-- Cronômetro -->
-                        <div id="timer-box">Tempo: <span id="timer-count">15</span>s</div>
+                        <div id="timer-box" class="timer-normal">Tempo: <span id="timer-count">15</span>s</div>
                     </div>
                     
                     <div id="questions-container">
@@ -103,23 +128,30 @@
                         </div>
                     </div>
 
-                    <div class="footer">
-                        <button class="btn-action" id="next-btn" style="display: none;">Próxima</button>
+                    <div class="quiz-footer">
+                        <button class="btn-action" id="next-btn" style="display: none;">Avançar</button>
                     </div>
                 </div>
 
-                <!-- Tela de Resultados -->
-                <div id="result-window" class="quiz-screen score-board">
-                    <h2>Fim do Quiz!</h2>
+                <!-- Tela 3: Resultados -->
+                <div id="result-window" class="quiz-screen text-center">
+                    <h2>Desempenho Final</h2>
                     <p id="final-score"></p>
                     <p id="feedback-message"></p>
-                    <button class="btn-action" id="restart-btn">Tentar Novamente</button>
+                    <button class="btn-action btn-block" id="restart-btn">Refazer Teste</button>
                 </div>
 
             </div>
-        </section>
-    </div>
+        </aside>
+
+    </main>
+
+    <!-- Rodapé Institucional -->
+    <footer class="site-footer">
+        <p>&copy; 2026 Concurso Agrinho. Material educativo de apoio aos estudantes.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
+
