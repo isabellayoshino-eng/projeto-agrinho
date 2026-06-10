@@ -8,7 +8,11 @@
     --correct-color: #238636;
     --wrong-color: #da3637;
     --border-color: #30363d;
-    --timer-color: #f9826c;
+    
+    /* Cores do Cronômetro */
+    --timer-normal: #58a6ff;
+    --timer-warning: #d29922;
+    --timer-danger: #f85149;
 }
 
 body {
@@ -115,13 +119,36 @@ body {
     margin-bottom: 20px;
 }
 
+/* Estilos de Cor Dinâmica do Cronômetro */
 #timer-box {
-    background-color: rgba(249, 130, 108, 0.1);
-    color: var(--timer-color);
-    border: 1px solid var(--timer-color);
     padding: 5px 12px;
     border-radius: 20px;
     font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+#timer-box.timer-normal {
+    background-color: rgba(88, 166, 255, 0.1);
+    color: var(--timer-normal);
+    border: 1px solid var(--timer-normal);
+}
+
+#timer-box.timer-warning {
+    background-color: rgba(210, 153, 34, 0.1);
+    color: var(--timer-warning);
+    border: 1px solid var(--timer-warning);
+}
+
+#timer-box.timer-danger {
+    background-color: rgba(248, 81, 73, 0.1);
+    color: var(--timer-danger);
+    border: 1px solid var(--timer-danger);
+    animation: pulse-danger 0.5s infinite alternate;
+}
+
+@keyframes pulse-danger {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
 }
 
 /* Elementos das Questões */
