@@ -13,7 +13,7 @@
         <div class="logo-text">🌾 Agrinho 2026</div>
         <h1>O AGRO É FORTE,<br><span class="highlight">O FUTURO É AGORA</span></h1>
         <p>Inovação, sustentabilidade e a força do campo transformando a educação.</p>
-        <a href="#sobre" class="btn-main">Explorar Concurso</a>
+        <a href="#quiz-section" class="btn-main">Testar Conhecimentos</a>
     </header>
 
     <!-- Seção Sobre o Tema -->
@@ -40,40 +40,48 @@
         </div>
     </section>
 
-    <!-- Seção de Dados e Impacto (Criatividade Visual com Números) -->
-    <section class="stats-section">
-        <h2>A Força do Nosso Agro</h2>
-        <div class="grid-stats">
-            <div class="stat-box">
-                <div class="stat-number">+100k</div>
-                <div class="stat-desc">Alunos engajados no Agrinho</div>
+    <!-- Seção do Quiz Interativo (Tema Escuro) -->
+    <section id="quiz-section" class="quiz-container">
+        <div class="quiz-box">
+            <h2>⚡ Desafio Agro Forte 2026</h2>
+            <p>Mostre que você entende tudo sobre a força da agricultura moderna e sustentável.</p>
+            
+            <!-- Tela Inicial do Quiz -->
+            <div id="start-screen">
+                <div class="quiz-alert">⏳ Cada pergunta tem um tempo de 15 segundos!</div>
+                <button id="start-btn" class="btn-quiz">▶️ Iniciar Quiz</button>
             </div>
-            <div class="stat-box">
-                <div class="stat-number">100%</div>
-                <div class="stat-desc">Foco em Desenvolvimento Sustentável</div>
+
+            <!-- Tela de Perguntas (Escondida Inicialmente) -->
+            <div id="question-screen" class="hide">
+                <div class="quiz-header">
+                    <span id="question-number">Pergunta 1 de 3</span>
+                    <span id="timer">⏱️ 15s</span>
+                </div>
+                <div class="progress-bar"><div id="progress-fill"></div></div>
+                <h3 id="question-text">Texto da Pergunta aqui?</h3>
+                <div id="options-container" class="options-grid">
+                    <!-- As opções serão geradas pelo JavaScript -->
+                </div>
             </div>
-            <div class="stat-box">
-                <div class="stat-number">2026</div>
-                <div class="stat-desc">O ano da virada tecnológica</div>
+
+            <!-- Tela de Resultado (Escondida Inicialmente) -->
+            <div id="result-screen" class="hide">
+                <div class="result-icon">🏆</div>
+                <h3>Quiz Concluído!</h3>
+                <p id="result-text">Você acertou 0 de 3 perguntas.</p>
+                <button id="restart-btn" class="btn-quiz">🔄 Tentar Novamente</button>
             </div>
         </div>
-    </section>
-
-    <!-- Seção Informativa: Como Participar -->
-    <section class="regras-section">
-        <h2>Como Deixar Seu Projeto Forte</h2>
-        <ol class="lista-criativa">
-            <li><strong>Pesquise a fundo:</strong> Entenda a realidade do campo na sua região.</li>
-            <li><strong>Inove no formato:</strong> Conecte a tradição agrícola com soluções digitais e ecológicas.</li>
-            <li><strong>Foque no impacto:</strong> Mostre como o tema "Agro Forte" muda a vida da comunidade.</li>
-        </ol>
     </section>
 
     <!-- Rodapé -->
     <footer>
         <p>© 2026 Concurso Agrinho - Projeto Criativo Agro Forte.</p>
-        <p>Desenvolvido exclusivamente com códigos e tipografia.</p>
+        <p>Desenvolvido exclusivamente com códigos, emojis e tipografia.</p>
     </footer>
 
+    <!-- Script do funcionamento do Quiz -->
+    <script src="script.js"></script>
 </body>
 </html>
