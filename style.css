@@ -1,251 +1,156 @@
-/* Configurações Globais do Tema Escuro */
-:root {
-    --bg-color: #0f1115;
-    --card-bg: #161b22;
-    --info-bg: #21262d;
-    --text-color: #ecf2f8;
-    --accent-color: #2ea44f;
-    --correct-color: #238636;
-    --wrong-color: #da3637;
-    --border-color: #30363d;
-    
-    /* Cores do Cronômetro */
-    --timer-normal: #58a6ff;
-    --timer-warning: #d29922;
-    --timer-danger: #f85149;
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Agrinho 2026 - Agro Forte</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
+    <!-- Barra de Navegação Superior do Portal -->
+    <nav class="navbar">
+        <div class="nav-logo">Agrinho 2026 🎓</div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#conteudo">Conteúdo de Estudo</a></li>
+            <li><a href="#simulado">Simulado Cronometrado</a></li>
+        </ul>
+    </nav>
 
-/* Header */
-.site-header {
-    text-align: center;
-    padding: 30px 20px;
-    background-color: var(--card-bg);
-    border-bottom: 1px solid var(--border-color);
-}
+    <!-- Cabeçalho Principal -->
+    <header id="inicio" class="hero-header">
+        <h1>Plataforma de Estudos Agrinho 2026</h1>
+        <p>Prepare-se para o maior concurso de sustentabilidade e inovação do campo</p>
+    </header>
 
-.site-header h1 {
-    margin: 0 0 10px 0;
-    color: var(--accent-color);
-}
+    <!-- Área Principal do Site -->
+    <main class="site-layout">
+        
+        <!-- COLUNA ESQUERDA: Portal de Informações e Conteúdos (Com Emojis) -->
+        <section id="conteudo" class="content-column">
+            
+            <article class="info-block">
+                <h2>📢 Diretrizes do Tema: Agro Forte, Rio Forte</h2>
+                <p>O foco central da edição 2026 busca conectar as práticas agrícolas de alta produtividade com a conservação das bacias hidrográficas. Ser uma fazenda sustentável significa garantir a segurança hídrica para toda a região.</p>
+            </article>
 
-.site-header p {
-    margin: 0;
-    color: #8b949e;
-}
+            <div class="grid-info">
+                <div class="info-card">
+                    <h3>🌱 Manejo de Solo</h3>
+                    <p>O plantio direto na palha evita que as primeiras chuvas lavem a camada fértil da terra, reduzindo a compactação e permitindo que a água infiltre melhor.</p>
+                </div>
 
-/* Layout Principal */
-.main-container {
-    display: flex;
-    flex-direction: row;
-    max-width: 1200px;
-    width: 100%;
-    margin: 30px auto;
-    padding: 0 20px;
-    gap: 30px;
-    box-sizing: border-box;
-}
+                <div class="info-card">
+                    <h3>💧 Matas Ciliares</h3>
+                    <p>A vegetação nas margens dos rios funciona como um filtro biológico natural. Ela impede o assoreamento e protege as encostas contra desmoronamentos.</p>
+                </div>
 
-/* Seção de Caixas de Informações */
-.info-section {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
+                <div class="info-card">
+                    <h3>🚜 Inovação Digital</h3>
+                    <p>O uso de sensores e drones monitora a umidade e a saúde da lavoura, garantindo que o produtor aplique insumos apenas onde é estritamente necessário.</p>
+                </div>
 
-.info-card {
-    background-color: var(--info-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 20px;
-}
+                <div class="info-card">
+                    <h3>⚡ Energia Limpa</h3>
+                    <p>A transformação de dejetos animais e restos de colheitas em biogás gera autonomia energética, reduz custos e neutraliza a emissão de gases poluentes.</p>
+                </div>
+            </div>
 
-.info-card h3 {
-    margin-top: 0;
-    color: #fff;
-    font-size: 1.2rem;
-}
+            <article class="info-block technical-note">
+                <h3>📝 Estrutura Recomendada para a Redação</h3>
+                <p>Para construir um texto competitivo, apresente o cenário atual do campo, mostre o papel ativo da tecnologia aplicada à ecologia e conclua com soluções aplicáveis para o dia a dia do produtor rural do Paraná.</p>
+            </article>
 
-.info-card p {
-    color: #c9d1d9;
-    line-height: 1.6;
-    margin-bottom: 0;
-}
+        </section>
 
-/* Seção do Quiz */
-.quiz-section {
-    flex: 1.2;
-}
+        <!-- COLUNA DIREITA: Módulo do Quiz Integrado (Sem Emojis no conteúdo interno) -->
+        <aside id="simulado" class="sidebar-column">
+            <div class="quiz-box">
+                
+                <!-- Tela 1: Boas-vindas ao Simulado -->
+                <div id="start-window" class="quiz-screen active">
+                    <h2>Testar Conhecimentos</h2>
+                    <p class="subtitle">Avalie seu aprendizado com nosso simulado preparatório. Cada uma das 4 questões possui um tempo limite fixo.</p>
+                    <button class="btn-action btn-block" id="start-btn">Começar Simulado de 15s</button>
+                </div>
 
-.quiz-container {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-}
+                <!-- Tela 2: Janela de Perguntas -->
+                <div id="quiz-window" class="quiz-screen">
+                    <div class="quiz-meta">
+                        <span id="progress-text">Pergunta 1 de 4</span>
+                        <div id="timer-box" class="timer-normal">Tempo: <span id="timer-count">15</span>s</div>
+                    </div>
+                    
+                    <div id="questions-container">
+                        <!-- Pergunta 1 -->
+                        <div class="question-card" data-correct="2">
+                            <p class="question-text">1. Qual das seguintes práticas é fundamental para manter o solo do Agro Forte protegido contra a erosão?</p>
+                            <ul class="options-list">
+                                <li class="option-item" data-index="1">Deixar a terra totalmente descoberta antes da chuva</li>
+                                <li class="option-item" data-index="2">Realizar o plantio direto e rotação de culturas</li>
+                                <li class="option-item" data-index="3">Utilizar queimadas frequentes para limpar o terreno</li>
+                                <li class="option-item" data-index="4">Abandonar o uso de curvas de nível em áreas de morro</li>
+                            </ul>
+                        </div>
 
-.quiz-screen {
-    display: none;
-}
+                        <!-- Pergunta 2 -->
+                        <div class="question-card" data-correct="1">
+                            <p class="question-text">2. Como a tecnologia digital ajuda a fortalecer a sustentabilidade no campo atualmente?</p>
+                            <ul class="options-list">
+                                <li class="option-item" data-index="1">Otimizando o uso de água e insumos com precisão</li>
+                                <li class="option-item" data-index="2">Aumentando o desperdício de energia nas fazendas</li>
+                                <li class="option-item" data-index="3">Substituindo completamente o trabalho dos produtores humanos</li>
+                                <li class="option-item" data-index="4">Isolando as comunidades rurais do restante do país</li>
+                            </ul>
+                        </div>
 
-.quiz-screen.active {
-    display: block;
-}
+                        <!-- Pergunta 3 -->
+                        <div class="question-card" data-correct="4">
+                            <p class="question-text">3. O que define a preservação das Matas Ciliares nas propriedades do Paraná?</p>
+                            <ul class="options-list">
+                                <li class="option-item" data-index="1">Reduzir a presença de animais silvestres na região</li>
+                                <li class="option-item" data-index="2">Eliminar a vegetação perto das estradas rurais</li>
+                                <li class="option-item" data-index="3">Permitir a construção de indústrias poluentes na floresta</li>
+                                <li class="option-item" data-index="4">Proteger as margens dos rios contra o assoreamento</li>
+                            </ul>
+                        </div>
 
-.subtitle {
-    color: #8b949e;
-    line-height: 1.5;
-    margin-bottom: 25px;
-}
+                        <!-- Pergunta 4 -->
+                        <div class="question-card" data-correct="3">
+                            <p class="question-text">4. Qual é o papel das fontes de energia renovável, como o biogás, no ecossistema Agro Forte?</p>
+                            <ul class="options-list">
+                                <li class="option-item" data-index="1">Aumentar a dependência de combustíveis fósseis importados</li>
+                                <li class="option-item" data-index="2">Poluir o ar e os lençóis freáticos da fazenda</li>
+                                <li class="option-item" data-index="3">Transformar resíduos agrícolas em energia limpa e barata</li>
+                                <li class="option-item" data-index="4">Interromper a produção de alimentos para gerar eletricidade</li>
+                            </ul>
+                        </div>
+                    </div>
 
-.quiz-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 15px;
-    margin-bottom: 20px;
-}
+                    <div class="quiz-footer">
+                        <button class="btn-action" id="next-btn" style="display: none;">Avançar</button>
+                    </div>
+                </div>
 
-/* Estilos de Cor Dinâmica do Cronômetro */
-#timer-box {
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
+                <!-- Tela 3: Resultados -->
+                <div id="result-window" class="quiz-screen text-center">
+                    <h2>Desempenho Final</h2>
+                    <p id="final-score"></p>
+                    <p id="feedback-message"></p>
+                    <button class="btn-action btn-block" id="restart-btn">Refazer Teste</button>
+                </div>
 
-#timer-box.timer-normal {
-    background-color: rgba(88, 166, 255, 0.1);
-    color: var(--timer-normal);
-    border: 1px solid var(--timer-normal);
-}
+            </div>
+        </aside>
 
-#timer-box.timer-warning {
-    background-color: rgba(210, 153, 34, 0.1);
-    color: var(--timer-warning);
-    border: 1px solid var(--timer-warning);
-}
+    </main>
 
-#timer-box.timer-danger {
-    background-color: rgba(248, 81, 73, 0.1);
-    color: var(--timer-danger);
-    border: 1px solid var(--timer-danger);
-    animation: pulse-danger 0.5s infinite alternate;
-}
+    <!-- Rodapé Institucional -->
+    <footer class="site-footer">
+        <p>&copy; 2026 Concurso Agrinho. Material educativo de apoio aos estudantes.</p>
+    </footer>
 
-@keyframes pulse-danger {
-    from { transform: scale(1); }
-    to { transform: scale(1.05); }
-}
-
-/* Elementos das Questões */
-.question-card {
-    display: none;
-}
-
-.question-card.active {
-    display: block;
-}
-
-.question-text {
-    font-size: 1.15rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    line-height: 1.5;
-}
-
-.options-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.option-item {
-    background-color: var(--bg-color);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    padding: 14px 18px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    transition: background 0.2s, border-color 0.2s;
-    font-size: 1rem;
-}
-
-.option-item:hover {
-    border-color: #8b949e;
-}
-
-/* Validações de Resposta */
-.option-item.correct {
-    background-color: var(--correct-color) !important;
-    border-color: #3fb950 !important;
-    color: #ffffff;
-}
-
-.option-item.wrong {
-    background-color: var(--wrong-color) !important;
-    border-color: #f85149 !important;
-    color: #ffffff;
-}
-
-.option-item.disabled {
-    pointer-events: none;
-}
-
-/* Rodapé e Botões */
-.footer {
-    margin-top: 20px;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.btn-action {
-    background-color: var(--accent-color);
-    color: #fff;
-    border: 1px solid rgba(240,246,252,0.1);
-    border-radius: 6px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.btn-action:hover {
-    background-color: #2c974b;
-}
-
-.score-board {
-    text-align: center;
-}
-
-#final-score {
-    font-size: 1.3rem;
-    font-weight: bold;
-    margin: 20px 0;
-}
-
-#feedback-message {
-    color: #8b949e;
-    margin-bottom: 25px;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .main-container {
-        flex-direction: column;
-    }
-}
+    <script src="script.js"></script>
+</body>
+</html>
