@@ -3,224 +3,359 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agro Forte, Futuro Sustentável</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Agro Forte, Futuro Sustentável - Agrinho 2026</title>
     <style>
-        /* Reset básico */
+        /* --- ESTILOS GERAIS E PALETA NATUREZA --- */
+        :root {
+            --verde-escuro: #1b4332;
+            --verde-principal: #2d6a4f;
+            --verde-claro: #52b788;
+            --verde-folha: #74c69d;
+            --bege-fundo: #f4f9f4;
+            --laranja-terra: #d97706;
+            --cinza-texto: #2d3748;
+            --branco: #ffffff;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
+            background-color: var(--bege-fundo);
+            color: var(--cinza-texto);
             line-height: 1.6;
-            background-color: #f4f8f4;
-            color: #333;
         }
 
+        /* --- ANIMAÇÃO SUAVE --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- CABEÇALHO E NAVEGAÇÃO --- */
         header {
-            background-color: #4caf50;
-            color: white;
-            padding: 1.5rem 2rem;
-            text-align: center;
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        header h1 {
-            font-size: 2rem;
-        }
-
-        nav {
+        .nav-container {
             display: flex;
-            justify-content: center;
-            background-color: #66bb6a;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 1rem 1.5rem;
-            transition: background 0.3s;
-        }
-
-        nav a:hover {
-            background-color: #4caf50;
-        }
-
-        section {
-            padding: 2rem;
+            justify-content: space-between;
+            align-items: center;
             max-width: 1200px;
-            margin: auto;
+            margin: 0 auto;
+            padding: 1rem 2rem;
         }
 
-        section h2 {
-            color: #2e7d32;
-            margin-bottom: 1rem;
-            text-align: center;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--verde-claro);
         }
 
-        section p {
-            margin-bottom: 1rem;
+        .logo span {
+            color: var(--branco);
         }
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        nav ul {
+            display: flex;
+            list-style: none;
             gap: 1.5rem;
         }
 
+        nav a {
+            color: var(--branco);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--verde-folha);
+        }
+
+        /* --- HERO BANNER --- */
+        .hero {
+            background: linear-gradient(rgba(27, 67, 50, 0.85), rgba(45, 106, 79, 0.85)), url('https://unsplash.com') no-repeat center center/cover;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--branco);
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            max-width: 800px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background-color: var(--laranja-terra);
+            color: var(--branco);
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #b45309;
+        }
+
+        /* --- SEÇÕES DO SITE --- */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.25rem;
+            color: var(--verde-escuro);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--laranja-terra);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Grelha de Cards */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
         .card {
-            background-color: white;
-            padding: 1rem;
+            background: var(--branco);
+            padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--verde-principal);
+            transition: transform 0.3s;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
-        .card img {
-            max-width: 100%;
-            border-radius: 10px;
+        .card h3 {
+            color: var(--verde-escuro);
             margin-bottom: 1rem;
         }
 
-        .quiz-container {
-            background-color: #e8f5e9;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-top: 2rem;
+        /* --- SEÇÃO 1: IMPORTÂNCIA DO AGRO --- */
+        .agro-info {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
         }
 
-        .quiz-container h3 {
+        .agro-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .agro-text p {
             margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
-        .quiz-container button {
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            margin-top: 1rem;
+        /* Gráfico Simulado */
+        .graphic-container {
+            flex: 1;
+            min-width: 300px;
+            background: var(--branco);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .chart-bar {
+            background-color: #e2e8f0;
             border-radius: 5px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .chart-fill {
+            background-color: var(--verde-principal);
+            color: var(--branco);
+            padding: 0.5rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-align: right;
+            transition: width 1.5s ease-in-out;
+            width: 0; /* Animado via JS */
+        }
+
+        /* --- SEÇÃO 2: DESAFIOS --- */
+        .bg-dark-section {
+            background-color: #e8f5e9;
+        }
+
+        .card-desafio {
+            border-top: 4px solid #dc2626;
+        }
+
+        /* --- SEÇÃO 3: TECNOLOGIA E SOLUÇÕES --- */
+        .solucoes-list {
+            list-style: none;
+        }
+
+        .solucoes-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .solucoes-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--verde-claro);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* --- SEÇÃO 4: INTERATIVIDADE (QUIZ) --- */
+        .quiz-container {
+            background-color: var(--branco);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+        }
+
+        .quiz-option {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            margin: 0.75rem 0;
+            background-color: var(--bege-fundo);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 1rem;
             cursor: pointer;
+            transition: all 0.2s;
         }
 
-        .quiz-container button:hover {
-            background-color: #388e3c;
+        .quiz-option:hover {
+            background-color: #e2e8f0;
+            border-color: var(--verde-claro);
         }
 
+        .correct {
+            background-color: #d1fae5 !important;
+            border-color: #10b981 !important;
+            color: #065f46;
+        }
+
+        .incorrect {
+            background-color: #fee2e2 !important;
+            border-color: #ef4444 !important;
+            color: #991b1b;
+        }
+
+        #next-btn {
+            margin-top: 1.5rem;
+            display: none;
+        }
+
+        /* --- RODAPÉ --- */
         footer {
+            background-color: var(--verde-escuro);
+            color: var(--branco);
             text-align: center;
-            padding: 1.5rem;
-            background-color: #4caf50;
-            color: white;
-            margin-top: 2rem;
+            padding: 2rem;
+            margin-top: 4rem;
         }
 
-        /* Gráfico simples */
-        .chart-container {
-            margin: 2rem 0;
-            text-align: center;
-        }
-
-        canvas {
-            max-width: 100%;
-        }
-
-        /* Responsividade */
-        @media(max-width: 768px){
-            nav {
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 768px) {
+            .nav-container {
                 flex-direction: column;
+                gap: 1rem;
             }
-            nav a {
-                padding: 0.75rem 0;
+            .hero h1 {
+                font-size: 2rem;
+            }
+            section {
+                padding: 2rem 1rem;
             }
         }
-
     </style>
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- CABEÇALHO -->
     <header>
-        <h1>Agro Forte, Futuro Sustentável</h1>
-        <p>Equilíbrio entre produção e meio ambiente</p>
+        <div class="nav-container">
+            <div class="logo">Agro<span>Sustentável</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#importancia">Importância</a></li>
+                    <li><a href="#desafios">Desafios</a></li>
+                    <li><a href="#tecnologia">Tecnologia</a></li>
+                    <li><a href="#quiz">Quiz</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <!-- Navegação -->
-    <nav>
-        <a href="#importancia">Importância do Agronegócio</a>
-        <a href="#desafios">Desafios Ambientais</a>
-        <a href="#solucoes">Soluções Sustentáveis</a>
-        <a href="#tecnologia">Tecnologia no Campo</a>
-        <a href="#quiz">Quiz</a>
-    </nav>
+    <!-- HERO BANNER -->
+    <main class="hero">
+        <h1>Agro Forte, Futuro Sustentável</h1>
+        <p>Descubra como a tecnologia e o equilíbrio ambiental guiam a produção de alimentos para as próximas gerações.</p>
+        <a href="#importancia" class="btn">Explorar Conteúdo</a>
+    </main>
 
-    <!-- Seção: Importância -->
-    <section id="importancia">
-        <h2>Importância do Agronegócio</h2>
-        <p>O agronegócio é vital para a economia brasileira, responsável por gerar empregos, alimentar a população e fornecer insumos para diversas indústrias. Além disso, contribui para a qualidade de vida e segurança alimentar, mantendo o equilíbrio social e econômico do país.</p>
-        <p>Segundo dados do IBGE, mais de 20% do PIB brasileiro está relacionado ao setor agropecuário, mostrando a sua relevância estratégica.</p>
-        <div class="cards">
-            <div class="card">
-                <img src="https://cdn.pixabay.com/photo/2017/03/03/12/58/farm-2116755_1280.jpg" alt="Campo de soja">
-                <h3>Produção de Alimentos</h3>
-                <p>Milhões de toneladas de alimentos são produzidas anualmente, garantindo abastecimento interno e exportação para o mundo.</p>
+    <!-- SEÇÃO 1: IMPORTÂNCIA DO AGRONEGÓCIO -->
+    <section id="importancia" class="fade-in">
+        <h2 class="section-title">A Força do Nosso Campo</h2>
+        <div class="agro-info">
+            <div class="agro-text">
+                <h3>Alimentando o Mundo com Qualidade</h3>
+                <p>O agronegócio é a base da economia brasileira e um dos pilares de sustentação do abastecimento global de alimentos. Sem o trabalho do campo, a vida urbana seria impossível.</p>
+                <p>Além de gerar milhões de empregos, a produção agrícola atual foca em levar alimentos saudáveis, nutritivos e acessíveis para a mesa da população, elevando diretamente a qualidade de vida e a segurança alimentar.</p>
             </div>
-            <div class="card">
-                <img src="https://cdn.pixabay.com/photo/2015/09/18/19/06/tractor-942261_1280.jpg" alt="Trator no campo">
-                <h3>Emprego e Economia</h3>
-                <p>O setor gera milhões de empregos diretos e indiretos, estimulando a economia local e nacional.</p>
-            </div>
-            <div class="card">
-                <img src="https://cdn.pixabay.com/photo/2016/11/29/03/53/sunflower-1869352_1280.jpg" alt="Campos e qualidade de vida">
-                <h3>Qualidade de Vida</h3>
-                <p>Produção responsável garante acesso a alimentos nutritivos e melhora a qualidade de vida das comunidades.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção: Desafios Ambientais -->
-    <section id="desafios">
-        <h2>Desafios Ambientais</h2>
-        <p>Apesar de essencial, o agronegócio enfrenta grandes desafios ambientais, como:</p>
-        <ul>
-            <li>Poluição hídrica devido ao uso de fertilizantes e agrotóxicos.</li>
-            <li>Desmatamento e perda de habitats naturais.</li>
-            <li>Degradação do solo e erosão.</li>
-            <li>Mudanças climáticas e impactos na produção.</li>
-            <li>Desperdício de recursos naturais, incluindo água e energia.</li>
-        </ul>
-        <div class="chart-container">
-            <canvas id="desafiosChart"></canvas>
-        </div>
-    </section>
-
-    <!-- Seção: Soluções Sustentáveis -->
-    <section id="solucoes">
-        <h2>Soluções Sustentáveis</h2>
-        <p>É possível aumentar a produção agrícola sem comprometer os recursos naturais através de práticas inovadoras:</p>
-        <div class="cards">
-            <div class="card">
-                <img src="https://cdn.pixabay.com/photo/2020/05/09/09/28/drone-5149517_1280.jpg" alt="Drone agrícola">
-                <h3>Agricultura de Precisão</h3>
-                <p>Uso de drones, sensores e dados para otimizar insumos e aumentar a eficiência da produção.</p>
-            </div>
-            <div class="card">
-                <img src="https://cdn.pixabay.com/photo/2016/11/22/19/12/irrigation-1850537_1280.jpg" alt="Irrigação inteligente">
-                <h3>Irrigação Inteligente</h3>
-                <p>Controle eficiente do uso da água, reduzindo desperdícios e aumentando a produtividade.</p>
-            </div>
-            <div class="card">
-                <img src="https://cdn.pixabay.com/photo/2017/01/20/19/53/solar-1994771_1280.jpg" alt="Energia renovável">
-                <h3>Energia Renovável</h3>
-                <p>Uso de energia solar e eólica no campo reduz impactos ambientais e custos de produção.</p>
-            </div>
-            <div class="card">
-                <img src="https://cdn.pixabay.com/photo/2015/03/26/09/39/farming-690104_1280.jpg" alt="Plantio direto">
-                <h3>Plantio Direto e Rotação de Culturas</h3
