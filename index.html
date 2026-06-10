@@ -3,123 +3,377 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agrinho 2026 - Agro Forte e Sustentável</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <title>Agro Forte, Futuro Sustentável - Agrinho 2026</title>
+    <style>
+        /* --- VARIÁVEIS DE DESIGN (PALETA ECO-MODERNA) --- */
+        :root {
+            --emerald: #0f5132;
+            --mint: #198754;
+            --leaf: #198754;
+            --earth: #b56576;
+            --gold: #f1c40f;
+            --dark: #212529;
+            --light-bg: #f8f9fa;
+            --card-white: #ffffff;
+            --soft-red: #ea868f;
+        }
 
-    <!-- CABEÇALHO -->
-    <header>
-        <nav class="nav-container">
-            <a href="#" class="logo">🌿 Agrinho <span class="destaque-verde">2026</span></a>
-            <div class="menu-toggle" id="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul class="nav-menu" id="nav-links">
-                <li><a href="#" class="nav-link">Início</a></li>
-                <li><a href="#tema" class="nav-link">O Tema</a></li>
-                <li><a href="#pilares" class="nav-link">Práticas Sustentáveis</a></li>
-                <li><a href="#quiz" class="nav-link">Quiz</a></li>
-                <li><a href="#contato" class="nav-link">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            scroll-behavior: smooth;
+        }
 
-    <!-- SEÇÃO HERO (PREENCHE A TELA INTEIRA) -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Agrinho 2026: <br><span class="destaque-hero">Agro Forte e Sustentável</span></h1>
-            <p>Conectando a inovação tecnológica do campo com a preservação do meio ambiente para alimentar as futuras gerações.</p>
-            <a href="#tema" class="btn-cta">Saiba Mais</a>
-        </div>
-    </section>
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark);
+            line-height: 1.7;
+        }
 
-    <!-- SEÇÃO O TEMA (EXPANDIDA COM MAIS TEXTO E IMAGENS) -->
-    <section id="tema" class="container-secao">
-        <h2 class="section-title">O Tema</h2>
-        <div class="tema-grid">
-            <div class="tema-texto">
-                <p>O agronegócio moderno representa a força motriz da nossa economia e o pilar da produção global de alimentos. Contudo, essa força gigante não ignora os limites da natureza. No Brasil, o conceito de "Agro Forte e Sustentável" prova que é totalmente viável produzir em larga escala e proteger as florestas ao mesmo tempo.</p>
-                
-                <p>A grande chave dessa transformação é a <strong>ciência aplicada ao campo</strong>. Tecnologias de ponta permitem mapear detalhadamente cada centímetro da lavoura, garantindo que os recursos hídricos e os nutrientes do solo sejam utilizados na medida exata. O resultado prático é uma produtividade muito maior utilizando o mesmo espaço de terra, contendo o avanço sobre áreas de preservação nativa.</p>
-                
-                <p>Além da economia, o agro ecológico atua diretamente contra o aquecimento global. Práticas conservacionistas, como o uso de bioinsumos (defensivos naturais e microrganismos biológicos), reduzem drasticamente a dependência de produtos químicos pesados. A sustentabilidade no campo assegura que o solo continue fértil e que os rios permaneçam limpos para as próximas gerações de produtores rurais e estudantes.</p>
-            </div>
-            <div class="tema-imagem"></div>
-        </div>
-    </section>
+        /* --- ANIMAÇÕES --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
 
-    <!-- SEÇÃO PILARES -->
-    <div class="bg-pilares">
-        <section id="pilares" class="container-secao">
-            <h2 class="section-title">Pilares do Agro Sustentável</h2>
-            <div class="pilares-grid">
-                <div class="pilar-card">
-                    <div class="pilar-icon-wrapper">
-                        <span class="pilar-icon">🛸</span>
-                    </div>
-                    <h3>Tecnologia no Campo</h3>
-                    <p>O monitoramento por drones e o uso de sensores inteligentes reduzem o desperdício de água e defensivos agrícolas na lavoura.</p>
-                </div>
-                <div class="pilar-card">
-                    <div class="pilar-icon-wrapper">
-                        <span class="pilar-icon">🌳</span>
-                    </div>
-                    <h3>Conservação Ambiental</h3>
-                    <p>O sistema de plantio direto, a rotação planejada de culturas e o reflorestamento ativo protegem os solos e as bacias de rios.</p>
-                </div>
-                <div class="pilar-card">
-                    <div class="pilar-icon-wrapper">
-                        <span class="pilar-icon">🧑‍🌾</span>
-                    </div>
-                    <h3>Valor Social</h3>
-                    <p>A valorização do produtor rural e o incentivo à sucessão familiar asseguram que o amor pela terra continue vivo de geração em geração.</p>
-                </div>
-            </div>
-        </section>
-    </div>
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    <!-- SEÇÃO INTERATIVA (QUIZ COM INÍCIO TRAVADO) -->
-    <section id="quiz" class="container-secao">
-        <h2 class="section-title">Desafio do Conhecimento</h2>
-        <div class="quiz-container">
-            <div id="quiz-header">
-                <span id="placar-passo">Prepare-se!</span>
-                <div id="cronometro-box">⏱️ <span id="tempo-restante">15</span>s</div>
-            </div>
-            <div id="barra-progresso-tempo"><div id="progresso-tempo"></div></div>
-            
-            <div id="quiz-tela-jogo">
-                <div class="quiz-pergunta" id="pergunta-texto">Pronto para testar seus conhecimentos sobre o Agro Forte e Sustentável?</div>
-                <div class="quiz-opcoes" id="opcoes-container"></div>
-                <div class="quiz-feedback" id="feedback-texto">Você terá 15 segundos para responder cada pergunta após iniciar.</div>
-                <div class="quiz-controles">
-                    <div></div> 
-                    <button id="btn-proximo" class="btn-proximo">Iniciar Desafio</button>
-                </div>
-            </div>
-        </div>
-    </section>
+        /* --- HEADER & NAVEGAÇÃO --- */
+        header {
+            background: rgba(15, 81, 50, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
 
-    <!-- RODAPÉ -->
-    <footer id="contato">
-        <div class="footer-container">
-            <div class="footer-links">
-                <a href="#regulamento-ficticio">Regulamento do Concurso</a>
-                <a href="#contato">Suporte Escolar</a>
-            </div>
-            <div class="redes-sociais">
-                <a href="#ficticio">📘</a>
-                <a href="#ficticio">📸</a>
-                <a href="#ficticio">🎥</a>
-            </div>
-            <p>&copy; 2026 Concurso Agrinho. Todos os direitos reservados. Projeto Educacional "Agro Forte e Sustentável".</p>
-        </div>
-    </footer>
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+        }
 
-    <script src="script.js"></script>
-</body>
-</html>
-ml>
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-area span { color: #69db7c; }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: #f1f3f5;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover { color: #69db7c; }
+
+        /* --- HERO SECTOR --- */
+        .hero {
+            background: linear-gradient(135deg, rgba(15, 81, 50, 0.9) 0%, rgba(33, 37, 41, 0.8) 100%), 
+                        url('https://unsplash.com') no-repeat center center/cover;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            max-width: 850px;
+            margin: 0 auto 35px;
+            color: #e9ecef;
+        }
+
+        .cta-btn {
+            background-color: var(--mint);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(25, 135, 84, 0.4);
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(25, 135, 84, 0.6);
+            background-color: #146c43;
+        }
+
+        /* --- ESTRUTURA DE SEÇÕES --- */
+        section {
+            padding: 100px 25px 60px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--emerald);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: #6c757d;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- GRID: IMPORTÂNCIA DO AGRO --- */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .info-card {
+            background: var(--card-white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            border: 1px solid #eef2f5;
+            transition: transform 0.3s;
+        }
+
+        .info-card:hover { transform: translateY(-5px); }
+
+        .info-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .info-card h3 {
+            font-size: 1.4rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        /* --- DESAFIOS E SIMULADOR DE IMPACTO --- */
+        .desafios-box {
+            background: #fff0f1;
+            border-radius: 20px;
+            padding: 45px;
+            border: 1px solid #ffdbde;
+            margin-bottom: 50px;
+        }
+
+        .desafios-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .desafio-card h4 {
+            color: #842029;
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* --- ABAS DE SOLUÇÕES TECNOLÓGICAS --- */
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-trigger {
+            background: white;
+            border: 1px solid #dee2e6;
+            padding: 12px 28px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--dark);
+            transition: all 0.3s;
+        }
+
+        .tab-trigger.active, .tab-trigger:hover {
+            background: var(--emerald);
+            color: white;
+            border-color: var(--emerald);
+        }
+
+        .tab-panel {
+            display: none;
+            background: white;
+            padding: 45px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            border: 1px solid #eef2f5;
+        }
+
+        .tab-panel.active {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-panel img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        /* --- GRÁFICOS INTERATIVOS --- */
+        .dashboard-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .chart-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .bar-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .bar-label { width: 120px; font-size: 0.9rem; font-weight: 500; }
+
+        .bar-wrapper {
+            flex-grow: 1;
+            background: #e9ecef;
+            height: 24px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: var(--mint);
+            width: 0%;
+            transition: width 1.5s cubic-bezier(0.1, 1, 0.1, 1);
+            border-radius: 12px;
+        }
+
+        .bar-value { width: 50px; text-align: right; font-weight: 600; font-size: 0.9rem; }
+
+        /* --- METRICAS RÁPIDAS --- */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .metric-item {
+            background: #e8f5e9;
+            padding: 30px 20px;
+            border-radius: 16px;
+        }
+
+        .metric-item h3 { font-size: 2.5rem; color: var(--emerald); margin-bottom: 5px; }
+
+        /* --- QUIZ INTERATIVO DINÂMICO --- */
+        .quiz-wrapper {
+            background: white;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.04);
+            border: 1px solid #eef2f5;
+        }
+
+        .quiz-progress {
+            height: 6px;
+            background: #e9ecef;
+            border-radius: 3px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .quiz-progress-bar {
+            height: 100%;
+            background: var(--mint);
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .quiz-btn {
+            background: var(--light-bg);
+            border: 2px solid #dee2e6;
+            padding: 18px 25px;
+            border-radius: 12px;
+l>
