@@ -1,169 +1,117 @@
-/* --- ROLAGEM E REVELAÇÃO SUAVE (SCROLL REVEAL EFFECT) --- */
-window.addEventListener('scroll', revealElements);
+// ==========================
+// Animação de seções ao scroll
+// ==========================
+const sections = document.querySelectorAll("section");
 
-function revealElements() {
-    const reveals = document.querySelectorAll('.reveal');
-    reveals.forEach(element => {
-        const windowHeight = window.innerHeight;
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 120;
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add("visible");
+        }
+    });
+}, { threshold: 0.2 });
 
-        if (elementTop < windowHeight - elementVisible) {
-            element.classList.add('active');
-            
-            // Dispara o preenchimento dos gráficos quando o painel fica visível
-            if(element.id === 'dados') {
-                triggerCharts();
+sections.forEach(section => observer.observe(section));
+
+
+// ==========================
+// Gráfico dos desafios ambientais
+// ==========================
+const ctx = document.getElementById('desafiosChart').getContext('2d');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Poluição Hídrica', 'Desmatamento', 'Degradação do Solo', 'Mudanças Climáticas', 'Desperdício de Recursos'],
+        datasets: [{
+            label: 'Impacto (em índice)',
+            data: [80, 70, 65, 75, 60],
+            backgroundColor: ['#4caf50','#66bb6a','#81c784','#a5d6a7','#c8e6c9']
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: { display: false },
+            title: {
+                display: true,
+                text: 'Principais desafios ambientais no agronegócio'
             }
         }
-    });
-}
+    }
+});
 
-function triggerCharts() {
-    const fills = document.querySelectorAll('.bar-fill[data-width]');
-    fills.forEach(fill => {
-        fill.style.width = fill.getAttribute('data-width');
-    });
-}
 
-/* --- ALTERNAÇÃO DINÂMICA DE ABAS (TABS LOGIC) --- */
-function switchTab(event, panelId) {
-    const panels = document.querySelectorAll('.tab-panel');
-    const triggers = document.querySelectorAll('.tab-trigger');
-
-    panels.forEach(panel => panel.classList.remove('active'));
-    triggers.forEach(trigger => trigger.classList.remove('active'));
-
-    document.getElementById(panelId).classList.add('active');
-    event.currentTarget.classList.add('active');
-}
-
-/* --- CONTADORES NUMÉRICOS ANIMADOS --- */
-function startCounter(id, start, end, suffix, duration) {
-    let obj = document.getElementById(id);
-    if (!obj) return;
-    let current = start;
-    let range = end - start;
-    let increment = end > start ? 1 : -1;
-    let step = Math.abs(Math.floor(duration / range));
-    step = Math.max(step, 10);
-    
-    let timer = setInterval(() => {
-        current += Math.ceil(range / (duration / 30));
-        if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
-            clearInterval(timer);
-            obj.textContent = end + suffix;
-        } else {
-            obj.textContent = current + suffix;
-        }
-    }, 30);
-}
-
-// Inicializadores numéricos disparados pós-carregamento controlado
-setTimeout(() => {
-    startCounter("m1", 0, 18, " Milhões", 2000);
-    startCounter("m2", 0, 40, "%", 2000);
-    startCounter("m3", 0, 520, "+", 2000);
-    revealElements(); // Roda checagem posicional imediata
-}, 300);
-
-/* --- SISTEMA DINÂMICO DO QUIZ --- */
-const quizQuestions = [
+// ==========================
+// Quiz Interativo
+// ==========================
+const quizData = [
     {
-        q: "Qual o principal benefício do Sistema de Plantio Direto para o solo rural?",
-        options: [
-            "Expor as camadas profundas ao calor do sol", 
-            "Reduzir a erosão ao manter a cobertura de palhada", 
-            "Aumentar a compactação mecânica", 
-            "Eliminar a necessidade de rotação de culturas"
-        ],
-        answer: 1
+        question: "Qual prática ajuda a economizar água na agricultura?",
+        options: ["Plantio direto", "Irrigação inteligente", "Desmatamento", "Uso de agrotóxicos"],
+        answer: "Irrigação inteligente"
     },
     {
-        q: "Como os drones e sensores colaboram para diminuir a contaminação ambiental?",
-        options: [
-            "Aumentando o consumo hídrico geral", 
-            "Modificando geneticamente as sementes em tempo real", 
-            "Permitindo aplicar defensivos agrícolas apenas onde há necessidade real", 
-            "Substituindo completamente o trabalho dos agricultores"
-        ],
-        answer: 2
+        question: "O que é agricultura de precisão?",
+        options: ["Uso de drones e sensores", "Desmatamento controlado", "Queima de resíduos", "Uso de fertilizantes químicos apenas"],
+        answer: "Uso de drones e sensores"
     },
     {
-        q: "Por que conservar as Matas Ciliares e as cabeceiras das nascentes é obrigatório?",
-        options: [
-            "Para secar os rios mais rápido", 
-            "Para evitar o assoreamento e garantir a pureza das bacias de água", 
-            "Apenas para fins estéticos da fazenda", 
-            "Para impedir a circulação de fauna silvestre"
-        ],
-        answer: 1
+        question: "Qual técnica melhora a fertilidade do solo?",
+        options: ["Rotação de culturas", "Uso excessivo de pesticidas", "Erosão controlada", "Extração mineral"],
+        answer: "Rotação de culturas"
     }
 ];
 
-let currentQuestionIdx = 0;
-let totalScore = 0;
+let currentQuestion = 0;
 
-function loadQuestion() {
-    const questionEl = document.getElementById("quiz-question");
-    const optionsEl = document.getElementById("quiz-options");
-    const feedbackEl = document.getElementById("quiz-feedback");
-    const progressEl = document.getElementById("quiz-progress");
+function loadQuiz(){
+    const quizContainer = document.getElementById("quizContent");
+    quizContainer.innerHTML = "";
 
-    if (!questionEl || !optionsEl) return;
+    const q = quizData[currentQuestion];
+    const questionEl = document.createElement("h4");
+    questionEl.textContent = q.question;
+    quizContainer.appendChild(questionEl);
 
-    feedbackEl.innerText = "";
-    optionsEl.innerHTML = "";
+    q.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.textContent = option;
+        btn.classList.add("quiz-option");
+        btn.onclick = () => selectAnswer(btn, option);
+        quizContainer.appendChild(btn);
+    });
+}
 
-    // Atualiza barra de progresso do jogo
-    let progressPct = (currentQuestionIdx / quizQuestions.length) * 100;
-    progressEl.style.width = `${progressPct}%`;
+function selectAnswer(btn, selected){
+    const correct = quizData[currentQuestion].answer;
+    const buttons = document.querySelectorAll(".quiz-option");
+    buttons.forEach(b => b.disabled = true);
 
-    if (currentQuestionIdx < quizQuestions.length) {
-        let currentItem = quizQuestions[currentQuestionIdx];
-        questionEl.innerText = `${currentQuestionIdx + 1}. ${currentItem.q}`;
-
-        currentItem.options.forEach((opt, idx) => {
-            let btn = document.createElement("button");
-            btn.innerText = opt;
-            btn.classList.add("quiz-btn");
-            btn.addEventListener("click", () => evaluateAnswer(idx, btn));
-            optionsEl.appendChild(btn);
+    if(selected === correct){
+        btn.classList.add("correct");
+    } else {
+        btn.classList.add("incorrect");
+        buttons.forEach(b => {
+            if(b.textContent === correct){
+                b.classList.add("correct");
+            }
         });
-    } else {
-        progressEl.style.width = "100%";
-        questionEl.innerText = "Desafio Concluído com Sucesso!";
-        optionsEl.innerHTML = `<p style='font-size:1.1rem; text-align:center; padding:10px 0;'>Você acertou <strong>${totalScore} de ${quizQuestions.length}</strong> questões.</p>`;
-        feedbackEl.innerText = "Parabéns! Continue defendendo o Equilíbrio Sustentável no Campo!";
-        feedbackEl.style.color = "var(--emerald)";
-    }
-}
-
-function evaluateAnswer(selectedIdx, clickedBtn) {
-    const feedbackEl = document.getElementById("quiz-feedback");
-    const allButtons = document.querySelectorAll(".quiz-btn");
-    let correctAnswerIdx = quizQuestions[currentQuestionIdx].answer;
-
-    // Bloqueia cliques adicionais nas outras opções enquanto exibe o resultado
-    allButtons.forEach(b => b.style.pointerEvents = "none");
-
-    if (selectedIdx === correctAnswerIdx) {
-        clickedBtn.classList.add("correct");
-        feedbackEl.innerText = "Excelente! Resposta correta! ✨";
-        feedbackEl.style.color = "var(--emerald)";
-        totalScore++;
-    } else {
-        clickedBtn.classList.add("wrong");
-        allButtons[correctAnswerIdx].classList.add("correct");
-        feedbackEl.innerText = "Resposta incorreta. O campo exige atenção! 🔄";
-        feedbackEl.style.color = "var(--earth)";
     }
 
-    currentQuestionIdx++;
-    setTimeout(loadQuestion, 2200);
+    const nextBtn = document.createElement("button");
+    nextBtn.textContent = currentQuestion < quizData.length - 1 ? "Próxima" : "Finalizar Quiz";
+    nextBtn.onclick = () => {
+        currentQuestion++;
+        if(currentQuestion < quizData.length){
+            loadQuiz();
+        } else {
+            document.getElementById("quizContent").innerHTML = "<h4>Parabéns! Você concluiu o quiz.</h4>";
+        }
+    };
+    document.getElementById("quizContent").appendChild(nextBtn);
 }
 
-// Iniciar aplicação de quiz após carregamento estrutural completo da árvore DOM
 document.addEventListener("DOMContentLoaded", () => {
-    loadQuestion();
+    loadQuiz();
 });
